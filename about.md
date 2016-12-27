@@ -4,14 +4,11 @@ title: About
 permalink: /about/
 ---
 
-I'm a freelance developer and researcher with a background in ecology. I like R and maps. This blog is to share R related things.
+I am an evolutionary ecologist, theoretical biologist, and ecological modeller. Currently, I am modelling conflict between biodiversity and food security.
 
-For more see : [andysouth.co.uk](http://www.andysouth.co.uk).
+For more see : [bradduthie.github.io](http://bradduthie.github.io).
 
-Or my [CV](/images/cv_AndySouth_2pages_dec2014.pdf)
-
-Or [google scholar](http://scholar.google.com/citations?user=eJz46kAAAAAJ&hl=en)
 
 ### Contact
 
-[southandy@gmail.com](mailto:southandy@gmail.com)
+[brad.duthie@gmail.com](mailto:brad.duthie@gmail.com)
