@@ -1,0 +1,29 @@
+---
+layout: post
+title: Evolution of inbreeding
+author: Brad Duthie
+published: false
+status: process
+draft: false
+tags: R
+output: md_document
+---
+
+Self-introduction of working on inbreeding theory for past three years.
+
+Want to briefly explain the key concept behind inbreeding theory as introduced by @Parker1979. Talk about the book itself being a good one, and that it is hard to find, and contains some of Bill Hamilton's excellent writing on fig wasps, which I used to study.
+
+Outline, very casually, the kind of interaction being represented by @Parker1979 -- inviting the reader to imagine a drawn out scenario of focal individual encountering a relative (for the sake of argument, assume a sibling); what to do? Natural selection will favour behaviour that maximises the number of replica copies passed to offspring. In our simple case, there are two things to consider: 1) there are replica alleles in the potential mate, and 2) inbred offspring have lower survival probability than outbred offspring. Tell the story from the perspective of the focal individual -- then note how @Parker1979 explained the maths, but this has become expressed more generally in @Parker2006 and @Kokko2006 as the standard equation.
+
+Walk through the isolation of $\delta$. Then, verbally, explain what this means -- one big insight that @Parker1979 provided was that inbreeding could be evolutionarily adaptive; this was already well-known in the context of self-fertilisation, but not widely appreciated among behavioural ecologists [@Kokko2006; @Szulkin2012].
+
+Perhaps more interesting, @Parker1979 noted that reproductive interactions between relatives are expected to be characterised by sexual conflict (explain what this means) in a way that self-fertilisation versus outcrossing is not. Explain why this conflict arises, and that it links with other kinds of conflict, citing relevant sources here. Hence, in a few pages of @Parker1979, we have two key theoretical insights; inbreeding should sometimes be adaptive, and reproductive interactions between relatives should lead to sexual conflict.
+
+Note how this work of @Parker1979 still remains less appreciated than perhaps it should, but interesting theory has been developed from its foundation. @Kokko2006 conceptualised the timing of interactions. @Puurtinen2011 (brief note to optimal inbreeding), I think, was the first to note subtely that females but not males could prefer inbreeding (explain why). The other paper on dispersal also boils down to @Parker1979, which was also expressed in a more general paper on sexual conflict in @Parker2006. Perhaps mention @Lehtonen2015 and @Waser1986, noting the costs. Then the conceptual unification between inbreeding theory and parental investment theory, and the model of population genetics.
+
+
+
+
+
+
+
