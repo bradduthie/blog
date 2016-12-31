@@ -7,6 +7,7 @@ status: process
 draft: false
 tags: R
 output: md_document
+bibliography: duthie.bib
 ---
 
 Self-introduction of working on inbreeding theory for past three years.
