@@ -1,4 +1,34 @@
-Self-introduction of working on inbreeding theory for past three years.
+For nearly three and a half years, the primary focus of my research was
+to develop theory on the evolution of biparental inbreeding at the
+[University of Aberdeen](http://abdn.ac.uk). Biparental inbreeding
+specifically refers to the situation in which two different, but
+genetically related, individuals of any given species breed and thereby
+produce inbred offspring. This situation differs from
+self-fertilisation, in which an individual inbreeds with itself, as is
+perhaps most commonly studied in plants (e.g., Barrett1996; Vogler and
+Kalisz 2001). The addition of a second parent complicates how inbreeding
+will affect individual fitness, partly because we have -- by definition
+-- two different individuals to consider (a female and a male), but also
+because biparental inbreeding can occur between any number of different
+types of relatives (e.g., siblings, cousins, etc.). I'll explain these
+complications in more detail below, but first I want to note two
+important general points about inbreeding, the combination of which
+makes the evolution of inbreeding particularly interesting.
+
+The first point is that individuals that inbreed typically produce
+offspring that have lower fitness than individuals that outbreed (e.g.,
+they have offspring with a lower probability of survival), a phenomenon
+called *''inbreeding depression''*. That inbreeding depression occurs is
+well-known, and I won't get into the details of what causes it \[see
+Charlesworth1999; Charlesworth2009\]. The second point is that despite
+the occurrence of inbreeding depression in inbred **offspring**, this
+does not necessarily mean that inbreeding **parents** themselves have
+lower fitness than parents that avoid inbreeding. This second point
+isn't intuitive, and perhaps as a result of its counter-intuitiveness is
+widely under-appreciated, particularly when considering the evolution of
+animal behaviour. In what follows, I'll explain why selection can
+sometimes favour inbreeding instead of inbreeding avoidance despite
+inbreeding depression.
 
 Want to briefly explain the key concept behind inbreeding theory as
 introduced by Parker (1979). Talk about the book itself being a good
@@ -45,6 +75,9 @@ on sexual conflict in Parker (2006). Perhaps mention Lehtonen and Kokko
 conceptual unification between inbreeding theory and parental investment
 theory, and the model of population genetics.
 
+References
+----------
+
 Kokko, Hanna, and Indrek Ots. 2006. “When not to avoid inbreeding.”
 *Evolution* 60 (3): 467–75.
 
@@ -68,6 +101,10 @@ Szulkin, Marta, Katie V Stopher, Josephine M Pemberton, and Jane M Reid.
 2013. “Inbreeding avoidance, tolerance, or preference in animals?”
 *Trends in Ecology & Evolution* 28 (4). Elsevier Ltd: 205–11.
 doi:[10.1016/j.tree.2012.10.016](https://doi.org/10.1016/j.tree.2012.10.016).
+
+Vogler, Donna W, and Susan Kalisz. 2001. “Sex among the flowers: the
+distribution of plant mating systems.” *Evolution* 55 (1): 202–4.
+doi:[10.1554/0014-3820(2001)055](https://doi.org/10.1554/0014-3820(2001)055).
 
 Waser, Peter M, Steven N Austad, and Brian Keane. 1986. “When should
 animals tolerate inbreeding?” *American Naturalist* 128 (4): 529–37.
