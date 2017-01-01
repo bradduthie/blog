@@ -18,17 +18,44 @@ makes the evolution of inbreeding particularly interesting.
 The first point is that individuals that inbreed typically produce
 offspring that have lower fitness than individuals that outbreed (e.g.,
 they have offspring with a lower probability of survival), a phenomenon
-called *''inbreeding depression''*. That inbreeding depression occurs is
-well-known, and I won't get into the details of what causes it \[see
-Charlesworth1999; Charlesworth2009\]. The second point is that despite
-the occurrence of inbreeding depression in inbred **offspring**, this
-does not necessarily mean that inbreeding **parents** themselves have
-lower fitness than parents that avoid inbreeding. This second point
-isn't intuitive, and perhaps as a result of its counter-intuitiveness is
-widely under-appreciated, particularly when considering the evolution of
-animal behaviour. In what follows, I'll explain why selection can
-sometimes favour inbreeding instead of inbreeding avoidance despite
-inbreeding depression.
+called ''inbreeding depression''. That inbreeding depression occurs is
+well-known, and I won't get into the details of what causes it (see B.
+Charlesworth and Charlesworth 1999; Charlesworth and Willis 2009). The
+second point is that despite the occurrence of inbreeding depression in
+inbred **offspring**, this does not necessarily mean that inbreeding
+**parents** themselves have lower fitness than parents that avoid
+inbreeding. This second point isn't intuitive, and perhaps as a result
+of its counter-intuitiveness is widely under-appreciated, particularly
+when considering the evolution of animal behaviour. In what follows,
+I'll explain why selection can sometimes favour inbreeding instead of
+inbreeding avoidance despite inbreeding depression.
+
+Parker's model of biparental inbreeding
+---------------------------------------
+
+The foundational work of biparental inbreeding theory was developed by
+[Geoff Parker](https://en.wikipedia.org/wiki/Geoff_Parker), and appears
+as a chapter in [*Sexual Selection and Reproductive Competition in
+Insects*](https://www.amazon.co.uk/Sexual-Selection-Reproductive-Competition-Insects/dp/0124145760)
+<sup>[\[1\]](#foot1)</sup> (Parker 1979). Since
+
+Consider a focal female that can produce *n* offspring -- the exact
+number doesn't matter for demonstrating the key point, so to keep things
+simple, we can start by assuming that this number will always be the
+same. This focal female encounters a first
+cousin<sup>[\[1\]](#foot1)</sup>, and upon the encounter must decide
+whether or not to inbreed with him. If she does not inbreed with him,
+then we'll assume that she is able to find some other male to breed with
+to whom she is not related. By avoiding inbreeding with her cousin and
+outbreeding instead, she will produce *n* offspring that do not suffer
+any inbreeding depression. For simplicitly, we can set their fitness to
+a value of 1, and think of this value as the probability that an outbred
+offspring survives to adulthood. If she instead inbreeds with her
+cousin, then she will produce *n* offspring whose survival probability
+will be reduced by some value *δ* due to inbreeding depression. Hence,
+if the focal female outbreeds, then she will produce *n* offspring with
+a survival probability of 1. And if she inbreeds with her cousin, then
+she will produce *n* offspring with a survival probability of (1 − *δ*).
 
 Want to briefly explain the key concept behind inbreeding theory as
 introduced by Parker (1979). Talk about the book itself being a good
@@ -75,8 +102,22 @@ on sexual conflict in Parker (2006). Perhaps mention Lehtonen and Kokko
 conceptual unification between inbreeding theory and parental investment
 theory, and the model of population genetics.
 
+<a name="foot1">\[1\]</a> As an aside, this is a wonderful book that
+also includes a
+
+<a name="foot2">\[2\]</a> Parker (1979) considered an encounter between
+a female and her full-sibling brother. I'm using cousins to deliberately
+produce an example with a different numerical result.
+
 References
 ----------
+
+Charlesworth, Brian, and Deborah Charlesworth. 1999. “The genetic basis
+of inbreeding depression.” *Genetical Research* 74 (3): 329–40.
+
+Charlesworth, Deborah, and John H Willis. 2009. “The genetics of
+inbreeding depression.” *Nature Reviews Genetics* 10 (11): 783–96.
+doi:[10.1038/nrg2664](https://doi.org/10.1038/nrg2664).
 
 Kokko, Hanna, and Indrek Ots. 2006. “When not to avoid inbreeding.”
 *Evolution* 60 (3): 467–75.
