@@ -31,28 +31,27 @@ Parker's model of biparental inbreeding
 
 The foundational work of biparental inbreeding theory developed by
 [Parker](https://en.wikipedia.org/wiki/Geoff_Parker) appears as a
-chapter<sup>[1](#foot1)</sup> in [*Sexual Selection and Reproductive
-Competition in
+chapter in [*Sexual Selection and Reproductive Competition in
 Insects*](https://www.amazon.co.uk/Sexual-Selection-Reproductive-Competition-Insects/dp/0124145760)
-(Parker 1979). Since
+(Parker 1979) [1](#foot1). Since
 
 Consider a focal female that can produce *n* offspring -- the exact
 number doesn't matter for demonstrating the key point, so to keep things
 simple, we can start by assuming that this number will always be the
-same. This focal female encounters a first cousin<sup>[2](#foot2)</sup>,
-and upon the encounter must decide whether or not to inbreed with him.
-If she does not inbreed with him, then we'll assume that she is able to
-find some other male to breed with to whom she is not related. By
-avoiding inbreeding with her cousin and outbreeding instead, she will
-produce *n* offspring that do not suffer any inbreeding depression. For
-simplicitly, we can set their fitness to a value of 1, and think of this
-value as the probability that an outbred offspring survives to
-adulthood. If she instead inbreeds with her cousin, then she will
-produce *n* offspring whose survival probability will be reduced by some
-value *δ* due to inbreeding depression. Hence, if the focal female
-outbreeds, then she will produce *n* offspring with a survival
-probability of 1. And if she inbreeds with her cousin, then she will
-produce *n* offspring with a survival probability of (1 − *δ*).
+same. This focal female encounters a first cousin [2](#foot2), and upon
+the encounter must decide whether or not to inbreed with him. If she
+does not inbreed with him, then we'll assume that she is able to find
+some other male to breed with to whom she is not related. By avoiding
+inbreeding with her cousin and outbreeding instead, she will produce *n*
+offspring that do not suffer any inbreeding depression. For simplicitly,
+we can set their fitness to a value of 1, and think of this value as the
+probability that an outbred offspring survives to adulthood. If she
+instead inbreeds with her cousin, then she will produce *n* offspring
+whose survival probability will be reduced by some value *δ* due to
+inbreeding depression. Hence, if the focal female outbreeds, then she
+will produce *n* offspring with a survival probability of 1. And if she
+inbreeds with her cousin, then she will produce *n* offspring with a
+survival probability of (1 − *δ*).
 
 Want to briefly explain the key concept behind inbreeding theory as
 introduced by Parker (1979). Talk about the book itself being a good
