@@ -33,10 +33,10 @@ The foundational work of biparental inbreeding theory developed by
 [Parker](https://en.wikipedia.org/wiki/Geoff_Parker) appears as a
 chapter in [*Sexual Selection and Reproductive Competition in
 Insects*](https://www.amazon.co.uk/Sexual-Selection-Reproductive-Competition-Insects/dp/0124145760)
-(Parker 1979) [1](#foot1). Parker (1979) considered an encounter and the
-subsequent reproductive decisions of two focal relatives [2](#foot2).
-Below, I'll show the logic of these reproductive decisions first for
-females, then for males.
+(Parker 1979) [\[1\]](#foot1). Parker (1979) considered an encounter and
+the subsequent reproductive decisions of two focal relatives
+[\[2\]](#foot2). Below, I'll show the logic of these reproductive
+decisions first for females, then for males.
 
 Consider a focal female that can produce *n* offspring -- the exact
 number doesn't matter for demonstrating the key point, so to keep things
@@ -60,9 +60,9 @@ focal female produces by outbreeding will always be favoured by
 selection over the *n* × (1 − *δ*) surviving offspring produced by
 inbreeding, and the inequality
 
-*n*(1 − *δ*)&gt;*n*
-,
-
+\begin{equation}
+n(1-\delta) > n,
+\end{equation}
 will never be true.
 
 But the above inequality leaves out something important to inbreeding
@@ -72,7 +72,7 @@ inbreeding, she can increase the reproductive success of her relative,
 and thereby increase her fitness indirectly -- by how much depends on
 her *relatedness* to her potential mate. Assuming the focal female is
 herself outbred (i.e., that her own parents did not inbreed), then her
-cousin's relatedness to her will be 1/8 [3](#foot3). She should
+cousin's relatedness to her will be 1/8 [\[3\]](#foot3). She should
 therefore consider any additional reproductive success of her cousin
 that results from her decision with 1/8 the weight of her own
 reproductive success. The indirect fitness accrued from the reproductive
@@ -83,9 +83,9 @@ used to determine how selection will act on a particular behaviour
 (Hamilton 1964; Grafen 2006). In the case of inbreeding, we can contrast
 the inclusive fitness accrued from inbreeding with that of outbreeding,
 
-$$ n(1-\\delta) + \\frac{1}{8}n(1-\\delta) &gt; n $$
-.
-
+\begin{equation}
+n(1-\delta) + \frac{1}{8}n(1-\delta) > n.
+\end{equation}
 Now, note that the above inequality isn't always false -- as it
 obviously was in the first inequality when indirect fitness was not
 taken into account. If we now imagine a very small value of *δ*, then
