@@ -60,9 +60,8 @@ focal female produces by outbreeding will always be favoured by
 selection over the *n* × (1 − *δ*) surviving offspring produced by
 inbreeding, and the inequality
 
-\begin{equation}
-n(1-\delta) > n,
-\end{equation}
+n (1 - *δ*) &gt; n,
+
 will never be true.
 
 But the above inequality leaves out something important to inbreeding
@@ -83,9 +82,8 @@ used to determine how selection will act on a particular behaviour
 (Hamilton 1964; Grafen 2006). In the case of inbreeding, we can contrast
 the inclusive fitness accrued from inbreeding with that of outbreeding,
 
-\begin{equation}
-n(1-\delta) + \frac{1}{8}n(1-\delta) > n.
-\end{equation}
+n (1 - *δ*) + 1/8 n (1 - *δ*) &gt; n.
+
 Now, note that the above inequality isn't always false -- as it
 obviously was in the first inequality when indirect fitness was not
 taken into account. If we now imagine a very small value of *δ*, then
@@ -97,22 +95,21 @@ highest inclusive fitness therefore clearly depends on the value of *δ*.
 In fact, we can calculate the threshold value below which inbreeding
 increases inclusive fitness by isolating the above equation for *δ*,
 
-$$ n(1-\\delta) + \\frac{1}{8}n(1-\\delta) &gt; n $$
+n (1 - *δ*) + 1/8 n (1 - *δ*) &gt; n
 
-$$ (1-\\delta) + \\frac{1}{8}(1-\\delta) &gt; 1 $$
+(1 - *δ*) + 1/8 (1 - *δ*) &gt; 1
 
-$$ 1 - \\delta + \\frac{1}{8} - \\frac{1}{8}\\delta &gt; 1 $$
+1 - *δ* + 1/8 - 1/8 *δ* &gt; 1
 
-$$ 1 + \\frac{1}{8} &gt; 1 + \\delta + \\frac{1}{8}\\delta $$
+1 + 1/8 &gt; 1 + *δ* + 1/8 *δ*
 
-$$ \\frac{1}{8} &gt; \\delta + \\frac{1}{8}\\delta $$
+1/8 &gt; *δ* + 1/8 *δ*
 
-$$ \\frac{1}{8} &gt; (1 + \\frac{1}{8})\\delta $$
+1/8 &gt; (1 + 1/8) *δ*
 
-$$ \\frac{1}{8} / (1 + \\frac{1}{8}) &gt; \\delta $$
+1/8 / (1 + 1/8) &gt; *δ*
 
-$$ \\frac{1}{9} &gt; \\delta $$
-.
+1/9 &gt; *δ*.
 
 In our example, a focal female will increase her inclusive fitness more
 by inbreeding with her cousin than by avoiding inbreeding with him if

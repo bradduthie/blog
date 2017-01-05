@@ -22,35 +22,33 @@ The foundational work of biparental inbreeding theory developed by [Parker](http
 
 Consider a focal female that can produce $n$ offspring -- the exact number doesn't matter for demonstrating the key point, so to keep things simple, we can start by assuming that this number will always be the same. This focal female encounters a first cousin, and upon the encounter must decide whether or not to inbreed with him. If she does not inbreed with him, then we'll assume that she is able to find some other male to breed with to whom she is not related. By avoiding inbreeding with her cousin and outbreeding instead, she will produce $n$ offspring that do not suffer any inbreeding depression. For simplicitly, we can set their fitness to a value of $1$, and think of this value as the probability that an outbred offspring survives to adulthood. If she instead inbreeds with her cousin, then she will produce $n$ offspring whose survival probability will be reduced by some value $\delta$ due to inbreeding depression. Hence, if the focal female outbreeds, then she will produce $n$ offspring with a survival probability of $1$. And if she inbreeds with her cousin, then she will produce $n$ offspring with a survival probability of $(1 - \delta)$. If we only consider the effects of inbreeding depression, then the $n \times 1$ surviving offspring that the focal female produces by outbreeding will always be favoured by selection over the $n \times (1 - \delta)$ surviving offspring produced by inbreeding, and the inequality
 
-\begin{equation}
-n(1-\delta) > n,
-\end{equation}
+n (1 - $\delta$) > n,
 
 will never be true.
 
 But the above inequality leaves out something important to inbreeding that affects fitness. **If the focal female chooses to inbreed with her cousin, then his reproductive success will be increased**. Hence, by inbreeding, she can increase the reproductive success of her relative, and thereby increase her fitness indirectly -- by how much depends on her *relatedness* to her potential mate. Assuming the focal female is herself outbred (i.e., that her own parents did not inbreed), then her cousin's relatedness to her will be $1/8$ [[3]](#foot3). She should therefore consider any additional reproductive success of her cousin that results from her decision with $1/8$ the weight of her own reproductive success. The indirect fitness accrued from the reproductive success of her cousin plus the direct fitness accrued from her own reproductive success defines her *inclusive fitness* as accrued through her reproductive decision; inclusive fitness, more generally, can be used to determine how selection will act on a particular behaviour [@Hamilton1964; @Grafen2006]. In the case of inbreeding, we can contrast the inclusive fitness accrued from inbreeding with that of outbreeding,
 
-\begin{equation}
-n(1-\delta) + \frac{1}{8}n(1-\delta) > n.
-\end{equation}
+
+n (1 - $\delta$) + $1/8$ n (1 - $\delta$) > n.
+
 
 Now, note that the above inequality isn't always false -- as it obviously was in the first inequality when indirect fitness was not taken into account. If we now imagine a very small value of $\delta$, then the left hand side of the above inequality will approach a value of $n + (1/8)n$, higher than the inclusive fitness of outbreeding ($n$). Yet a large value (close to 1) of $\delta$ will make the left hand side closer to zero. Whether inbreeding or avoiding inbreeding yields the highest inclusive fitness therefore clearly depends on the value of $\delta$. In fact, we can calculate the threshold value below which inbreeding increases inclusive fitness by isolating the above equation for $\delta$,
 
-$$ n(1-\delta) + \frac{1}{8}n(1-\delta) > n $$
+n (1 - $\delta$) + $1/8$ n (1 - $\delta$) > n
 
-$$ (1-\delta) + \frac{1}{8}(1-\delta) > 1 $$
+(1 - $\delta$) + $1/8$ (1 - $\delta$) > 1
 
-$$ 1 - \delta + \frac{1}{8} - \frac{1}{8}\delta > 1 $$
+1 - $\delta$ + $1/8$ - $1/8$ $\delta$ > 1
 
-$$ 1 + \frac{1}{8} > 1 + \delta + \frac{1}{8}\delta $$
+1 + $1/8$ > 1 + $\delta$ + $1/8$ $\delta$
 
-$$ \frac{1}{8} > \delta + \frac{1}{8}\delta $$
+$1/8$ > $\delta$ + $1/8$ $\delta$
 
-$$ \frac{1}{8} > (1 + \frac{1}{8})\delta $$
+$1/8$ > (1 + $1/8$) $\delta$
 
-$$ \frac{1}{8} / (1 + \frac{1}{8}) > \delta $$
+$1/8$ / (1 + $1/8$) > $\delta$
 
-$$ \frac{1}{9} > \delta $$.
+$1/9$ > $\delta$.
 
 In our example, a focal female will increase her inclusive fitness more by inbreeding with her cousin than by avoiding inbreeding with him if $\delta$ is less than one ninth -- or, put differently, if her inbred offspring have an $8/9$ survival probability. **A focal female can thereby increase her inclusive fitness if inbreeding depression is sufficiently weak**.
 
