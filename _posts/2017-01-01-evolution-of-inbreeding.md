@@ -120,6 +120,9 @@ weak**.
 
 <!--- Perhaps more interesting, @Parker1979 noted that reproductive interactions between relatives are expected to be characterised by sexual conflict (explain what this means) in a way that self-fertilisation versus outcrossing is not. Explain why this conflict arises, and that it links with other kinds of conflict, citing relevant sources here. Hence, in a few pages of @Parker1979, we have two key theoretical insights; inbreeding should sometimes be adaptive, and reproductive interactions between relatives should lead to sexual conflict. --->
 <!--- Note how this work of @Parker1979 still remains less appreciated than perhaps it should, but interesting theory has been developed from its foundation. @Kokko2006 conceptualised the timing of interactions. @Puurtinen2011 (brief note to optimal inbreeding), I think, was the first to note subtely that females but not males could prefer inbreeding (explain why). The other paper on dispersal also boils down to @Parker1979, which was also expressed in a more general paper on sexual conflict in @Parker2006. Perhaps mention @Lehtonen2015 and @Waser1986, noting the costs. Then the conceptual unification between inbreeding theory and parental investment theory, and the model of population genetics. --->
+
+------------------------------------------------------------------------
+
 <a name="foot1">\[1\]</a> As an aside, this is a wonderful book that
 also includes a chapter written by Bill Hamilton on wing dimorphism in
 male fig wasps, likening male-male competition within a fig to ''a
@@ -135,6 +138,8 @@ deliberately produce an example with a different numerical result.
 relatedness*; see, e.g., Michod and Anderson (1979) or Duthie and Reid
 (2015) for more detail on how *relatedness* is calculated, particularly
 given inbreeding.
+
+------------------------------------------------------------------------
 
 References
 ----------
