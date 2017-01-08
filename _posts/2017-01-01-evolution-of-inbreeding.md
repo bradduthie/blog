@@ -188,8 +188,6 @@ fitness by avoiding inbreeding.** In the case of the two cousins, such a
 conflict is predicted when inbreeding depression satisfies
 1/9 &lt; *δ* &lt; 8/9.
 
-![Threshold inbreeding depression values below which inbreeding increases female and male inclusive fitness for different relatedness values, as recreated from Duthie and Reid (2015). The x-axis shows the relatedness (r) between two focal potential mates, and the y-axis shows the magnitude of inbreeding depression below which inbreeding is beneficial for each sex. The white shaded region shows where neither sex benefits by inbreeding, the black shaded region shows where only males benefit by inbreeding (sexual conflict), and the grey shaded region shows where both females and males benefit by inbreeding.](figures/inbreeding_thresholds.png)
-
 General theoretical insights of Parker's model
 ----------------------------------------------
 
@@ -237,7 +235,7 @@ beneficial for each sex. The white shaded region shows where neither sex
 benefits by inbreeding, the black shaded region shows where only males
 benefit by inbreeding (sexual conflict), and the grey shaded region
 shows where both females and males benefit by
-inbreeding.](figures/inbreeding_thresholds.png)
+inbreeding.](/figures/inbreeding_thresholds.png)
 
 Why and how Parker's insights are still relevant
 ------------------------------------------------
