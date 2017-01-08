@@ -89,7 +89,7 @@ n(1+r)(1-$\delta$) > n.
 
 From the above, the general threshold of $\delta$ below which a focal female increases her inclusive fitness can be written as,
 
-\delta <   r / (1 + r).
+$\delta$ <   r / (1 + r).
 
 The equivalent general inequality predicting male predicting whether or not inbreeding increases inclusive fitness in males is,
 
@@ -97,7 +97,7 @@ n(1+r)(1-$\delta$) > rn.
 
 For the above, we get the general threshold $\delta$,
 
-\delta <   1 / (1 + r).
+$\delta$ <   1 / (1 + r).
 
 We can plot this threshold $\delta$ over a range of $r$ values for both females and males [as appears in @Waser1986; @Puurtinen2011; @Szulkin2012; @Duthie2015a].
 

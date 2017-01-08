@@ -211,7 +211,7 @@ n(1+r)(1-*δ*) &gt; n.
 From the above, the general threshold of *δ* below which a focal female
 increases her inclusive fitness can be written as,
 
-&lt; r / (1 + r).
+*δ* &lt; r / (1 + r).
 
 The equivalent general inequality predicting male predicting whether or
 not inbreeding increases inclusive fitness in males is,
@@ -220,7 +220,7 @@ n(1+r)(1-*δ*) &gt; rn.
 
 For the above, we get the general threshold *δ*,
 
-&lt; 1 / (1 + r).
+*δ* &lt; 1 / (1 + r).
 
 We can plot this threshold *δ* over a range of *r* values for both
 females and males (as appears in Waser, Austad, and Keane 1986;
