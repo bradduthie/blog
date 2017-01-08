@@ -235,7 +235,7 @@ beneficial for each sex. The white shaded region shows where neither sex
 benefits by inbreeding, the black shaded region shows where only males
 benefit by inbreeding (sexual conflict), and the grey shaded region
 shows where both females and males benefit by
-inbreeding.](figures/unnamed-chunk-1-1.png)
+inbreeding.](figures/inbreeding_thresholds.png)
 
 Why and how Parker's insights are still relevant
 ------------------------------------------------
