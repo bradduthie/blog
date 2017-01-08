@@ -235,7 +235,7 @@ beneficial for each sex. The white shaded region shows where neither sex
 benefits by inbreeding, the black shaded region shows where only males
 benefit by inbreeding (sexual conflict), and the grey shaded region
 shows where both females and males benefit by
-inbreeding.](/figures/inbreeding_thresholds.png)
+inbreeding.](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/inbreeding_thresholds.png?token=AFSziUkUep5ggdDVfOVLVa5LhPleFp3Kks5Ye92bwA%3D%3D)
 
 Why and how Parker's insights are still relevant
 ------------------------------------------------
