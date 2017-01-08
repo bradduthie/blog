@@ -226,24 +226,25 @@ We can plot this threshold *δ* over a range of *r* values for both
 females and males (as appears in Waser, Austad, and Keane 1986;
 Puurtinen 2011; Szulkin et al. 2013; Duthie and Reid 2015).
 
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left"><a name="fig1">Figure 1:</a> <em>Threshold inbreeding depression values below which inbreeding increases female and male inclusive fitness for different relatedness values, as recreated from Duthie and Reid (2015). The x-axis shows the relatedness (r) between two focal potential mates, and the y-axis shows the magnitude of inbreeding depression below which inbreeding is beneficial for each sex. The white shaded region shows where neither sex benefits by inbreeding, the black shaded region shows where only males benefit by inbreeding (sexual conflict), and the grey shaded region shows where both females and males benefit by inbreeding.</em></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><img src="https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/inbreeding_thresholds.png?token=AFSziUkUep5ggdDVfOVLVa5LhPleFp3Kks5Ye92bwA%3D%3D" alt="Figure 1" /></td>
-</tr>
-<tr class="even">
-<td align="left">Why and how Parker's insights are still relevant</td>
-</tr>
-</tbody>
-</table>
+------------------------------------------------------------------------
+
+<a name="fig1">Figure 1:</a> *Threshold inbreeding depression values
+below which inbreeding increases female and male inclusive fitness for
+different relatedness values, as recreated from Duthie and Reid (2015).
+The x-axis shows the relatedness (r) between two focal potential mates,
+and the y-axis shows the magnitude of inbreeding depression below which
+inbreeding is beneficial for each sex. The white shaded region shows
+where neither sex benefits by inbreeding, the black shaded region shows
+where only males benefit by inbreeding (sexual conflict), and the grey
+shaded region shows where both females and males benefit by inbreeding.*
+
+![Figure
+1](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/inbreeding_thresholds.png?token=AFSziUkUep5ggdDVfOVLVa5LhPleFp3Kks5Ye92bwA%3D%3D)
+
+------------------------------------------------------------------------
+
+Why and how Parker's insights are still relevant
+------------------------------------------------
 
 The general equation identifying inbreeding depression thresholds for
 females and males appears in various forms in subsequent theoretical
