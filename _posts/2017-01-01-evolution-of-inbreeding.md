@@ -118,8 +118,175 @@ offspring have an 8/9 survival probability. **A focal female can thereby
 increase her inclusive fitness if inbreeding depression is sufficiently
 weak**.
 
-<!--- Perhaps more interesting, @Parker1979 noted that reproductive interactions between relatives are expected to be characterised by sexual conflict (explain what this means) in a way that self-fertilisation versus outcrossing is not. Explain why this conflict arises, and that it links with other kinds of conflict, citing relevant sources here. Hence, in a few pages of @Parker1979, we have two key theoretical insights; inbreeding should sometimes be adaptive, and reproductive interactions between relatives should lead to sexual conflict. --->
-<!--- Note how this work of @Parker1979 still remains less appreciated than perhaps it should, but interesting theory has been developed from its foundation. @Kokko2006 conceptualised the timing of interactions. @Puurtinen2011 (brief note to optimal inbreeding), I think, was the first to note subtely that females but not males could prefer inbreeding (explain why). The other paper on dispersal also boils down to @Parker1979, which was also expressed in a more general paper on sexual conflict in @Parker2006. Perhaps mention @Lehtonen2015 and @Waser1986, noting the costs. Then the conceptual unification between inbreeding theory and parental investment theory, and the model of population genetics. --->
+We can consider the same interaction from the perspective of the male,
+encountering a cousin and deciding whether or not to inbreed with her.
+The key difference from the perspective of the focal male is that
+inbreeding *directly* increases his own reproductive success, yielding a
+higher inclusive fitness overall. Given stereotypical sex roles, the
+reproductive success of the focal male is limited only by the number of
+mates that he can acquire. In other words, while a focal females is
+always limited to producing *n* offspring, the number of offspring that
+a focal male sires increases with every new mating.
+
+Inbreeding therefore increases a focal male's inclusive fitness
+directly, instead of indirectly as is the case for focal females. This
+direct component is $n (1 - *δ*)$ -- number of offspring produced scaled
+by inbreeding depression. The focal male also receives an indirect
+component of 1/8 n (1 - *δ*)$, which represents the direct fitness of
+the focal male's cousin scaled to his relatedness to her (1/8). Note
+that the inclusive fitness accrued from inbreeding is the same for the
+focal male as it was for the focal female, the direct plus indirect
+components of inclusive fitness are $n (1 - *δ*) + 1/8$ n (1 - *δ*)$,
+which can be re-written as *n*(1 + 1/8)(1 − *δ*). But if the focal male
+avoids inbreeding, he has missed out on the chance to produce additional
+offspring -- the only consolation is that the cousin he avoided
+inbreeding with will then outbreed and produce healthy related offspring
+that benefit him indirectly (note, the focal male might go off and mate
+with other females, but, given stereotypical sex roles, we're assuming
+that he could have done so even if he had chosen to inbreed). His
+inclusive fitness resulting from the decision to avoid inbreeding is
+therefore (1/8)*n* -- i.e., his cousin's inclusive fitness scaled to his
+relatedness to her. We can contrast the inclusive fitness accrued from
+inbreeding with that of outbreeding for the focal male, as we did for
+his cousin,
+
+n (1 - *δ*) + 1/8 n (1 - *δ*) &gt; 1/8 n.
+
+Note again, the only difference here is the right-hand side of the
+inequality (representing inbreeding avoidance), which is now 1/8*n* to
+reflect the indirect component of inclusive fitness from avoiding
+inbreeding. As with the focal female, we can solve for *δ* to identify
+the threshold value below which inbreeding yields a higher inclusive
+fitness than avoiding inbreeidng,
+
+n (1 - *δ*) + 1/8 n (1 - *δ*) &gt; 1/8 n
+
+(1 - *δ*) + 1/8 (1 - *δ*) &gt; 1/8
+
+1 - *δ* + 1/8 - 1/8 *δ* &gt; 1/8
+
+1 + 1/8 - 1/8 &gt; *δ* + 1/8 *δ*
+
+1 &gt; *δ* + 1/8 *δ*
+
+1 &gt; *δ*(1 + 1/8)
+
+1 / (1 + 1/8) &gt; *δ*
+
+8/9 &gt; *δ*.
+
+Here, the focal male increases his inclusive fitness more by inbreeding
+with his cousin that by avoiding inbreeding with her if *δ* is less than
+eight ninths -- or if his inbred offspring have a 1/9 probability of
+survival. Not only does this demonstrate that a focal male can increase
+his inclusive fitness by inbreeding, it shows that his threshold value
+of inbreeding upon encountering a cousin is considerably higher than
+hers. **Consequently, sexual conflict over inbreeding is predicted
+during such an encounter; a focal male will increases his inclusive
+fitness by inbreeding, while a focal female will increase her inclusive
+fitness by avoiding inbreeding.** In the case of the two cousins, such a
+conflict is predicted when inbreeding depression satisfies
+1/9 &lt; *δ* &lt; 8/9.
+
+General theoretical insights of Parker's model
+----------------------------------------------
+
+The theoretical insights provided by this simple model are general to
+encounters between females and males of any given relatedness *r*:
+
+> **Natural selection should make inbreeding between females and males
+> adaptive given sufficiently low inbreeding depression in the fitness
+> of their offspring, and females and males will typically disagree over
+> how low inbreeding depression should be before inbreeding is adaptive
+> (generating sexual conflict over inbreeding)**
+
+The generality of these two key insights of Parker (1979) can be shown
+by simply substituting a specific value of relatedness (1/8, in our
+example with cousins). The general inequality predicting whether or not
+a focal female's inclusive fitness increases by inbreeding is thereby
+modelled as,
+
+n(1+r)(1-*δ*) &gt; n.
+
+From the above, the general threshold of *δ* below which a focal female
+increases her inclusive fitness can be written as,
+
+&lt; r / (1 + r).
+
+The equivalent general inequality predicting male predicting whether or
+not inbreeding increases inclusive fitness in males is,
+
+n(1+r)(1-*δ*) &gt; rn.
+
+For the above, we get the general threshold *δ*,
+
+&lt; 1 / (1 + r).
+
+We can plot this threshold *δ* over a range of *r* values for both
+females and males (as appears in Waser, Austad, and Keane 1986;
+Puurtinen 2011; Szulkin et al. 2013; Duthie and Reid 2015).
+
+![Threshold inbreeding depression values below which inbreeding
+increases female and male inclusive fitness for different relatedness
+values, as recreated from Duthie and Reid (2015). The x-axis shows the
+relatedness (r) between two focal potential mates, and the y-axis shows
+the magnitude of inbreeding depression below which inbreeding is
+beneficial for each sex. The white shaded region shows where neither sex
+benefits by inbreeding, the black shaded region shows where only males
+benefit by inbreeding (sexual conflict), and the grey shaded region
+shows where both females and males benefit by
+inbreeding.](2017-01-01-evolution-of-inbreeding_files/figure-markdown_strict/unnamed-chunk-1-1.png)
+
+Why and how Parker's insights are still relevant
+------------------------------------------------
+
+The general equation identifying inbreeding depression thresholds for
+females and males appears in various forms in subsequent theoretical
+papers including, Waser, Austad, and Keane (1986), Lehmann and Perrin
+(2003), Parker (2006), Kokko and Ots (2006), Puurtinen (2011), Szulkin
+et al. (2013), Duthie and Reid (2015), Lehtonen and Kokko (2015), and
+Duthie, Lee, and Reid (2016). Each of these papers builds off of the
+foundational work of Parker (1979) in different ways to develop new
+theoretical insights, clarify existing insights, or unify inbreeding
+theory with other theory in evolutionary ecology. I'll save these
+insights for a future post, and for now just note that **the inbreeding
+depression thresholds of the above model need to be interpreted with
+caution.** The greatest importance of Parker (1979) was to provide the
+two general theoretical predictions mentioned above. Parker (1979) did
+this by showing how these two predictions follow logically from a small
+number of useful biological assumptions, thereby demonstrating how to
+think more clearly about inbreeding and inbreeding avoidance in and
+across natural systems. It is this greater clarity of thought that is
+most relevant for developing empirical hypotheses, not the specific
+numerical predictions of inbreeding depression thresholds derived from
+the above inequalities (as see in the figure above). Subsequent theory
+papers by, e.g., Waser, Austad, and Keane (1986), Kokko and Ots (2006),
+and Duthie and Reid (2015) build off of Parker (1979) to show that the
+numerical values of these thresholds will change depending on additional
+assumptions about interacting females and males (in addition to
+providing other insights).
+
+Some biological assumptions are expected to apply to all, or nearly all,
+biological systems. As a theoretician, it is perhaps most exciting to
+discover novel predictions that follow from these universal assumptions
+[\[4\]](#foot4), and to thereby develop theory of the most general
+relevance that conceptually unifies across the biological sciences. But
+biological systems vary widely, making it is necessary to also vary the
+assumptions of our models when deriving specific -- and particularly
+*quantitative* -- predictions. A lot of important biological assumptions
+about interacting females and males will vary among species (e.g., as a
+consequence of different life histories), and these assumptions will be
+relevant for predicting the specific conditions under which inbreeding
+versus inbreeding avoidance will be adaptive for any paricular species.
+Understanding which assumptions are most applicable for deriving
+system-specific hypotheses about inbreeding therefore requires a strong
+understanding of the natural history of a species. **To develop clear
+hypotheses about biparental inbreeding in a specific system, it is
+therefore necessary draw from a broad understanding of the theoretical
+literature on inbreeding and apply it to the specific natural history of
+a biological system.**
+
+<!--- Get a better ending here? --->
 
 ------------------------------------------------------------------------
 
@@ -139,6 +306,11 @@ relatedness*; see, e.g., Michod and Anderson (1979) or Duthie and Reid
 (2015) for more detail on how *relatedness* is calculated, particularly
 given inbreeding.
 
+<a name="foot4">\[4\]</a> Or, perhaps equally appealing, to discover
+previously unknown assumptions from consistently observed patterns
+(predictions) -- or to discover new and interesting paths by which the
+two are logically connected.
+
 ------------------------------------------------------------------------
 
 References
@@ -156,6 +328,11 @@ avoidance? Inbreeding by rejected relatives and the inclusive fitness
 benefit of inbreeding avoidance.” *PLoS One* 10 (4): e0125140.
 doi:[10.1371/journal.pone.0125140](https://doi.org/10.1371/journal.pone.0125140).
 
+Duthie, A Bradley, Aline M Lee, and Jane M Reid. 2016. “Inbreeding
+parents should invest more resources in fewer offspring.” *Proceedings
+of The Royal Society B*, 20161845.
+doi:[10.1098/rspb.2016.184](https://doi.org/10.1098/rspb.2016.184).
+
 Grafen, Alan. 2006. “Optimization of inclusive fitness.” *Journal of
 Theoretical Biology* 238 (3): 541–63.
 doi:[10.1016/j.jtbi.2005.06.009](https://doi.org/10.1016/j.jtbi.2005.06.009).
@@ -168,6 +345,18 @@ I.” *Journal of Theoretical Biology* 7 (1): 1–16.
 In *Sexual Selection and Reproductive Competition in Insects*, edited by
 Murray S Blum and Nancy A Blum, 167–220. New York: Academic Press, Inc.
 
+Kokko, Hanna, and Indrek Ots. 2006. “When not to avoid inbreeding.”
+*Evolution* 60 (3): 467–75.
+
+Lehmann, Laurent, and Nicolas Perrin. 2003. “Inbreeding avoidance
+through kin recognition: choosy females boost male dispersal.” *American
+Naturalist* 162 (5): 638–52.
+doi:[10.1086/378823](https://doi.org/10.1086/378823).
+
+Lehtonen, Jussi, and Hanna Kokko. 2015. “Why inclusive fitness can make
+it adaptive to produce less fit extra-pair offspring.” *Proceedings of
+the Royal Society B* 282: 20142716.
+
 Michod, Richard E, and Wyatt W Anderson. 1979. “Measures of genetic
 relationship and the concept of inclusive fitness.” *American
 Naturalist* 114 (5): 637–47. <http://www.jstor.org/stable/2460734>.
@@ -176,6 +365,22 @@ Parker, Geoff A. 1979. “Sexual selection and sexual conflict.” In
 *Sexual Selection and Reproductive Competition in Insects*, edited by
 Murray S Blum and Nancy A Blum, 123–66. New York: Academic Press, Inc.
 
+———. 2006. “Sexual conflict over mating and fertilization: an overview.”
+*Philosophical Transactions of the Royal Society B* 361 (1466): 235–59.
+doi:[10.1098/rstb.2005.1785](https://doi.org/10.1098/rstb.2005.1785).
+
+Puurtinen, Mikael. 2011. “Mate choice for optimal (k)inbreeding.”
+*Evolution* 65 (5): 1501–5.
+doi:[10.1111/j.1558-5646.2010.01217.x](https://doi.org/10.1111/j.1558-5646.2010.01217.x).
+
+Szulkin, Marta, Katie V Stopher, Josephine M Pemberton, and Jane M Reid.
+2013. “Inbreeding avoidance, tolerance, or preference in animals?”
+*Trends in Ecology & Evolution* 28 (4). Elsevier Ltd: 205–11.
+doi:[10.1016/j.tree.2012.10.016](https://doi.org/10.1016/j.tree.2012.10.016).
+
 Vogler, Donna W, and Susan Kalisz. 2001. “Sex among the flowers: the
 distribution of plant mating systems.” *Evolution* 55 (1): 202–4.
 doi:[10.1554/0014-3820(2001)055](https://doi.org/10.1554/0014-3820(2001)055).
+
+Waser, Peter M, Steven N Austad, and Brian Keane. 1986. “When should
+animals tolerate inbreeding?” *American Naturalist* 128 (4): 529–37.
