@@ -3,7 +3,7 @@ It is widely under-appreciated that active inbreeding -- and especially
 natural selection. Biparental inbreeding specifically refers to the
 situation in which two different, but genetically related, organisms
 breed and thereby produce inbred offspring. This situation differs from
-self-fertilisation, in which an organism inbreeds with itself, as is
+self-fertilisation, in which an organism breeds with itself, as is
 perhaps most commonly studied in plants (e.g., Barrett1996; Vogler and
 Kalisz 2001). The addition of a second parent complicates how inbreeding
 will affect individual fitness, partly because we have -- by definition
@@ -12,31 +12,31 @@ because biparental inbreeding can occur between any number of different
 types of relatives (e.g., siblings, cousins, etc.). I'll explain these
 complications in more detail below, but first I want to note two
 important general points about inbreeding, the combination of which
-makes the evolution of inbreeding particularly interesting.
+often causes confusion.
 
 The first point is that individuals that inbreed typically produce
 offspring that have lower fitness than individuals that outbreed (e.g.,
 they have offspring with a lower probability of survival), a phenomenon
 called ''inbreeding depression''. That inbreeding depression occurs is
-well-known, and I won't get into the details of what causes it (see B.
+well-known, and I won't get into the details of what causes it (see
 Charlesworth and Charlesworth 1999; Charlesworth and Willis 2009). The
 second point is that despite the occurrence of inbreeding depression in
 inbred **offspring**, this does not necessarily mean that inbreeding
-**parents** themselves have lower fitness than parents that avoid
-inbreeding. This second point isn't intuitive, and was first articulated
-by Geoff Parker (1979) for the case of biparental inbreeding.
+**parents** have lower fitness than parents that avoid inbreeding. This
+second point isn't intuitive, and was first articulated by Geoff Parker
+(1979) for biparental inbreeding.
 
 Parker's model of biparental inbreeding
 ---------------------------------------
 
 The foundational work of biparental inbreeding theory developed by
-[Parker](https://en.wikipedia.org/wiki/Geoff_Parker) appears as a
+[Geoff Parker](https://en.wikipedia.org/wiki/Geoff_Parker) appears as a
 chapter in [*Sexual Selection and Reproductive Competition in
 Insects*](https://www.amazon.co.uk/Sexual-Selection-Reproductive-Competition-Insects/dp/0124145760)
-(Parker 1979) [\[1\]](#foot1). Parker (1979) considered an encounter and
-the subsequent reproductive decisions of two focal relatives
-[\[2\]](#foot2). Below, I'll show the logic of these reproductive
-decisions first for females, then for males.
+(Parker 1979) [\[1\]](#foot1). Parker (1979) considered an encounter
+between, and the subsequent reproductive decisions of, two focal
+relatives [\[2\]](#foot2). Below, I'll show the logic of these
+reproductive decisions first for females, then for males.
 
 Consider a focal female that can produce *n* offspring -- the exact
 number doesn't matter for demonstrating the key point, so to keep things
@@ -58,15 +58,15 @@ survival probability of (1 − *δ*). If we only consider the effects of
 inbreeding depression, then the *n* × 1 surviving offspring that the
 focal female produces by outbreeding will always be favoured by
 selection over the *n* × (1 − *δ*) surviving offspring produced by
-inbreeding, and the inequality
+inbreeding. More formally, the inequality,
 
 n (1 - *δ*) &gt; n,
 
 will never be true.
 
-But the above inequality leaves out something important to inbreeding
-that affects fitness. **If the focal female chooses to inbreed with her
-cousin, then his reproductive success will be increased**. Hence, by
+But the above inequality leaves out something important that affects
+fitness given inbreeding. **If the focal female chooses to inbreed with
+her cousin, then his reproductive success will be increased**. Hence, by
 inbreeding, she can increase the reproductive success of her relative,
 and thereby increase her fitness indirectly -- by how much depends on
 her *relatedness* to her potential mate. Assuming the focal female is
@@ -74,13 +74,14 @@ herself outbred (i.e., that her own parents did not inbreed), then her
 cousin's relatedness to her will be 1/8 [\[3\]](#foot3). She should
 therefore consider any additional reproductive success of her cousin
 that results from her decision with 1/8 the weight of her own
-reproductive success. The indirect fitness accrued from the reproductive
-success of her cousin plus the direct fitness accrued from her own
-reproductive success defines her *inclusive fitness* as accrued through
-her reproductive decision; inclusive fitness, more generally, can be
-used to determine how selection will act on a particular behaviour
-(Hamilton 1964; Grafen 2006). In the case of inbreeding, we can contrast
-the inclusive fitness accrued from inbreeding with that of outbreeding,
+reproductive success [\[4\]](#foot4). The indirect fitness accrued from
+the reproductive success of her cousin plus the direct fitness accrued
+from her own reproductive success defines her *inclusive fitness* as
+accrued through her reproductive decision; inclusive fitness, more
+generally, can be used to determine how selection will act on a
+particular behaviour (Hamilton 1964a; Grafen 2006). In the case of
+inbreeding, we can contrast the inclusive fitness accrued from
+inbreeding with that of outbreeding,
 
 n (1 - *δ*) + 1/8 n (1 - *δ*) &gt; n.
 
@@ -243,8 +244,8 @@ shaded region shows where both females and males benefit by inbreeding.*
 
 ------------------------------------------------------------------------
 
-Why and how Parker's insights are still relevant
-------------------------------------------------
+Why and how Parker's insights remain important
+----------------------------------------------
 
 The general equation identifying inbreeding depression thresholds for
 females and males appears in various forms in subsequent theoretical
@@ -275,7 +276,7 @@ depending on additional assumptions about interacting females and males
 Some biological assumptions are expected to apply to all, or nearly all,
 biological systems. As a theoretician, it is perhaps most exciting to
 discover novel predictions that follow from these universal assumptions
-[\[4\]](#foot4), and to thereby develop theory of the most general
+[\[5\]](#foot5), and to thereby develop theory of the most general
 relevance that conceptually unifies across the biological sciences. But
 biological systems vary widely, making it is necessary to also vary the
 assumptions of our models when deriving specific -- and particularly
@@ -312,7 +313,19 @@ relatedness*; see, e.g., Michod and Anderson (1979) or Duthie and Reid
 (2015) for more detail on how *relatedness* is calculated, particularly
 given inbreeding.
 
-<a name="foot4">\[4\]</a> Or, perhaps equally appealing, to discover
+<a name="foot4">\[4\]</a> One way to think about this is that for any
+copy of an allele that the focal female carries, the probability that
+her cousin will carry a replica copy of this allele (i.e., a copy that
+is identical-by-descent, originating in a common ancestor -- in this
+case, a grand-parent) is 1/8. Inclusive fitness predicts that natural
+selection will maximise replica allele copies, whether they are in a
+focal indivual or its relative (<span class="citeproc-not-found"
+data-reference-id="Hamilton">**???**</span>; Hamilton 1964b). Hence, we
+need to weigh the reproductive success of a focal female's cousin
+accordingly because he is affected by her decision to inbreed or avoid
+inbreeding.
+
+<a name="foot5">\[5\]</a> Or, perhaps equally appealing, to discover
 previously unknown assumptions from consistently observed patterns
 (predictions) -- or to discover new and interesting paths by which the
 two are logically connected.
@@ -343,9 +356,13 @@ Grafen, Alan. 2006. “Optimization of inclusive fitness.” *Journal of
 Theoretical Biology* 238 (3): 541–63.
 doi:[10.1016/j.jtbi.2005.06.009](https://doi.org/10.1016/j.jtbi.2005.06.009).
 
-Hamilton, William D. 1964. “The genetical evolution of social behaviour.
-I.” *Journal of Theoretical Biology* 7 (1): 1–16.
+Hamilton, William D. 1964a. “The genetical evolution of social
+behaviour. I.” *Journal of Theoretical Biology* 7 (1): 1–16.
 <http://www.ncbi.nlm.nih.gov/pubmed/5875341>.
+
+———. 1964b. “The genetical evolution of social behaviour. II.” *Journal
+of Theoretical Biology* 7 (1): 17–52.
+<http://www.ncbi.nlm.nih.gov/pubmed/5875340>.
 
 ———. 1979. “Wingless and fighting males in fig wasps and other insects.”
 In *Sexual Selection and Reproductive Competition in Insects*, edited by
