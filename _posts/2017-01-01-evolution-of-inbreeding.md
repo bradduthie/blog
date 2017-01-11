@@ -62,7 +62,7 @@ inbreeding. More formally, the inequality,
 
 n (1 - *δ*) &gt; n,
 
-will never be true.
+will never be satisfied.
 
 But the above inequality leaves out something important that affects
 fitness given inbreeding. **If the focal female chooses to inbreed with
@@ -79,14 +79,15 @@ the reproductive success of her cousin plus the direct fitness accrued
 from her own reproductive success defines her *inclusive fitness* as
 accrued through her reproductive decision; inclusive fitness, more
 generally, can be used to determine how selection will act on a
-particular behaviour (Hamilton 1964a; Grafen 2006). In the case of
-inbreeding, we can contrast the inclusive fitness accrued from
-inbreeding with that of outbreeding,
+phenotype at any given level of biological organisation (Hamilton 1964a;
+Grafen 2006). In the case of a focal individual inbreeding, we can
+contrast the inclusive fitness accrued from inbreeding with that of
+outbreeding,
 
 n (1 - *δ*) + 1/8 n (1 - *δ*) &gt; n.
 
-Now, note that the above inequality isn't always false -- as it
-obviously was in the first inequality when indirect fitness was not
+Now, note that the above inequality isn't always false -- as was
+obviously the case in the first inequality when indirect fitness was not
 taken into account. If we now imagine a very small value of *δ*, then
 the left hand side of the above inequality will approach a value of
 *n* + (1/8)*n*, higher than the inclusive fitness of outbreeding (*n*).
@@ -110,14 +111,14 @@ n (1 - *δ*) + 1/8 n (1 - *δ*) &gt; n
 
 1/8 / (1 + 1/8) &gt; *δ*
 
-1/9 &gt; *δ*.
+*δ* &lt; 1/9.
 
 In our example, a focal female will increase her inclusive fitness more
 by inbreeding with her cousin than by avoiding inbreeding with him if
 *δ* is less than one ninth -- or, put differently, if her inbred
-offspring have an 8/9 survival probability. **A focal female can thereby
-increase her inclusive fitness if inbreeding depression is sufficiently
-weak**.
+offspring have a greater than 8/9 survival probability. **A focal female
+can thereby increase her inclusive fitness if inbreeding depression is
+sufficiently weak**.
 
 We can consider the same interaction from the perspective of the male,
 encountering a cousin and deciding whether or not to inbreed with her.
@@ -131,15 +132,15 @@ a focal male sires increases with every new mating.
 
 Inbreeding therefore increases a focal male's inclusive fitness
 directly, instead of indirectly as is the case for focal females. This
-direct component is $n (1 - *δ*)$ -- number of offspring produced scaled
+direct component is *n*(1 − *δ*) -- the number of offspring sired scaled
 by inbreeding depression. The focal male also receives an indirect
-component of 1/8 n (1 - *δ*)$, which represents the direct fitness of
-the focal male's cousin scaled to his relatedness to her (1/8). Note
-that the inclusive fitness accrued from inbreeding is the same for the
-focal male as it was for the focal female, the direct plus indirect
-components of inclusive fitness are $n (1 - *δ*) + 1/8$ n (1 - *δ*)$,
-which can be re-written as *n*(1 + 1/8)(1 − *δ*). But if the focal male
-avoids inbreeding, he has missed out on the chance to produce additional
+component of 1/8*n*(1 − *δ*), which represents the direct fitness of the
+focal male's cousin scaled to his relatedness to her (1/8). Note that
+the inclusive fitness accrued from inbreeding is the same for the focal
+male as it was for the focal female, the direct plus indirect components
+of inclusive fitness are *n*(1 − *δ*)+1/8*n*(1 − *δ*), which can be
+re-written as *n*(1 + 1/8)(1 − *δ*). But if the focal male avoids
+inbreeding, he has missed out on the opportunity to produce additional
 offspring -- the only consolation is that the cousin he avoided
 inbreeding with will then outbreed and produce healthy related offspring
 that benefit him indirectly (note, the focal male might go off and mate
@@ -158,7 +159,7 @@ inequality (representing inbreeding avoidance), which is now 1/8*n* to
 reflect the indirect component of inclusive fitness from avoiding
 inbreeding. As with the focal female, we can solve for *δ* to identify
 the threshold value below which inbreeding yields a higher inclusive
-fitness than avoiding inbreeidng,
+fitness than avoiding inbreeding,
 
 n (1 - *δ*) + 1/8 n (1 - *δ*) &gt; 1/8 n
 
@@ -174,10 +175,10 @@ n (1 - *δ*) + 1/8 n (1 - *δ*) &gt; 1/8 n
 
 1 / (1 + 1/8) &gt; *δ*
 
-8/9 &gt; *δ*.
+*δ* &lt; 8/9.
 
 Here, the focal male increases his inclusive fitness more by inbreeding
-with his cousin that by avoiding inbreeding with her if *δ* is less than
+with his cousin than by avoiding inbreeding with her if *δ* is less than
 eight ninths -- or if his inbred offspring have a 1/9 probability of
 survival. Not only does this demonstrate that a focal male can increase
 his inclusive fitness by inbreeding, it shows that his threshold value
@@ -203,9 +204,9 @@ encounters between females and males of any given relatedness *r*:
 
 The generality of these two key insights of Parker (1979) can be shown
 by simply substituting a specific value of relatedness (1/8, in our
-example with cousins). The general inequality predicting whether or not
-a focal female's inclusive fitness increases by inbreeding is thereby
-modelled as,
+example with cousins) with *r*. The general inequality predicting
+whether or not a focal female's inclusive fitness increases by
+inbreeding is thereby modelled as,
 
 n(1+r)(1-*δ*) &gt; n.
 
@@ -214,8 +215,8 @@ increases her inclusive fitness can be written as,
 
 *δ* &lt; r / (1 + r).
 
-The equivalent general inequality predicting male predicting whether or
-not inbreeding increases inclusive fitness in males is,
+The equivalent general inequality predicting whether or not inbreeding
+increases inclusive fitness for males is,
 
 n(1+r)(1-*δ*) &gt; rn.
 
@@ -258,42 +259,38 @@ theoretical insights, clarify existing insights, or unify inbreeding
 theory with other theory in evolutionary ecology. I'll save these
 insights for a future post, and for now just note that **the inbreeding
 depression thresholds of the above model need to be interpreted with
-caution.** The greatest importance of Parker (1979) was to provide the
-two general theoretical predictions mentioned above. Parker (1979) did
-this by showing how these two predictions follow logically from a small
-number of useful biological assumptions, thereby demonstrating how to
-think more clearly about inbreeding and inbreeding avoidance in and
-across natural systems. It is this greater clarity of thought that is
-most relevant for developing empirical hypotheses, not the specific
-numerical predictions of inbreeding depression thresholds derived from
-the above inequalities (as see in the Figure 1 [above](#fig1)).
-Subsequent theory papers by, e.g., Waser, Austad, and Keane (1986),
-Kokko and Ots (2006), and Duthie and Reid (2015) build off of Parker
-(1979) to show that the numerical values of these thresholds will change
-depending on additional assumptions about interacting females and males
-(in addition to providing other insights).
+caution.** The main theoretical contribution of Parker (1979) was to
+introduce the two theoretical predictions mentioned above concerning the
+possibility of adaptive biparental inbreeding and expectation of sexual
+conflict. Parker (1979) did this by showing how these two predictions
+follow logically from a small number of useful biological assumptions,
+thereby demonstrating how to think more clearly about inbreeding and
+inbreeding avoidance in and across natural systems. It is this greater
+clarity of thought that is most relevant for developing empirical
+hypotheses, not the specific numerical predictions of inbreeding
+depression thresholds derived from the above inequalities (as see in the
+Figure 1 [above](#fig1)). Subsequent theory by, e.g., Waser, Austad, and
+Keane (1986), Kokko and Ots (2006), and Duthie and Reid (2015) builds
+off of Parker (1979) to show that the numerical values of these
+thresholds will change depending on additional assumptions about
+interacting females and males.
 
 Some biological assumptions are expected to apply to all, or nearly all,
-biological systems. As a theoretician, it is perhaps most exciting to
+biological systems. As a theoretician, it is usually most exciting to
 discover novel predictions that follow from these universal assumptions
 [\[5\]](#foot5), and to thereby develop theory of the most general
 relevance that conceptually unifies across the biological sciences. But
 biological systems vary widely, making it is necessary to also vary the
-assumptions of our models when deriving specific -- and particularly
-*quantitative* -- predictions. A lot of important biological assumptions
-about interacting females and males will vary among species (e.g., as a
-consequence of different life histories), and these assumptions will be
-relevant for predicting the specific conditions under which inbreeding
-versus inbreeding avoidance will be adaptive for any paricular species.
-Understanding which assumptions are most applicable for deriving
-system-specific hypotheses about inbreeding therefore requires a strong
-understanding of the natural history of a species. **To develop clear
-hypotheses about biparental inbreeding in a specific system, it is
-therefore necessary draw from a broad understanding of the theoretical
-literature on inbreeding and apply it to the specific natural history of
-a biological system.**
+assumptions of our models when deriving system specific -- and
+particularly *quantitative* -- predictions. A lot of relevant biological
+assumptions about interacting females and males will vary (e.g., as a
+consequence of life history, other social interactions, direct costs of
+behaviour, etc.), and these assumptions might plausibly affect the
+conditions under which inbreeding versus inbreeding avoidance will be
+adaptive for any particular organism.
 
-<!--- Get a better ending here? --->
+<!--- Understanding which assumptions are most applicable for deriving specific hypotheses about inbreeding therefore requires a strong understanding of both inbreeding theory and the empirical system under study. --->
+<!--- Could end with the above, but maybe a quick paragraph would be better to sum up. Something about how general predictions might be applicable across species, at broad scales. In contrast, specific, quantitative, predictions will need correspondingly specific information about the species under study if the goal is to predict whether or not inbreeding is adaptive. --->
 
 ------------------------------------------------------------------------
 
@@ -315,14 +312,14 @@ given inbreeding.
 
 <a name="foot4">\[4\]</a> One way to think about this is that for any
 copy of an allele that the focal female carries, the probability that
-her cousin will carry a replica copy of this allele (i.e., a copy that
-is identical-by-descent, originating in a common ancestor -- in this
-case, a grand-parent) is 1/8. Inclusive fitness predicts that natural
-selection will maximise replica allele copies, whether they are in a
-focal indivual or its relative (Hamilton 1964a; Hamilton 1964b). Hence,
-we need to weigh the reproductive success of a focal female's cousin
-accordingly because he is affected by her decision to inbreed or avoid
-inbreeding.
+her cousin will carry a replica copy of this allele due to common
+ancestry (i.e., a copy that is identical-by-descent, originating in a
+common ancestor -- in this case, a grand-parent) is 1/8. Inclusive
+fitness predicts that natural selection will act in the direction of
+increasing replica allele copies, whether they are in a focal indivual
+or its relative (Hamilton 1964a; Hamilton 1964b). Hence, we need to
+weigh the reproductive success of a focal female's cousin accordingly
+because he is affected by her decision to inbreed or avoid inbreeding.
 
 <a name="foot5">\[5\]</a> Or, perhaps equally appealing, to discover
 previously unknown assumptions from consistently observed patterns
