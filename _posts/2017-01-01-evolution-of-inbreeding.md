@@ -319,9 +319,8 @@ her cousin will carry a replica copy of this allele (i.e., a copy that
 is identical-by-descent, originating in a common ancestor -- in this
 case, a grand-parent) is 1/8. Inclusive fitness predicts that natural
 selection will maximise replica allele copies, whether they are in a
-focal indivual or its relative (<span class="citeproc-not-found"
-data-reference-id="Hamilton">**???**</span>; Hamilton 1964b). Hence, we
-need to weigh the reproductive success of a focal female's cousin
+focal indivual or its relative (Hamilton 1964a; Hamilton 1964b). Hence,
+we need to weigh the reproductive success of a focal female's cousin
 accordingly because he is affected by her decision to inbreed or avoid
 inbreeding.
 
