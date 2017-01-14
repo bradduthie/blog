@@ -4,6 +4,8 @@ title: Links
 permalink: /links/
 ---
 
-* [me](http://www.andysouth.co.uk/)
-* [current work rtsetse](https://github.com/AndySouth/rtsetse)
-* [R-bloggers](http://www.r-bloggers.com/)
+* [Contact](http://bradduthie.github.io/index.html)
+* [Research](http://bradduthie.github.io/research.html)
+* [Teaching](http://bradduthie.github.io/teaching.html)
+* [Publications](http://bradduthie.github.io/publications.html)
+* [Curriculum vitae](http://bradduthie.github.io/DuthieCV.pdf)
