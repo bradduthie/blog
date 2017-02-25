@@ -1,0 +1,14 @@
+# Post ideas:
+
+# Evolution of inbreeding and inbreeding avoidance
+# Where to start on an individual-based population model
+# The logic of pointers in C for biologists
+# How to read an array from R to C and back again
+
+################################################################################
+# The nature of theory in ecology and evolution
+################################################################################
+
+Theory per se cannot be falsified or refuted, only assumptions can be -- the logical structure of theory is separate and must be assessed internally. The nature of assumptions (true or false) can be tested, as can predictions, but this is different in biology because assumptions typically vary from system to system, particularly in evolutionary biology and ecology. In contrast, assumptions in physics are typically universal. 
+
+Some philosophers have emphasised that predictions should be bold (see Popper, maybe?). All this really means is that they follow from *specific* but yet unfalsified or unverified assumptions, which, were the assumptions incorrect, would predict something different. But this boldness loses its importance when assumptions are already established, as is perhaps more often the case in the life sciences contra the physical sciences. In such cases, we might be well acquainted with both predictions and assumptions, but lack key logical or mathematical connections between them. When theory is then developed, it appears less impressive to an outside observer, but doing this kind of theory is still valuable and perhaps the norm in biology. **More succinctly, if the strength of theory follows from the boldness of its assumptions and predictions, then doing good theory relies on empirical ignorance**. I don't think this is a good position to take. Instead, we should judge theory by **how clearly useful assumptions map to specific predictions.** If assumptions are vague (find a pseudoscience example), or map indescriminantly to any number of predictions (another example -- one where everything can be explained by X theory), then the theory is not very useful. In other words, we shouldn't be too worried about being bold with our hypotheses; we should be worried about making sure that they follow, as clearly as possible, from a *useful* set of assumptions. Assumptions can be useful because they reflect empirical truth, but also because the reflect falsehoods that lead to hypotheses that can be contrasted with empirical results (see Wimsatt). Evolution by natural selection is an example, sort of, though heredity was not completely established -- but variation in reproductive success and phenotype change (in the form of, e.g., agriculture Ch 1 Darwin 1959) was known. A more modern example would be the formal Darwinism project, which attempts to unify population genetics and inclusive fitness theory.
