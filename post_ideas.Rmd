@@ -1,6 +1,7 @@
 # Post ideas:
 
 # Evolution of inbreeding and inbreeding avoidance
+# Conceptual unification of PI and inbreeding (with shiny app)
 # Where to start on an individual-based population model
 # The logic of pointers in C for biologists
 # How to read an array from R to C and back again
