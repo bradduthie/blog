@@ -10,7 +10,7 @@ output: md_document
 bibliography: duthie.bib
 ---
 
-Working with [arrays](https://en.wikipedia.org/wiki/Array_data_structure) of data (e.g., numeric vectors and matrices) is routine for scientific reseachers doing statistics or modelling. In programming languages with which most researchers are probably familiar (e.g., [R](https://www.r-project.org/), [python](https://www.python.org/), and [MATLAB](https://uk.mathworks.com/products/matlab.html)), setting values into a some sort of array is straightforward. In R, we can define a vector `data_vec` with one line of code.
+Working with [arrays](https://en.wikipedia.org/wiki/Array_data_structure) of data (e.g., numeric vectors and matrices) is routine for scientific researchers doing statistics or modelling. In programming languages with which most researchers are probably familiar (e.g., [R](https://www.r-project.org/), [python](https://www.python.org/), and [MATLAB](https://uk.mathworks.com/products/matlab.html)), setting values into a some sort of array is straightforward. In R, we can define a vector `data_vec` with one line of code.
 
 ```{r}
 data_vec <- c(1, 5, 3, 6);

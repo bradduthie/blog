@@ -1,7 +1,7 @@
 Working with
 [arrays](https://en.wikipedia.org/wiki/Array_data_structure) of data
 (e.g., numeric vectors and matrices) is routine for scientific
-reseachers doing statistics or modelling. In programming languages with
+researchers doing statistics or modelling. In programming languages with
 which most researchers are probably familiar (e.g.,
 [R](https://www.r-project.org/), [python](https://www.python.org/), and
 [MATLAB](https://uk.mathworks.com/products/matlab.html)), setting values
