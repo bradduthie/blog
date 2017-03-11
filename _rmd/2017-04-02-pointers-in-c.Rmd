@@ -1,0 +1,42 @@
+---
+layout: post
+title: Pointers In C -- A Biologist's Introduction
+author: Brad Duthie
+published: false
+status: process
+draft: false
+tags: R
+output: md_document
+bibliography: duthie.bib
+---
+
+Working with [arrays](https://en.wikipedia.org/wiki/Array_data_structure) of data (e.g., numeric vectors and matrices) is routine for scientific reseachers doing statistics or modelling. In programming languages with which most researchers are probably familiar (e.g., [R](https://www.r-project.org/), [python](https://www.python.org/), and [MATLAB](https://uk.mathworks.com/products/matlab.html)), setting values into a some sort of array is straightforward. In R, we can define a vector `data_vec` with one line of code.
+
+```{r}
+data_vec <- c(1, 5, 3, 6);
+print(data_vec);
+```
+
+We can similarly define a two by two dimensional matrix.
+
+```{r}
+data_mat <- matrix(data = c(1, 5, 3, 6), nrow = 2, ncol = 2);
+print(data_mat);
+```
+
+In C, this kind of assignment doesn't work, which can be intimidating at first for researchers new to the language. Instead, memory needs to be allocated appropriately using *pointers*, which identify where in a computer's memory variables are located. Thinking about and using pointers effectively can take a bit of getting used to, but being able to do so can massively speed up computations [[1]](#foot1), making the investment worthwhile for researchers doing computationally intense statistical or simulation modeling. The intended audience of this post includes researchers who are newcomers to using C, or might be interested in learning C as means to speed up their analyses, perhaps through [integration with R](http://adv-r.had.co.nz/C-interface.html) (more on this in a future post). I'm not going to focus so much on how to code in C, but rather the logic of what pointers are and how they are used in the language, as this was probably the biggest learning curve getting started.
+
+
+
+********************************************************************************
+
+<a name="foot1">[1]</a> This is especially true for researchers coding in R for computationally intense tasks that include multiple loops. Running an individual-based model can be 10 to 100 times faster in C than it is in R or MATLAB, which I was surprised to find out while writing [the code](https://github.com/bradduthie/Duthie_and_Falcy_2013) for what would become the [first chapter](http://www.sciencedirect.com/science/article/pii/S0304380013000021) of my doctoral dissertation. Since then, I do about half my coding in R, shifting to C whenever something needs to run fast.
+
+********************************************************************************
+
+References
+----------------------------------------------------------------
+
+
+
+
