@@ -24,8 +24,60 @@ data_mat <- matrix(data = c(1, 5, 3, 6), nrow = 2, ncol = 2);
 print(data_mat);
 ```
 
-In C, this kind of assignment doesn't work, which can be intimidating at first for researchers new to the language. Instead, memory needs to be allocated appropriately using *pointers*, which identify where in a computer's memory variables are located. Thinking about and using pointers effectively can take a bit of getting used to, but being able to do so can massively speed up computations [[1]](#foot1), making the investment worthwhile for researchers doing computationally intense statistical or simulation modeling. The intended audience of this post includes researchers who are newcomers to using C, or might be interested in learning C as means to speed up their analyses, perhaps through [integration with R](http://adv-r.had.co.nz/C-interface.html) (more on this in a future post). I'm not going to focus so much on how to code in C, but rather the logic of what pointers are and how they are used in the language, as this was probably the biggest learning curve getting started.
+In C, this kind of assignment doesn't work, which can be intimidating at first for researchers new to the language. Instead, memory needs to be allocated appropriately using *pointers*, which identify where in a computer's memory variables are located. Thinking about and using pointers effectively can take a bit of getting used to, but being able to use C to do so can massively speed up computations [[1]](#foot1), making the investment worthwhile for researchers doing computationally intense statistical or simulation modeling. The intended audience of this post includes researchers who are newcomers to using C, or might be interested in learning C as means to speed up their analyses, perhaps through [integration with R](http://adv-r.had.co.nz/C-interface.html) (more on this in a future post). I'm not going to focus so much on how to code in C, but rather the logic of what pointers are and how they are used in the language, as this is a learning curve when getting started.
 
+All variables initialised in C need to be stored in some address in the computer's memory. We can conceptualise the memory of a computer as a large block of locations where information can be stored. Each location specifies a single [https://en.wikipedia.org/wiki/Byte](https://en.wikipedia.org/wiki/Byte), and blocks of bytes are used to store numeric values (Dennis Kubes discusses [Basics of memory addresses in C](http://denniskubes.com/2012/08/17/basics-of-memory-addresses-in-c/) in more detail). If we tell C to print off a set of locations, these are the kinds of values we get.
+
+| Location 1 | Location 2 | Location 3 | Location 4 | Location 5 | Location 6 | Location 7 | Location 8 |
+|------------|------------|------------|------------|------------|------------|------------|------------|
+| 0x7fc010   |  0x7fc011  | 0x7fc012   |  0x7fc013  | 0x7fc014   |  0x7fc015  |  0x7fc016  | 0x7fc017   |
+
+The numbers above are in [hexidecimal](https://en.wikipedia.org/wiki/Hexadecimal), as indicated by the `0x` at the start of each. The numbers therefore start from 7fc010 at Location 1 and end at 7fc017 at Location 8. To make it easier, we can just replace these with their equivalent values in [base 10](https://en.wikipedia.org/wiki/Decimal).
+
+| Location 1 | Location 2 | Location 3 | Location 4 | Location 5 | Location 6 | Location 7 | Location 8 |
+|------------|------------|------------|------------|------------|------------|------------|------------|
+|  8372240   |  8372241   |  8372242   |  8372243   |  8372244   |  8372245   |  8372246   |  8372247   |
+
+So we have a block of addresses where variable values can be stored. This is all that we get to work with in C. There is no inherent structure for representing arrays in C, so if we want to put numbers into an array of one or more dimensions, then we need to create an array ourselves. We can do this in C is using the `malloc` function in the [C standard library](https://en.wikipedia.org/wiki/C_standard_library) to set aside blocks of memory for multiple numeric values. I'll get to how to do this below, but first I need to explain how pointers are initialised in C. When assigning a single number to a variable, it is not necessary to allocate memory explicitly. For example, we can define an integer `int variable_1` and assign it to a value of `variable_1 = 10`. The very short program below does this and prints out a value of 10 before exiting.
+
+```
+#include<stdio.h>
+
+int main(void){
+
+    int variable_1;
+    variable_1 = 10;
+    printf("\n Value of variable_1 is %d \n", variable_1);
+
+    return 0;
+}
+```
+
+The `#include<stdio.h>` tells the compiler to add the necessary code for standard input and output functions (in this case `printf`), and the program is compiled by running the below on the command line from within the directory that the program is saved.
+
+```
+gcc -Wall variable_eg.c -o variable_eg
+```
+
+The program variable_eg produced by compiling above is run below.
+
+```
+./variable_eg
+```
+
+And the output of the `variable_eg` is shown below.
+
+```
+Value of variable_1 is 10 
+```
+
+This is simple enough for storing a single number, but if we want to store an array, we need to initialise a *pointer* -- that is, a *variable that contains an address in the computer's memory*. This address will 'point' to the location of the values of interest; specifically, it will point to the first location in a block of addresses that can store multiple numeric values.
+
+
+
+
+
+This was just a very brief introduction to the logic of pointers and how to use them to make arrays in C. It is not [everything you need to know about pointers](http://boredzo.org/pointers/), but a starting point for being able to work with datasets.
 
 
 ********************************************************************************
