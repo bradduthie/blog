@@ -87,9 +87,9 @@ pointer_1 = malloc(5 * sizeof(double));
 
 In the above, we've told C to allocate a block of memory starting at the location `pointer_1`, and extending to a length the size of five `double` values. The `sizeof` operator, as you might expect, [returns a value](https://en.wikipedia.org/wiki/Sizeof) indicating how much memory the data type takes to store. This will allow us to place five `double` values in a vector element of five at a location in the memory starting at `pointer_1`. For the sake of argument, let's assume that `pointer_1 = 8372240`, and so equals the address in the first location of our above table.
 
-|         | pointer_1  | Location 2 | Location 3 | Location 4 | Location 5 | Location 6 | Location 7 | Location 8 |
-|---------|------------|------------|------------|------------|------------|------------|------------|------------|
-| Address |  8372240   |  8372241   |  8372242   |  8372243   |  8372244   |  8372245   |  8372246   |  8372247   |
+|         | pointer_1  | Location 2 | Location 3 | Location 4 | Location 5 | ... | Location 8 |
+|---------|------------|------------|------------|------------|------------|-----|------------|
+| Address |  8372240   |  8372241   |  8372242   |  8372243   |  8372244   | ... |  8372247   |
 
 Note that 8372240 is the address of the location (`pointer_1`); the **value** at the location is `*pointer_1`. Using `malloc` in the code above, we have allocated the five locations 8372240-8372244 for use in our array. If we want to put a value in the location, we can use the dereference operator.
 

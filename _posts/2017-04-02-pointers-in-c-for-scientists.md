@@ -210,17 +210,6 @@ at `pointer_1`. For the sake of argument, let's assume that
 of our above table.
 
 <table>
-<colgroup>
-<col width="8%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th></th>
@@ -229,8 +218,7 @@ of our above table.
 <th>Location 3</th>
 <th>Location 4</th>
 <th>Location 5</th>
-<th>Location 6</th>
-<th>Location 7</th>
+<th>...</th>
 <th>Location 8</th>
 </tr>
 </thead>
@@ -242,8 +230,7 @@ of our above table.
 <td>8372242</td>
 <td>8372243</td>
 <td>8372244</td>
-<td>8372245</td>
-<td>8372246</td>
+<td>...</td>
 <td>8372247</td>
 </tr>
 </tbody>
