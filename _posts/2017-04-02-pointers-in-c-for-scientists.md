@@ -142,7 +142,8 @@ And the output of the `variable_eg` is shown below.
 
     Value of variable_1 is 10 
 
-**Storing the values of a one-dimensional array**
+Storing the values of a one-dimensional array
+---------------------------------------------
 
 The above is simple enough for storing a single number, but if we want
 to store an array, we need to initialise a *pointer* -- that is, a
@@ -230,14 +231,18 @@ pointer\_1 plus one'. The parentheses tells C to compute `pointer_1 + 1`
 before applying the dereference opeartor, so the correct address is
 identified within parentheses and dereferenced with the asterisk outside
 of them. We can assign six random values and print them using the
-function below.
+function below (the standard library `stdlib.h` includes code needed for
+memory allocation functions `malloc` and `free`).
 
     #include<stdio.h>
+    #include<stdlib.h>
 
     int main(void){
 
         int i;
         double *pointer_1;
+        
+        pointer_1 = malloc(6 * sizeof(double));
         
         *pointer_1       = 3;
         *(pointer_1 + 1) = 5;
@@ -255,9 +260,61 @@ function below.
         return 0;
     }
 
+We can represent the above in a table again below that includes address
+and values stored in each address, using the pointers to represent the
+addresses of variables but keeping in mind that each increment of
+`pointer_1` corresonds to some integer number that maps to a block of
+the computer's memory.
+
+<table style="width:100%;">
+<colgroup>
+<col width="8%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Location 1</th>
+<th>Location 2</th>
+<th>Location 3</th>
+<th>Location 4</th>
+<th>Location 5</th>
+<th>Location 6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Address</td>
+<td><code>pointer_1 + 0</code></td>
+<td><code>pointer_1 + 1</code></td>
+<td><code>pointer_1 + 2</code></td>
+<td><code>pointer_1 + 3</code></td>
+<td><code>pointer_1 + 4</code></td>
+<td><code>pointer_1 + 5</code></td>
+</tr>
+<tr class="even">
+<td>Value</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+<td>7</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+
 After allocating memory with `malloc`, it is important to free the
 memory using `free` when it is no longer needed to avoid a [memory
-leak](https://en.wikipedia.org/wiki/Memory_leak).
+leak](https://en.wikipedia.org/wiki/Memory_leak). A memory leak occurs
+when addresses are allocated but not freed, and the number of available
+places to store data decreases. Hence upon freeing memory, new values
+could be stored in the addresses above.
 
 Note how there are six elements in the array, but the last element in
 the array is `*(pointer_1 + 5)` because the array effectively starts at
@@ -279,11 +336,14 @@ re-write the above program as follows, swapping the variable name
 `pointer_1` with `array_1`.
 
     #include<stdio.h>
+    #include<stdlib.h>
 
     int main(void){
 
         int i;
         double *array_1;
+        
+        pointer_1 = malloc(6 * sizeof(double));
         
         array_1[0] = 3;
         array_1[1] = 5;
@@ -305,16 +365,103 @@ The above certainly looks a bit cleaner. The usefulness of the
 short-hand bracket notation becomes even clearer when working with
 multi-dimensional arrays, which I will briefly discuss next.
 
-**Multi-dimensional arrays in C**
+Multi-dimensional arrays in C
+-----------------------------
 
 Like one-dimenional arrays, there is no built-in way to tell C that we
-want to make a multi-dimensional array; we need to use pointers. More
-complicated, there is also no simple way to tell C which pointers should
-correspond to which dimensions of our array, so we need to remove
+want to make a multi-dimensional array; we need to use pointers. Even
+more complicated, there is also no simple way to tell C which pointers
+should correspond to which dimensions of our array, so we need to remove
 ourselves yet another level from the actual array element values and
-define *pointers to pointers*.
+define *pointers to pointers*. For example, if we want to allocate
+memory into a two dimensional array, we need to define a pointer that
+points to the first address where we want each row [\[3\]](#foot3) to
+be. So let's say that instead of making a one dimensional array of six
+elements, what we really want is a two dimensional array with two rows
+and three columns. To do this, we need to first allocate memory to hold
+a set of *pointers*, and have each of those pointers hold values that
+themselves are pointers to where we want the start of each row in our
+array to be. I've drawn this one out below in hopes to make things
+clearer.
 
-**Concluding remarks**
+![](2017-04-02-pointers-in-c-for-scientists_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+
+In the above, the pointer to a pointer `**array2D` is a variable that
+holds two values at addresses `7ffef08a8978` and `7ffef08a899`. The two
+values it holds are `150b010` and `150b013`, which are the addresses of
+the element in the *first column* of the first and second rows of the
+array. The *values* stored `**array2D` are the *addresses* of
+`*(array2D + 0)` and `*(array2D + 1)`. So the array will look like the
+below.
+
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Column 1</th>
+<th>Column 2</th>
+<th>Column 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Row 1</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Row 2</td>
+<td>1</td>
+<td>7</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+
+To walk through what has happened once more verbally, we have
+initialised a pointer to a pointer `**array2D` of length 2. This pointer
+to a pointer stores two values that correspond to the addresses of the
+first element of each row of the array. Each row of the array then holds
+3 values for each column; to get this to work, we have to allocate
+memory for each row separately, which can be done using the code below.
+
+    #include<stdio.h>
+    #include<stdlib.h>
+
+    int main(void){
+      
+      int row,  col;
+      int row_number, col_number;
+      double **array2D;
+      
+      row_number = 2;
+      col_number = 3;
+      
+      array2D = malloc(row_number * sizeof(double *));
+      for(row = 0; row < row_number; row++){
+          *(array2D + row) = malloc(col_number * sizeof(double));
+      }
+      
+      *(*(array2D + 0) + 0) = 3;
+      *(*(array2D + 0) + 1) = 5;
+      *(*(array2D + 0) + 2) = 4;
+      *(*(array2D + 1) + 0) = 1;
+      *(*(array2D + 1) + 1) = 7;
+      *(*(array2D + 1) + 2) = 6;
+
+      for(row = 0; row < row_number; row++){
+        for(col = 0; col < col_number; col++){
+          printf("%f\t", *(*(array2D + row) + col) );
+        }
+        printf("\n");
+      }
+      
+      return 0;
+    }
+
+Concluding remarks
+------------------
 
 This was just a very brief introduction to the logic of pointers and how
 to use them to make arrays in C. It is not [everything you need to know
@@ -337,6 +484,9 @@ shifting to C whenever something needs to run fast.
 represent real numbers appropriately for most tasks in scientific
 computing. If only integer values are needed, use `int` instead, which
 is exact and uses less memory.
+
+<a name="foot3">\[3\]</a> Technically, it doesn't necessarily have to be
+the first element of the *row*, but I usually do this way out of habit.
 
 ------------------------------------------------------------------------
 
