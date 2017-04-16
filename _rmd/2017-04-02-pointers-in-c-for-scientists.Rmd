@@ -258,6 +258,8 @@ text(x=128, y=44.5, labels="7", col="black", pos=4);
 text(x=158, y=44.5, labels="6", col="black", pos=4);
 ```
 
+![Figure 1](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/2D_array_eg_pointers.png?token=AFSziUofzo5hxGJv2197hNbrm1d8dKoKks5Y_SPcwA%3D%3D)
+
 In the above, the pointer to a pointer `**array2D` is a variable that holds two values at addresses `7ffef08a8978` and `7ffef08a899`. The two values it holds are `150b010` and `150b013`, which are the addresses of the element in the *first column* of the first and second rows of the array. The *values* stored `**array2D` are the *addresses* of `*(array2D + 0)` and `*(array2D + 1)`. So the array will look like the below.
 
 |       | Column 1  |  Column 2 | Column 3 |
