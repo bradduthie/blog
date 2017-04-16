@@ -8,19 +8,19 @@ which most researchers are probably familiar (e.g.,
 into a some sort of array is straightforward. In R, we can define a
 vector `data_vec` with one line of code.
 
-    data_vec <- c(1, 5, 3, 6);
+    data_vec <- c(3, 5, 4, 1, 7, 6);
     print(data_vec);
 
-    ## [1] 1 5 3 6
+    ## [1] 3 5 4 1 7 6
 
 We can similarly define a two by two dimensional matrix.
 
-    data_mat <- matrix(data = c(1, 5, 3, 6), nrow = 2, ncol = 2);
+    data_mat <- matrix(data = c(3, 5, 4, 1, 7, 6), nrow = 2, ncol = 3);
     print(data_mat);
 
-    ##      [,1] [,2]
-    ## [1,]    1    3
-    ## [2,]    5    6
+    ##      [,1] [,2] [,3]
+    ## [1,]    3    4    7
+    ## [2,]    5    1    6
 
 In C, this kind of assignment doesn't work, which can be intimidating at
 first for researchers new to the language. Instead, memory needs to be
@@ -49,16 +49,6 @@ in more detail). If we tell C to print off a set of locations, these are
 the kinds of values we get.
 
 <table>
-<colgroup>
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th>Location 1</th>
@@ -67,8 +57,6 @@ the kinds of values we get.
 <th>Location 4</th>
 <th>Location 5</th>
 <th>Location 6</th>
-<th>Location 7</th>
-<th>Location 8</th>
 </tr>
 </thead>
 <tbody>
@@ -79,8 +67,6 @@ the kinds of values we get.
 <td>0x7fc013</td>
 <td>0x7fc014</td>
 <td>0x7fc015</td>
-<td>0x7fc016</td>
-<td>0x7fc017</td>
 </tr>
 </tbody>
 </table>
@@ -88,21 +74,11 @@ the kinds of values we get.
 The numbers above are in
 [hexidecimal](https://en.wikipedia.org/wiki/Hexadecimal), as indicated
 by the `0x` at the start of each. The numbers therefore start from
-7fc010 at Location 1 and end at 7fc017 at Location 8. To make it easier
+7fc010 at Location 1 and end at 7fc015 at Location 6. To make it easier
 to conceptualise, we can just replace these with their equivalent values
 in [base 10](https://en.wikipedia.org/wiki/Decimal).
 
 <table>
-<colgroup>
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th>Location 1</th>
@@ -111,8 +87,6 @@ in [base 10](https://en.wikipedia.org/wiki/Decimal).
 <th>Location 4</th>
 <th>Location 5</th>
 <th>Location 6</th>
-<th>Location 7</th>
-<th>Location 8</th>
 </tr>
 </thead>
 <tbody>
@@ -123,8 +97,6 @@ in [base 10](https://en.wikipedia.org/wiki/Decimal).
 <td>8372243</td>
 <td>8372244</td>
 <td>8372245</td>
-<td>8372246</td>
-<td>8372247</td>
 </tr>
 </tbody>
 </table>
@@ -197,13 +169,13 @@ we need to define how many blocks of size `double` need to be allocated
 using the function `malloc`. As an example, we'll start with a simple
 one dimensional array of size 5.
 
-    pointer_1 = malloc(5 * sizeof(double));
+    pointer_1 = malloc(6 * sizeof(double));
 
 In the above, we've told C to allocate a block of memory starting at the
-location `pointer_1`, and extending to a length the size of five
-`double` values. The `sizeof` operator, as you might expect, [returns a
+location `pointer_1`, and extending to a length the size of six `double`
+values. The `sizeof` operator, as you might expect, [returns a
 value](https://en.wikipedia.org/wiki/Sizeof) indicating how much memory
-the data type takes to store. This will allow us to place five `double`
+the data type takes to store. This will allow us to place six `double`
 values in a vector element of five at a location in the memory starting
 at `pointer_1`. For the sake of argument, let's assume that
 `pointer_1 = 8372240`, and so equals the address in the first location
@@ -218,8 +190,7 @@ of our above table.
 <th>Location 3</th>
 <th>Location 4</th>
 <th>Location 5</th>
-<th>...</th>
-<th>Location 8</th>
+<th>Location 6</th>
 </tr>
 </thead>
 <tbody>
@@ -230,22 +201,21 @@ of our above table.
 <td>8372242</td>
 <td>8372243</td>
 <td>8372244</td>
-<td>...</td>
-<td>8372247</td>
+<td>8372245</td>
 </tr>
 </tbody>
 </table>
 
 Note that 8372240 is the address of the location (`pointer_1`); the
 **value** at the location is `*pointer_1`. Using `malloc` in the code
-above, we have allocated the five locations 8372240-8372244 for use in
+above, we have allocated the six locations 8372240-8372245 for use in
 our array. If we want to put a value in the location, we can use the
 dereference operator.
 
     *pointer_1 = 3;
 
 The value stored in location `pointer_1` is now 3. To store values in
-the other four locations that we've allocated for use, we can simply add
+the other five locations that we've allocated for use, we can simply add
 one to the value of the location with the dereference operator. In this
 case the address of **Location 2** in the table above is simply one more
 than the value of `pointer_1` itself, `pointer + 1`. So we can put a
@@ -259,7 +229,7 @@ side of the equaiton, we can read this as 'value at the location
 pointer\_1 plus one'. The parentheses tells C to compute `pointer_1 + 1`
 before applying the dereference opeartor, so the correct address is
 identified within parentheses and dereferenced with the asterisk outside
-of them. We can assign five random values and print them using the
+of them. We can assign six random values and print them using the
 function below.
 
     #include<stdio.h>
@@ -274,8 +244,9 @@ function below.
         *(pointer_1 + 2) = 4;
         *(pointer_1 + 3) = 1;
         *(pointer_1 + 4) = 7;
+        *(pointer_1 + 5) = 6;
         
-        for(i = 0; i < 5; i++){
+        for(i = 0; i < 6; i++){
             printf("%f\n", *(pointer_1 + i));
         }
 
@@ -288,8 +259,8 @@ After allocating memory with `malloc`, it is important to free the
 memory using `free` when it is no longer needed to avoid a [memory
 leak](https://en.wikipedia.org/wiki/Memory_leak).
 
-Note how there are five elements in the array, but the last element in
-the array is `*(pointer_1 + 4)` because the array effectively starts at
+Note how there are six elements in the array, but the last element in
+the array is `*(pointer_1 + 5)` because the array effectively starts at
 `*(pointer + 0)`. Hence, arrays in C are [zero
 indexed](https://en.wikipedia.org/wiki/Zero-based_numbering); the first
 element starts with zero and ends with a value of one less than the
@@ -319,8 +290,9 @@ re-write the above program as follows, swapping the variable name
         array_1[2] = 4;
         array_1[3] = 1;
         array_1[4] = 7;
+        array_1[5] = 6;
         
-        for(i = 0; i < 5; i++){
+        for(i = 0; i < 6; i++){
             printf("%f\n", array_1[i]);
         }
 
@@ -329,7 +301,20 @@ re-write the above program as follows, swapping the variable name
         return 0;
     }
 
-The above certainly looks a bit cleaner.
+The above certainly looks a bit cleaner. The usefulness of the
+short-hand bracket notation becomes even clearer when working with
+multi-dimensional arrays, which I will briefly discuss next.
+
+**Multi-dimensional arrays in C**
+
+Like one-dimenional arrays, there is no built-in way to tell C that we
+want to make a multi-dimensional array; we need to use pointers. More
+complicated, there is also no simple way to tell C which pointers should
+correspond to which dimensions of our array, so we need to remove
+ourselves yet another level from the actual array element values and
+define *pointers to pointers*.
+
+**Concluding remarks**
 
 This was just a very brief introduction to the logic of pointers and how
 to use them to make arrays in C. It is not [everything you need to know
