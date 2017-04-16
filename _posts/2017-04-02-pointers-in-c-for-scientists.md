@@ -390,7 +390,7 @@ clearer.
 1](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/2D_array_eg_pointers.png?token=AFSziUofzo5hxGJv2197hNbrm1d8dKoKks5Y_SPcwA%3D%3D)
 
 In the above, the pointer to a pointer `**array2D` is a variable that
-holds two values at addresses `7ffef08a8978` and `7ffef08a899`. The two
+holds two values at addresses `7ffef08a8978` and `7ffef08a879`. The two
 values it holds are `150b010` and `150b013`, which are the addresses of
 the element in the *first column* of the first and second rows of the
 array. The *values* stored `**array2D` are the *addresses* of
@@ -462,6 +462,54 @@ memory for each row separately, which can be done using the code below.
       
       return 0;
     }
+
+In the above, `malloc(row_number * size(double *))` tells C that we're
+allocating memory to store `row_number` pointers to `double` values. In
+the first `for` loop immediately below, we allocate `col_number` values
+of size `double` for each `*(array2D + row)`, blocking off an
+appropriate amount of memory for the length of each row. I assigned
+values to array elements without using brackets to break down what's
+going on in terms of pointers, but in practice it is much easier to
+write this with brackets again.
+
+    #include<stdio.h>
+    #include<stdlib.h>
+
+    int main(void){
+      
+      int row,  col;
+      int row_number, col_number;
+      double **array2D;
+      
+      row_number = 2;
+      col_number = 3;
+      
+      array2D = malloc(row_number * sizeof(double *));
+      for(row = 0; row < row_number; row++){
+          array2D[row] = malloc(col_number * sizeof(double));
+      }
+      
+      array2D[0][0] = 3;
+      array2D[0][1] = 5;
+      array2D[0][2] = 4;
+      array2D[1][0] = 1;
+      array2D[1][1] = 7;
+      array2D[1][2] = 6;
+
+      for(row = 0; row < row_number; row++){
+        for(col = 0; col < col_number; col++){
+          printf("%f\t", array2D[row][col] );
+        }
+        printf("\n");
+      }
+      
+      return 0;
+    }
+
+Conveniently, we can read `array2D[1][2] = 6` as 'row 1, column 2 of
+array2D equals size', but as with the one dimensional array example, it
+helps to remember that we are using the dereference operator twice to
+find the location at which the value is located.
 
 Concluding remarks
 ------------------
