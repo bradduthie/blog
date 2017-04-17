@@ -535,8 +535,8 @@ array2D equals size', but as with the one dimensional array example, it
 helps to remember that we are using the dereference operator twice to
 find the location at which the value is located.
 
-A quick note about &
---------------------
+A quick note about '&'
+----------------------
 
 In most introductions to pointers, the ampersand `&` operator is
 introduced alongside the asterisk `*`. I've not done so here because

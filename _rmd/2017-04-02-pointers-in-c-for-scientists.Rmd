@@ -358,7 +358,7 @@ int main(void){
 
 Conveniently, we can read `array2D[1][2] = 6` as 'row 1, column 2 of array2D equals size', but as with the one dimensional array example, it helps to remember that we are using the dereference operator twice to find the location at which the value is located.
 
-A quick note about &
+A quick note about '&'
 --------------------------------------------------------------------------------
 
 In most introductions to pointers, the ampersand `&` operator is introduced alongside the asterisk `*`. I've not done so here because most code for simple scientific computing doesn't really need it (I've only used it a handful of times in several years of coding in C), but I should mention how it is used. The `&` identifies the address of a variable, so we can read `&variable_1` as 'the address of variable_1'. So, for example, if we set `variable_1 = 3`, we could set the pointer `*ptr_variable_1` to equal the address of `variable_1`, `&variable_1`.
