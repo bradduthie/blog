@@ -112,15 +112,16 @@ to do this below, but first I need to explain how pointers are
 initialised in C. When assigning a single number to a variable, it is
 not necessary to allocate memory explicitly. For example, we can define
 an integer `int variable_1` and assign it to a value of
-`variable_1 = 10`. The very short program below does this and prints out
-a value of 10 before exiting.
+`variable_1 = 10`. The very [short
+program](https://github.com/bradduthie/blog/blob/gh-pages/code/c_pointer_eg/variable_eg.c)
+below does this and prints out a value of 10 before exiting.
 
     #include<stdio.h>
 
     int main(void){
 
         int variable_1;
-        variable_1 = 10;
+        variable_1 = 3;
         printf("\n Value of variable_1 is %d \n", variable_1);
 
         return 0;
@@ -134,13 +135,14 @@ from within the directory that the program is saved.
 
     gcc -Wall variable_eg.c -o variable_eg
 
-The program `variable_eg` produced by compiling above is run below.
+The program `variable_eg` that is produced by compiling the above is run
+below.
 
     ./variable_eg
 
 And the output of the `variable_eg` is shown below.
 
-    Value of variable_1 is 10 
+    Value of variable_1 is 3 
 
 Storing the values of a one-dimensional array
 ---------------------------------------------
@@ -168,7 +170,7 @@ We can think of the above instruction as 'initialise a value of type
 double at location pointer\_1'. To start assigning numbers to an array,
 we need to define how many blocks of size `double` need to be allocated
 using the function `malloc`. As an example, we'll start with a simple
-one dimensional array of size 5.
+one dimensional array of size 6.
 
     pointer_1 = malloc(6 * sizeof(double));
 
@@ -177,16 +179,15 @@ location `pointer_1`, and extending to a length the size of six `double`
 values. The `sizeof` operator, as you might expect, [returns a
 value](https://en.wikipedia.org/wiki/Sizeof) indicating how much memory
 the data type takes to store. This will allow us to place six `double`
-values in a vector element of five at a location in the memory starting
-at `pointer_1`. For the sake of argument, let's assume that
-`pointer_1 = 8372240`, and so equals the address in the first location
-of our above table.
+values in a vector at a location in the memory starting at `pointer_1`.
+For the sake of argument, let's assume that `pointer_1 = 8372240`, and
+so equals the same address as in the earlier example.
 
 <table>
 <thead>
 <tr class="header">
 <th></th>
-<th>pointer_1</th>
+<th>Location 1</th>
 <th>Location 2</th>
 <th>Location 3</th>
 <th>Location 4</th>
@@ -207,32 +208,34 @@ of our above table.
 </tbody>
 </table>
 
-Note that 8372240 is the address of the location (`pointer_1`); the
-**value** at the location is `*pointer_1`. Using `malloc` in the code
-above, we have allocated the six locations 8372240-8372245 for use in
-our array. If we want to put a value in the location, we can use the
-dereference operator.
+Note that 8372240 is the address of `pointer_1` in **Location 1**; the
+**value** at this location is `*pointer_1` (which we haven't yet
+assigned). Using `malloc` in the code above, we have allocated the six
+locations 8372240-8372245 for use in our array. If we want to assign a
+value in the location, we can use the dereference operator.
 
     *pointer_1 = 3;
 
 The value stored in location `pointer_1` is now 3. To store values in
 the other five locations that we've allocated for use, we can simply add
 one to the value of the location with the dereference operator. In this
-case the address of **Location 2** in the table above is simply one more
-than the value of `pointer_1` itself, `pointer + 1`. So we can put a
-value in the this location in the same way by indicating the correct
+case, the address of **Location 2** in the table above is simply one
+more than the value of `pointer_1` itself, `pointer + 1`. So we can put
+a value in the this location in the same way by indicating the correct
 address.
 
     *(pointer_1 + 1) = 5;
 
-The above stores the value five in the **Location 2**. On the left hand
-side of the equaiton, we can read this as 'value at the location
-pointer\_1 plus one'. The parentheses tells C to compute `pointer_1 + 1`
-before applying the dereference opeartor, so the correct address is
-identified within parentheses and dereferenced with the asterisk outside
-of them. We can assign six random values and print them using the
-function below (the standard library `stdlib.h` includes code needed for
-memory allocation functions `malloc` and `free`).
+The above stores the value five in **Location 2** of the example table
+above. On the left hand side of the equation, we can read this as the
+'value at the location pointer\_1 plus one'. The parentheses tells C to
+compute `pointer_1 + 1` before applying the dereference operator, so the
+correct address is identified within parentheses and dereferenced with
+the asterisk outside of them. We can assign six random values and print
+them using [the function
+below](https://github.com/bradduthie/blog/blob/gh-pages/code/c_pointer_eg/array_eg_1.c)
+(the standard library `stdlib.h` includes code needed for memory
+allocation functions `malloc` and `free`).
 
     #include<stdio.h>
     #include<stdlib.h>
@@ -313,12 +316,12 @@ After allocating memory with `malloc`, it is important to free the
 memory using `free` when it is no longer needed to avoid a [memory
 leak](https://en.wikipedia.org/wiki/Memory_leak). A memory leak occurs
 when addresses are allocated but not freed, and the number of available
-places to store data decreases. Hence upon freeing memory, new values
-could be stored in the addresses above.
+places to store data decreases. Upon freeing memory, new values could be
+stored in the addresses above.
 
 Note how there are six elements in the array, but the last element in
 the array is `*(pointer_1 + 5)` because the array effectively starts at
-`*(pointer + 0)`. Hence, arrays in C are [zero
+`*(pointer + 0)`. Arrays in C are [zero
 indexed](https://en.wikipedia.org/wiki/Zero-based_numbering); the first
 element starts with zero and ends with a value of one less than the
 total length of the array. This takes some getting used to for many
@@ -331,9 +334,10 @@ in C. An easier way to write `*(pointer_1 + element)` is simply
 Hence, we can usually think about an array that we create in C *as if*
 `array_1[i]` means 'the `i`th element of the array `array_1`', but it
 it's useful to keep in mind that what it *really* refers to is 'the
-value at the memory location `array_1 + i`. With this in mind, we can
-re-write the above program as follows, swapping the variable name
-`pointer_1` with `array_1`.
+value at the memory location `array_1 + i`'. With this in mind, we can
+[re-write the above
+program](https://github.com/bradduthie/blog/blob/gh-pages/code/c_pointer_eg/array_eg_2.c)
+as follows, swapping the variable name `pointer_1` with `array_1`.
 
     #include<stdio.h>
     #include<stdlib.h>
@@ -368,7 +372,7 @@ multi-dimensional arrays, which I will briefly discuss next.
 Multi-dimensional arrays in C
 -----------------------------
 
-Like one-dimenional arrays, there is no built-in way to tell C that we
+Like one-dimensional arrays, there is no built-in way to tell C that we
 want to make a multi-dimensional array; we need to use pointers. Even
 more complicated, there is also no simple way to tell C which pointers
 should correspond to which dimensions of our array, so we need to remove
@@ -381,7 +385,7 @@ elements, what we really want is a two dimensional array with two rows
 and three columns. To do this, we need to first allocate memory to hold
 a set of *pointers*, and have each of those pointers hold values that
 themselves are pointers to where we want the start of each row in our
-array to be. I've drawn this one out below in hopes to make things
+array to be. I've drawn this one out below in hopes of making things
 clearer.
 
 ![](2017-04-02-pointers-in-c-for-scientists_files/figure-markdown_strict/unnamed-chunk-3-1.png)
@@ -393,7 +397,7 @@ In the above, the pointer to a pointer `**array2D` is a variable that
 holds two values at addresses `7ffef08a8978` and `7ffef08a879`. The two
 values it holds are `150b010` and `150b013`, which are the addresses of
 the element in the *first column* of the first and second rows of the
-array. The *values* stored `**array2D` are the *addresses* of
+array. The *values* stored by `**array2D` are the *addresses* of
 `*(array2D + 0)` and `*(array2D + 1)`. So the array will look like the
 below.
 
@@ -427,7 +431,8 @@ initialised a pointer to a pointer `**array2D` of length 2. This pointer
 to a pointer stores two values that correspond to the addresses of the
 first element of each row of the array. Each row of the array then holds
 3 values for each column; to get this to work, we have to allocate
-memory for each row separately, which can be done using the code below.
+memory for each row separately, which can be done using [the code
+below](https://github.com/bradduthie/blog/blob/gh-pages/code/c_pointer_eg/array_eg_2D.c).
 
     #include<stdio.h>
     #include<stdlib.h>
@@ -460,6 +465,11 @@ memory for each row separately, which can be done using the code below.
         printf("\n");
       }
       
+      for(row = 0; row < row_number; row++){
+        free(*(array2D + row));
+      }
+      free(array2D);
+      
       return 0;
     }
 
@@ -467,10 +477,19 @@ In the above, `malloc(row_number * size(double *))` tells C that we're
 allocating memory to store `row_number` pointers to `double` values. In
 the first `for` loop immediately below, we allocate `col_number` values
 of size `double` for each `*(array2D + row)`, blocking off an
-appropriate amount of memory for the length of each row. I assigned
-values to array elements without using brackets to break down what's
-going on in terms of pointers, but in practice it is much easier to
-write this with brackets again.
+appropriate amount of memory for the length of each row. Note that when
+freeing the allocated memory, we can't just use `free(array2D)`. Since
+we allocated memory for `array2D` **and** each row `*(array2D + row)`,
+we need to free each chunk of memory allocated. Further, memory
+allocation to the individual rows must be freed before `array2D` is
+freed, or else C won't be able to find `*(array2D + row)` addresses to
+free them.
+
+I assigned values to array elements without using brackets to break down
+what's going on in terms of pointers, but in practice it is much easier
+to [write this with
+brackets](https://github.com/bradduthie/blog/blob/gh-pages/code/c_pointer_eg/array_eg_2D_2.c)
+again.
 
     #include<stdio.h>
     #include<stdlib.h>
@@ -503,6 +522,11 @@ write this with brackets again.
         printf("\n");
       }
       
+      for(row = 0; row < row_number; row++){
+        free(array2D[row]);
+      }
+      free(array2D);
+      
       return 0;
     }
 
@@ -511,13 +535,57 @@ array2D equals size', but as with the one dimensional array example, it
 helps to remember that we are using the dereference operator twice to
 find the location at which the value is located.
 
+A quick note about &
+--------------------
+
+In most introductions to pointers, the ampersand `&` operator is
+introduced alongside the asterisk `*`. I've not done so here because
+most code for simple scientific computing doesn't really need it (I've
+only used it a handful of times in several years of coding in C), but I
+should mention how it is used. The `&` identifies the address of a
+variable, so we can read `&variable_1` as 'the address of variable\_1'.
+So, for example, if we set `variable_1 = 3`, we could set the pointer
+`*ptr_variable_1` to equal the address of `variable_1`, `&variable_1`.
+
+    #include<stdio.h>
+
+    int main(void){
+
+        int variable_1, *ptr_variable_1;
+        
+        variable_1     = 3;
+        ptr_variable_1 = &variable_1;
+        
+        printf("Value of variable_1 is %d \n", variable_1);
+        printf("Address of variable_1 is %d \n", &variable_1);
+        printf("Value of ptr_variable_1 is %d \n", ptr_variable_1);
+
+        return 0;
+    }
+
+The [above
+code](https://github.com/bradduthie/blog/blob/gh-pages/code/c_pointer_eg/ampersand_eg.c)
+prints the below.
+
+    Value of variable_1 is 3 
+    Address of variable_1 is 0x7fff17e1b3fc 
+    Value of ptr_variable_1 is 0x7fff17e1b3fc 
+
+Note that we have set the value of `ptr_variable_1` to address
+`variable_1`.
+
 Concluding remarks
 ------------------
 
 This was just a very brief introduction to the logic of pointers and how
 to use them to make arrays in C. It is not [everything you need to know
 about pointers](http://boredzo.org/pointers/), but a starting point for
-being able to work with datasets.
+being able to work with data in C. My hope is that this explanation will
+complement other introductions to pointers in a way that will be
+especially useful for scientists who do not come from a computing
+background, and who have perhaps avoided making the jump to C from
+languages such as R, python, or MATLAB in part due to the pointers
+learning curve.
 
 ------------------------------------------------------------------------
 
@@ -540,6 +608,3 @@ is exact and uses less memory.
 the first element of the *row*, but I usually do this way out of habit.
 
 ------------------------------------------------------------------------
-
-References
-----------

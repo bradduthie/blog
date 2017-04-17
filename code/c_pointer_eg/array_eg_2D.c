@@ -29,5 +29,10 @@ int main(void){
     printf("\n");
   }
   
+  for(row = 0; row < row_number; row++){
+      free(*(array2D + row));
+  }
+  free(array2D);
+  
   return 0;
 }
