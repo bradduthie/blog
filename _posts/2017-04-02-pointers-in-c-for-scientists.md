@@ -29,7 +29,7 @@ computer's memory variables are located. Thinking about and using
 pointers effectively can take a bit of getting used to, but being able
 to use C to do so can massively speed up computations [\[1\]](#foot1),
 making the investment worthwhile for researchers doing computationally
-intense statistical or simulation modeling. The intended audience of
+intense statistical or simulation modelling. The intended audience of
 this post includes researchers who are newcomers to using C, or might be
 interested in learning C as means to speed up their analyses, perhaps
 through [integration with R](http://adv-r.had.co.nz/C-interface.html)
