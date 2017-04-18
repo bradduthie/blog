@@ -5,8 +5,8 @@ researchers doing statistics or modelling. In programming languages with
 which most researchers are probably familiar (e.g.,
 [R](https://www.r-project.org/), [python](https://www.python.org/), and
 [MATLAB](https://uk.mathworks.com/products/matlab.html)), setting values
-into a some sort of array is straightforward. In R, we can define a
-vector `data_vec` with one line of code.
+into some sort of array is straightforward. In R, we can define a vector
+`data_vec` with one line of code.
 
     data_vec <- c(3, 5, 4, 1, 7, 6);
     print(data_vec);
