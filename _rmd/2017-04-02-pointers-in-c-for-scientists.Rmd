@@ -24,7 +24,7 @@ data_mat <- matrix(data = c(3, 5, 4, 1, 7, 6), nrow = 2, ncol = 3);
 print(data_mat);
 ```
 
-In C, this kind of assignment doesn't work, which can be intimidating at first for researchers new to the language. Instead, memory needs to be allocated appropriately using *pointers*, which identify where in a computer's memory variables are located. Thinking about and using pointers effectively can take a bit of getting used to, but being able to use C to do so can massively speed up computations [[1]](#foot1), making the investment worthwhile for researchers doing computationally intense statistical or simulation modelling. The intended audience of this post includes researchers who are newcomers to using C, or might be interested in learning C as means to speed up their analyses, perhaps through [integration with R](http://adv-r.had.co.nz/C-interface.html) (more on this in a future post). I'm not going to focus so much on how to code in C, but rather the logic of what pointers are and how they are used in the language, as this is a major learning curve when getting started.
+In C, this kind of assignment doesn't work, which can be intimidating at first for researchers new to the language. Instead, memory needs to be allocated appropriately using *pointers*, which identify where in a computer's memory variables are located. Thinking about and using pointers effectively can take a bit of getting used to, but being able to use C to do so can massively speed up computations [[1]](#foot1), making the investment worthwhile for researchers doing computationally intense statistical or simulation modelling. The intended audience of this post includes researchers who are newcomers to using C, or might be interested in learning C as a means to speed up their analyses, perhaps through [integration with R](http://adv-r.had.co.nz/C-interface.html) (more on this in a future post). I'm not going to focus so much on how to code in C, but rather the logic of what pointers are and how they are used in the language, as this is a major learning curve when getting started.
 
 All variables initialised in C need to be stored in some address in the computer's memory. We can think about the memory of a computer as a large block of locations where information can be stored. Each location specifies a single [byte](https://en.wikipedia.org/wiki/Byte), and blocks of bytes are used to store numeric values (Dennis Kubes discusses [Basics of memory addresses in C](http://denniskubes.com/2012/08/17/basics-of-memory-addresses-in-c/) in more detail). If we tell C to print off a set of locations, these are the kinds of values we get.
 
@@ -98,7 +98,7 @@ Note that 8372240 is the address of `pointer_1` in **Location 1**; the **value**
 *pointer_1 = 3;
 ```
 
-The value stored in location `pointer_1` is now 3. To store values in the other five locations that we've allocated for use, we can simply add one to the value of the location with the dereference operator. In this case, the address of **Location 2** in the table above is simply one more than the value of `pointer_1` itself, `pointer + 1`. So we can put a value in the this location in the same way by indicating the correct address.
+The value stored in location `pointer_1` is now 3. To store values in the other five locations that we've allocated for use, we can simply add one to the value of the location with the dereference operator. In this case, the address of **Location 2** in the table above is simply one more than the value of `pointer_1` itself, `pointer_1 + 1`. So we can put a value in this location in the same way by indicating the correct address.
 
 ```
 *(pointer_1 + 1) = 5;
@@ -138,7 +138,7 @@ We can represent the above in a table again below that includes address and valu
 
 |         | Location 1      | Location 2      | Location 3      | Location 4      | Location 5      |  Location 6     |
 |---------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-| Address | `pointer_1 + 0` | `pointer_1 + 1` | `pointer_1 + 2` | `pointer_1 + 3` | `pointer_1 + 4` | `pointer_1 + 5` |
+| Address | pointer_1 + 0 | pointer_1 + 1 | pointer_1 + 2 | pointer_1 + 3 | pointer_1 + 4 | pointer_1 + 5 |
 | Value   |       3         |       5         |         4       |       1         |         7       |        6        |
 
 
@@ -157,7 +157,7 @@ int main(void){
     int i;
     double *array_1;
     
-    pointer_1 = malloc(6 * sizeof(double));
+    array_1 = malloc(6 * sizeof(double));
     
     array_1[0] = 3;
     array_1[1] = 5;
@@ -356,7 +356,7 @@ int main(void){
 }
 ```
 
-Conveniently, we can read `array2D[1][2] = 6` as 'row 1, column 2 of array2D equals size', but as with the one dimensional array example, it helps to remember that we are using the dereference operator twice to find the location at which the value is located.
+Conveniently, we can read `array2D[1][2] = 6` as 'row 1, column 2 of array2D equals six', but as with the one dimensional array example, it helps to remember that we are using the dereference operator twice to find the location at which the value is located.
 
 A quick note about '&'
 --------------------------------------------------------------------------------

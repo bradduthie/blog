@@ -31,7 +31,7 @@ to use C to do so can massively speed up computations [\[1\]](#foot1),
 making the investment worthwhile for researchers doing computationally
 intense statistical or simulation modelling. The intended audience of
 this post includes researchers who are newcomers to using C, or might be
-interested in learning C as means to speed up their analyses, perhaps
+interested in learning C as a means to speed up their analyses, perhaps
 through [integration with R](http://adv-r.had.co.nz/C-interface.html)
 (more on this in a future post). I'm not going to focus so much on how
 to code in C, but rather the logic of what pointers are and how they are
@@ -220,8 +220,8 @@ The value stored in location `pointer_1` is now 3. To store values in
 the other five locations that we've allocated for use, we can simply add
 one to the value of the location with the dereference operator. In this
 case, the address of **Location 2** in the table above is simply one
-more than the value of `pointer_1` itself, `pointer + 1`. So we can put
-a value in the this location in the same way by indicating the correct
+more than the value of `pointer_1` itself, `pointer_1 + 1`. So we can
+put a value in this location in the same way by indicating the correct
 address.
 
     *(pointer_1 + 1) = 5;
@@ -293,12 +293,12 @@ the computer's memory.
 <tbody>
 <tr class="odd">
 <td>Address</td>
-<td><code>pointer_1 + 0</code></td>
-<td><code>pointer_1 + 1</code></td>
-<td><code>pointer_1 + 2</code></td>
-<td><code>pointer_1 + 3</code></td>
-<td><code>pointer_1 + 4</code></td>
-<td><code>pointer_1 + 5</code></td>
+<td>pointer_1 + 0</td>
+<td>pointer_1 + 1</td>
+<td>pointer_1 + 2</td>
+<td>pointer_1 + 3</td>
+<td>pointer_1 + 4</td>
+<td>pointer_1 + 5</td>
 </tr>
 <tr class="even">
 <td>Value</td>
@@ -347,7 +347,7 @@ as follows, swapping the variable name `pointer_1` with `array_1`.
         int i;
         double *array_1;
         
-        pointer_1 = malloc(6 * sizeof(double));
+        array_1 = malloc(6 * sizeof(double));
         
         array_1[0] = 3;
         array_1[1] = 5;
@@ -531,7 +531,7 @@ again.
     }
 
 Conveniently, we can read `array2D[1][2] = 6` as 'row 1, column 2 of
-array2D equals size', but as with the one dimensional array example, it
+array2D equals six', but as with the one dimensional array example, it
 helps to remember that we are using the dereference operator twice to
 find the location at which the value is located.
 
