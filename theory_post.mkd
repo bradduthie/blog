@@ -1,0 +1,48 @@
+Conceptual unification of disparate phenomena is a major goal of theory in the natural sciences, and many of the most revolutionary scientific theories are those that have shown how seemingly disparate ideas and observations follow logically from a single unifying framework. The most momentus of these theories include Newton's unification of gravity and the laws of planetary motion (Newton 1999), Darwin's explanations of biological adaptation and biodiversity as following from natural selection and descent with modification, respectively (Darwin 1959), and Einstein's general relativity unifying gravity, space, and time (Einstein 1911). In all of these examples, theory has changed how scientists understand the world by revealing a fundamental concept, the consequences of which encompass an entire field of study.
+
+Perhaps to this list of discoveries we should include the unifying equation of George Price (1970), which, in a recent paper in the American Naturalist, David Queller argues to be the most fundamental theorem of evolution (Queller 2017). The Price equation as a unifying framework has been a subject of recent interest both within evolutionary biology (e.g., Frank 2012; Grafen 2015; Luque 2016) and across disciplines from mechanics (Frank 2015) to music (MacCallum et al. 2012). At its core, the Price equation is a unifying framework for understanding any correlated change between any two entities. Queller proposes it to be fundamental because it encompasses all evolutionary forces acting on a population, and because it can be used to derive other less general equations in population and quantitative genetics, all of which require stricter assumptions about the evolutionary forces and environmental conditions affecting entities in the population. The Price equation includes two terms to describe the change in any trait $\delta$*z*. 
+
+![The Price equation](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/inbreeding_thresholds.png?token=AFSziaOaQGYGzXY6_Tw7T2WHPlh7U_knks5Ys3R8wA%3D%3D)
+
+The first term islolates how a trait (*z*) covaries with fitness (*w*) for entities (*i*), and includes the evolutionary processes of natural selection and drift. The second term includes everything else that affects trait change (often called the 'transmission bias'), such as mutation or background changes in environment. Intepreting the Price equation can be a bit daunting at first, perhaps in part because of how abstract the entities (*i*) are -- representing anything from alleles, to unmeasured genotypes, to organisms, to even groups of organisms as the situation requires. Likewise, traits (*z*) can be any aspect of phenotype associated with such entities, including fitness (*w*) itself! 
+
+It's here where Queller's synthesis really shines, as he carefully walks the reader through how Price's abstract equation can be used to derive multiple other less fundamental equations in which variables represent something concrete and measureable in empirical populations. These equations include Fischer's (1930) average excess equation describing allele frequency change in population genetics, the Robertson (1966) and breeder's equations (Lush 1937) of trait change in quantitative genetics, and Fischer's (1930) fundamental theorem of evolution. In all cases, Queller notes the additional assumptions that are required to use these equations, particularly that the second term of the Price equation equals zero meaning that no transmission bias exists.
+
+In our discussion, we reviewed the Price equation and its significance in evolutionary biology.
+
+
+For an interesting biography of the life of George Price, see ().
+
+
+Darwin, C. (1859). The Origin of Species. New York: Penguin.
+
+Einstein, A. (1911). Einfluss der Schwerkraft auf die Ausbreitung des Lichtes. Annalen Der Physik. 25: 898-908.
+
+Fisher, R. A. (1930). The genetical theory of natural selection. Oxford: Oxford University Press.
+
+Frank, S. A. (2012). Natural selection. IV. The Price equation. Journal of Evolutionary Biology, 25, 1002–1019. https://doi.org/10.1111/j.1420-9101.2012.02498.x
+
+Frank, S. A. (2015). D’Alembert’s direct and inertial forces acting on populations: The price equation and the fundamental theorem of natural selection. Entropy, 17(10), 7087–7100. https://doi.org/10.3390/e17107087
+
+Grafen, A. (2015). Biological fitness and the Price Equation in class-structured populations. Journal of Theoretical Biology, 373, 62–72. https://doi.org/10.1016/j.jtbi.2015.02.014
+
+Luque, V. J. (2016). One equation to rule them all: a philosophical analysis of the Price equation. Biology and Philosophy, 32(1), 1–29. https://doi.org/10.1007/s10539-016-9538-y
+
+Lush, J. L. (1937). Animal Breeding Plans. Ames, IA, USA: Iowa State College Press.
+
+MacCallum, R. M., Mauch, M., Burt, A., & Leroi, A. M. (2012). Evolution of music by public choice. Proceedings of the National Academy of Sciences, 109(30), 12081–12086. https://doi.org/10.5061/dryad.h0228
+
+Newton, I. (1999). The Principia: Mathematical Principles of Natural Philosophy, A New Translation. (B. Cohen & A. Whitman, Eds.). Berkley: University of California Press. (Original work published in 1726).
+
+Price, G. R. (1970). Selection and covariance. Nature. 227: 520-521.
+
+Queller, D. C. (2017). Fundamental theorems of evolution. American Naturalist, 189(4), 000–000.
+
+Robertson, A. (1966). A mathematical model of the culling process in dairy cattle. Animal Science, 8(1), 95–108.
+
+
+
+
+
+
+Figure 1 from Queller (2017), illustrating the relationship between the Price equation and four other fundamental equations of evolutionary biology. An arrow from one equation to another indicates that the latter can be derived form the former. Variables and subscripts are explained in the main text.
