@@ -93,7 +93,7 @@ fundamental equations of population and quantiative genetics, but
 potentially fundamental equations of population and community ecology,
 such as the modern version of
 [Lotka-Volterra](https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations)
-competition below as appears in Chesson (2000).
+competition below as appears in Chesson (2000b).
 
 ![Lotka-Volterra](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/modern_LV.png?token=AFSziXsygmP_wIf7J0-jQXCZ583x8XmQks5ZCgVDwA%3D%3D)
 
@@ -115,13 +115,13 @@ among-type mutation). Page and Nowak (2002) do not break the equation
 down any further, but there would seem to be scope for expanding the
 second term of the Price equation to isolate the effects of species
 interactions on species abundance, perhaps as driven by environmental
-fluctuation \[e.g., Chesson1982; Chesson1994; Chesson1985;
-Chesson2000a\]. Interestingly, Queller (2017) suggests that there might
-''also be candidates for fundamental-theorem status derived from the
-second term''. I don't yet know whether or not this is the case, but it
-would certainly be interesting if many fundamental theorems of
-population and community ecology could be derived from the Price
-equation with the second term doing most of the heavy lifting.
+fluctuation (e.g., Chesson 1982; Chesson 1994; Chesson 1985; Chesson
+2000a). Interestingly, Queller (2017) suggests that there might ''also
+be candidates for fundamental-theorem status derived from the second
+term''. I don't yet know whether or not this is the case, but it would
+certainly be interesting if many fundamental theorems of population and
+community ecology could be derived from the Price equation with the
+second term doing most of the heavy lifting.
 
 Communicating the fundamental theorem of evolution
 --------------------------------------------------
@@ -175,8 +175,23 @@ understand what was going on with selection on quantitative traits.
 References
 ----------
 
-Chesson, Peter L. 2000. “Mechanisms of maintenance of species
-diversity.” *Annual Review of Ecology and Systematics* 31: 343–66.
+Chesson, Peter L. 1982. “The stabilizing effect of a random
+environment.” *Journal of Mathematical Biology* 15: 1–36.
+
+———. 1985. “Coexistence of competitors in spatially and temporally
+varying environments: a look at the combined effects of different sorts
+of variability.” *Theoretical Population Biology* 28 (3): 263–87.
+doi:[10.1016/0040-5809(85)90030-9](https://doi.org/10.1016/0040-5809(85)90030-9).
+
+———. 1994. “Multispecies competition in variable environments.”
+*Theoretical Population Biology* 45: 227–76.
+
+———. 2000a. “General theory of competitive coexistence in
+spatially-varying environments.” *Theoretical Population Biology* 237:
+211–37.
+
+———. 2000b. “Mechanisms of maintenance of species diversity.” *Annual
+Review of Ecology and Systematics* 31: 343–66.
 
 Darwin, Charles. 1859. *The Origin of Species*. New York: Penguin.
 
