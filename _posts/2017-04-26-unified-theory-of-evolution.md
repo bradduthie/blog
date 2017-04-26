@@ -1,7 +1,7 @@
-**Authors Note: This post was inspired by a recent discussion at the
+*Authors Note: This post was inspired by a recent discussion at the
 [PEGE Journal Club](https://pegejournalclub.wordpress.com/) at the
 [University of Stirling](https://www.stir.ac.uk/). A version of this
-post also appears on the journal club website.**
+post also appears on the journal club website.*
 
 Conceptual unification of disparate phenomena is a major goal of theory
 in the natural sciences, and many of the most revolutionary scientific
@@ -26,13 +26,13 @@ interest both within evolutionary biology (e.g., Grafen 2015b; Frank
 2012; Luque 2016) and across disciplines from mechanics (Frank 2015) to
 music (MacCallum et al. 2012). At its core, the Price equation is a
 unifying framework for understanding any correlated change between any
-two entities. Queller proposes it to be fundamental because it
+two entities. Queller (2017) proposes it to be fundamental because it
 encompasses all evolutionary forces acting on a population, and because
 it can be used to derive other less general equations in population and
 quantitative genetics, all of which require stricter assumptions about
 the evolutionary forces and environmental conditions affecting entities
 in the population. The Price equation includes two terms to describe the
-change in any trait *δ**z*.
+change in any trait *Δ* *z*.
 
 ![The Price
 equation](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/price_eqn.png?token=AFSziT6NTazZoU8w7S4HeM_lbgyfkBxMks5ZCb6IwA%3D%3D)
