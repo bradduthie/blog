@@ -1,4 +1,4 @@
-*Authors Note: This post was inspired by a recent discussion at the
+*Author's Note: This post was inspired by a recent discussion at the
 [PEGE Journal Club](https://pegejournalclub.wordpress.com/) at the
 [University of Stirling](https://www.stir.ac.uk/). A version of this
 post also appears on the journal club website.*
