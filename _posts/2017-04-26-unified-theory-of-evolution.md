@@ -123,7 +123,6 @@ certainly be interesting if many fundamental theorems of population and
 community ecology could be derived from the Price equation with the
 second term doing most of the heavy lifting.
 
-<!---  The second term seems particularly important because it includes non-additive effects and feedbacks, as Queller notes in the context of includive fitness theory. THese would be important for understanding community dynamics. --->
 Communicating the fundamental theorem of evolution
 --------------------------------------------------
 
@@ -176,6 +175,7 @@ understand what was going on with selection on quantitative traits.
 References
 ----------
 
+<!---  The second term seems particularly important because it includes non-additive effects and feedbacks, as Queller notes in the context of includive fitness theory. THese would be important for understanding community dynamics. --->
 Chesson, Peter L. 1982. “The stabilizing effect of a random
 environment.” *Journal of Mathematical Biology* 15: 1–36.
 

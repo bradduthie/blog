@@ -31,9 +31,6 @@ The recent interest in the Price equation is encouraging for the further theoret
 
 How to get from the Price equation to Chesson's version of the Lotka-Volterra equation immediately above in a way that unifies ecological and evolutionary dynamics isn't immediately obvious to me. @Page2002 provide an interesting link between the Price equation and classical Lotka-Voltera dynamics through game theory. They note, essentially, that different species can be intepreted as different strategies whose fitness payoffs (in terms of reproductive rates) depend on the abundance of other strategies. They then show that the game-theoretic interpretation of Lotka-Volterra is equivalent to a continuous time version of the Price equation. The first term of the Price equation still describes selection, while the second term of the Price equation includes changes in a trait value (which can be interpreted as species abundance) caused by a varying environment or interactions between species (they also include a third term describing among-type mutation). @Page2002 do not break the equation down any further, but there would seem to be scope for expanding the second term of the Price equation to isolate the effects of species interactions on species abundance, perhaps as driven by environmental fluctuation [e.g., @Chesson1982; @Chesson1994; @Chesson1985; @Chesson2000a]. Interestingly, @Queller2017 suggests that there might ''also be candidates for fundamental-theorem status derived from the second term''. I don't yet know whether or not this is the case, but it would certainly be interesting if many fundamental theorems of population and community ecology could be derived from the Price equation with the second term doing most of the heavy lifting. 
 
-<!---  The second term seems particularly important because it includes non-additive effects and feedbacks, as Queller notes in the context of includive fitness theory. THese would be important for understanding community dynamics. ---> 
-
-
 Communicating the fundamental theorem of evolution
 --------------------------------------------------------------------------------
 
@@ -50,3 +47,8 @@ The status of the Price equation as a the fundamental theorem of evolution from 
 
 References
 --------------------------------------------------------------------------------
+
+
+
+
+<!---  The second term seems particularly important because it includes non-additive effects and feedbacks, as Queller notes in the context of includive fitness theory. THese would be important for understanding community dynamics. ---> 
