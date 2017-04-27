@@ -23,7 +23,7 @@ paper](http://www.journals.uchicago.edu/doi/abs/10.1086/690937) in the
 argues to be the most fundamental theorem of evolution (Queller 2017).
 The Price equation as a unifying framework has been a subject of recent
 interest both within evolutionary biology (e.g., Grafen 2015b; Frank
-2012; Luque 2016) and across disciplines from mechanics (Frank 2015) to
+2012; Luque 2017) and across disciplines from mechanics (Frank 2015) to
 music (MacCallum et al. 2012). At its core, the Price equation is a
 unifying framework for understanding any correlated change between any
 two entities. Queller (2017) proposes it to be fundamental because it
@@ -70,7 +70,7 @@ Future directions for conceptual unification (**work in progress**)
 The recent interest in the Price equation is encouraging for the further
 theoretical unification of the biological sciences, and Queller's (2017)
 paper nicely complements a more philosophical analysis of by [Victor
-Luque](https://victorjluque.wordpress.com/) (2016). It's important to
+Luque](https://victorjluque.wordpress.com/) (2017). It's important to
 keep in mind that the Price equation is, at its core, about correlated
 change between entities, and its application is not restricted to
 changing alleles or phenotypes. It can be applied equally well to
@@ -232,7 +232,7 @@ Naturalist* 130 (4): 582–602.
 Leamnson, Robert. 2000. “Learning as biological brain change.” *Change:
 The Magazine of Higher Learning* 32 (6): 34–40.
 
-Luque, Victor J. 2016. “One equation to rule them all: a philosophical
+Luque, Victor J. 2017. “One equation to rule them all: a philosophical
 analysis of the Price equation.” *Biology and Philosophy* 32 (1).
 Springer Netherlands: 1–29.
 doi:[10.1007/s10539-016-9538-y](https://doi.org/10.1007/s10539-016-9538-y).
