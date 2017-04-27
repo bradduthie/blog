@@ -32,7 +32,7 @@ it can be used to derive other less general equations in population and
 quantitative genetics, all of which require stricter assumptions about
 the evolutionary forces and environmental conditions affecting entities
 in the population. The Price equation includes two terms to describe the
-change in any trait *Δ* *z*.
+change in any trait *Δ*{*z*}.
 
 ![The Price
 equation](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/price_eqn.png?token=AFSziT6NTazZoU8w7S4HeM_lbgyfkBxMks5ZCb6IwA%3D%3D)
@@ -57,12 +57,12 @@ populations. These equations include Fischer's (1930) average excess
 equation describing allele frequency change in population genetics, the
 Robertson (1966) and breeder's equations (Lush 1937) of trait change in
 quantitative genetics, and Fischer's (1930) fundamental theorem of
-evolution. In all cases, Queller (2017) notes the additional assumptions
-that are required to use these equations, particularly that the second
-term of the Price equation equals zero meaning that no transmission bias
-exists. The end result is a synthesis that organises a set of equations
-that are familiar to evolutionary biologists in a way that follows
-logically from the fundamental equation of Price.
+natural selection. In all cases, Queller (2017) notes the additional
+assumptions that are required to use these equations, particularly that
+the second term of the Price equation equals zero meaning that no
+transmission bias exists. The end result is a synthesis that organises a
+set of equations that are familiar to evolutionary biologists in a way
+that follows logically from the fundamental equation of Price.
 
 Future directions for conceptual unification (**work in progress**)
 -------------------------------------------------------------------
@@ -79,8 +79,8 @@ of selecting radio stations with a turning dial (Gardner 2008). Even
 within biology though, there seems to be scope for further conceptual
 unification, particularly between evolution and ecology. Extensions of
 the Price equation allow for selection across different levels of
-biological organisation and different classes within a population (e.g.,
-Heisler and Damuth 1987; Grafen 2015b; Rankin et al. 2015; Queller
+biological organisation and different classes within a population
+(Heisler and Damuth 1987; Grafen 2015b; Rankin et al. 2015; Queller
 2017). Entities in the Price equation might therefore represent
 individuals grouped according to class or species, with fitness (*w*)
 defined by individual or group reproductive value (Williams 1966; Grafen
@@ -123,6 +123,7 @@ certainly be interesting if many fundamental theorems of population and
 community ecology could be derived from the Price equation with the
 second term doing most of the heavy lifting.
 
+<!---  The second term seems particularly important because it includes non-additive effects and feedbacks, as Queller notes in the context of includive fitness theory. THese would be important for understanding community dynamics. --->
 Communicating the fundamental theorem of evolution
 --------------------------------------------------
 
