@@ -391,7 +391,7 @@ clearer.
 ![](2017-04-02-pointers-in-c-for-scientists_files/figure-markdown_strict/unnamed-chunk-3-1.png)
 
 ![Figure
-1](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/2D_array_eg_pointers.png?token=AFSziUofzo5hxGJv2197hNbrm1d8dKoKks5Y_SPcwA%3D%3D)
+1](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/2D_array_eg_pointers.png?token=AFSzicljUJklGqKsnu-aEaf6dAnnp0RBks5ZCz8gwA%3D%3D)
 
 In the above, the pointer to a pointer `**array2D` is a variable that
 holds two values at addresses `7ffef08a8978` and `7ffef08a879`. The two
