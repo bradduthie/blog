@@ -35,7 +35,7 @@ in the population. The Price equation includes two terms to describe the
 change in any trait *Δ*{*z*}.
 
 ![The Price
-equation](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/price_eqn.png?token=AFSziT6NTazZoU8w7S4HeM_lbgyfkBxMks5ZCb6IwA%3D%3D)
+equation](https://github.com/bradduthie/blog/blob/f73eb78aa2e4ce9c521fe6cf90185a678c65c0ed/figures/price_eqn.png?raw=true)
 
 The first term islolates how a trait (*z*) covaries with fitness (*w*)
 for entities (*i*), and encompasses the evolutionary processes of
@@ -69,7 +69,7 @@ Future directions for conceptual unification (**work in progress**)
 
 The recent interest in the Price equation is encouraging for the further
 theoretical unification of the biological sciences, and Queller's (2017)
-paper nicely complements a more philosophical analysis of by [Victor
+paper nicely complements a more philosophical analysis by [Victor
 Luque](https://victorjluque.wordpress.com/) (2017). It's important to
 keep in mind that the Price equation is, at its core, about correlated
 change between entities, and its application is not restricted to
@@ -95,7 +95,7 @@ such as the modern version of
 [Lotka-Volterra](https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations)
 competition below as appears in Chesson (2000b).
 
-![Lotka-Volterra](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/modern_LV.png?token=AFSziXsygmP_wIf7J0-jQXCZ583x8XmQks5ZCgVDwA%3D%3D)
+![Lotka-Volterra](https://github.com/bradduthie/blog/blob/f73eb78aa2e4ce9c521fe6cf90185a678c65c0ed/figures/modern_LV.png?raw=true)
 
 How to get from the Price equation to Chesson's version of the
 Lotka-Volterra equation immediately above in a way that unifies

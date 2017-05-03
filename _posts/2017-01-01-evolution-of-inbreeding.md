@@ -241,7 +241,7 @@ where only males benefit by inbreeding (sexual conflict), and the grey
 shaded region shows where both females and males benefit by inbreeding.*
 
 ![Figure
-1](https://raw.githubusercontent.com/bradduthie/blog/gh-pages/figures/inbreeding_thresholds.png?token=AFSziQHjTuH4_7doc4ZbZ6QitOucWbKJks5ZDEXLwA%3D%3D)
+1](https://github.com/bradduthie/blog/blob/f73eb78aa2e4ce9c521fe6cf90185a678c65c0ed/figures/inbreeding_thresholds.png?raw=true)
 
 ------------------------------------------------------------------------
 
