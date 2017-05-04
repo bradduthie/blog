@@ -32,7 +32,7 @@ it can be used to derive other less general equations in population and
 quantitative genetics, all of which require stricter assumptions about
 the evolutionary forces and environmental conditions affecting entities
 in the population. The Price equation includes two terms to describe the
-change in any trait *Δ**z*.
+change in any trait *Δ* *z*.
 
 ![The Price
 equation](https://github.com/bradduthie/blog/blob/f73eb78aa2e4ce9c521fe6cf90185a678c65c0ed/figures/price_eqn.png?raw=true)
@@ -42,7 +42,7 @@ for entities (*i*), and encompasses the evolutionary processes of
 natural selection and genetic drift. The second term encompasses
 everything else that affects trait change (often called the
 'transmission bias'), such as mutation, selection at within-entity
-scales, or background changes in environment. Intepreting the Price
+scales, or background changes in environment. Interpreting the Price
 equation can be a bit daunting at first, perhaps in part because of how
 abstract the entities (*i*) are -- representing anything from alleles,
 to unmeasured genotypes, to organisms, to even groups of organisms as
