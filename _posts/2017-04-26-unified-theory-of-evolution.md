@@ -32,7 +32,7 @@ it can be used to derive other less general equations in population and
 quantitative genetics, all of which require stricter assumptions about
 the evolutionary forces and environmental conditions affecting entities
 in the population. The Price equation includes two terms to describe the
-change in any trait *Δ*{*z*}.
+change in any trait *Δ**z*.
 
 ![The Price
 equation](https://github.com/bradduthie/blog/blob/f73eb78aa2e4ce9c521fe6cf90185a678c65c0ed/figures/price_eqn.png?raw=true)
