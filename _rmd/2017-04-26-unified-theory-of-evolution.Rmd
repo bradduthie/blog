@@ -42,6 +42,9 @@ How to get from the Price equation to Chesson's version of the Lotka-Volterra eq
 - So: \delta RV_i = Cov(RV_i, Env_i) + E(RV_i \delta Env_i)
 - The downside of the above is that Env_i doesn't have a nice analogue of Price -- it would be nice to keep fitness and traits, then actually move to the second term of the equation to do the community ecology.
 - \delta Z = Cov(w, Z) + E(w, \delta Z), where the second term could define fitness as reproductive value, actually (or both could) -- at least to start with, then link that to population dynamics and Lotka-Volterra. Perhaps we assume that Cov(w, Z) = 0. Then expand the second equation to put things in terms of reproductive values affected by density-dependent effects (still tempted to use RV and Env.
+- Note, however, that r_i is static in a single environment. So are competition coefficients; they don't change. Hence we need to changing things, and trying to get the logistic growth equation out of the Price equation wouldn't work because we don't have two covarying things. We might get to two species' abundances, but this wouldn't unify things well because we're really just looking at one strategy versus another in the same way as Page and Nowak (2002). If we want to make species groups of individuals, then it really might be useful to combine fitness with environment (since we're not predicting traits, unless we want to go multi-variate -- can we do that? Have multi-dimensional trait space and fitness?).
+- Another way to look at it is that r_i = \delta RV and assume cov(RV, Z) = 0, and that all of the logistic growth equation is found in E(RV \delta Z). 
+- How about: \delta N_i = Cov(r_i, N_i) + E(r_i \delta N_i) where E(r_i \delta N_i) = r_i(1 - N_i \alpha_{i,i}). The first term Cov(r_i, N_i) = 0 because intrinsic growth rate is always the same, while the second term can get to logistic growth. By using different subscripts, we could get to different species.
 
 
 --->
