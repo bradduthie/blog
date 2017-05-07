@@ -33,6 +33,23 @@ How to get from the Price equation to Chesson's version of the Lotka-Volterra eq
 
 <!---
 
+One potential starting point could be to redefine the two traits of interest (*w* and *z*) and entities (*i*) in the Price equation, then try to link them to something very basic in population ecology, such as the logistic growth equation,
+
+\Delta N_{i} = R_{i} N_{i} (1 - N_{i} \alpha_{ii})
+
+Where N_{i} is the population size of species *i*, R_{i} is the discrete rate of increase of *i* (1 + Births - Deaths), and \alpha_{ii} is the intraspecific competition coefficient of *i* (which also equals the inverse of carrying capacity, *K*). 
+
+If we want the Price equation to be truly unifying, then I think that we want to be able to index groups and potentially individuals (*i*, and perhaps later *i* and *j*). Additionally, we might not be so interested in any particular trait *z* so much as the abundance of individuals and species. There's no reason that *z*, typically interpreted as a trait value, can't be re-interpreted as something more like fitness. A link between evolutionary fitness and population dynamics might be possible using simple offspring number *m_{i}*, or perhaps reproductive value [@Williams1966], the latter of which has received some recent interest in the Price equation [but check on this @Grafen2015; @Grafen2015a]. Population dynamics, after all, is defined by the change in abundance or density of individuals in a particular species, and we might for simplicity assume that evolutionary fitness is defined by *m_{i}*. Hence we have the index *i* for individuals and *m_{i}* as fitness *in place of z rather than w*. Note that neither R_{i} nor \alpha_{ii} are good candidates to replace *w* because the represent statitic parameters of intrinsic growth and density effects, respectively. Instead, we might usefully define another variable to replace *w*, such as abiotic environment, which I'll define with a lower case 'e', e_{i}, interpreted as the abiotic environment experienced by *i*. We might then consider the starting point,
+
+\Delta m_{i} = Cov(m_{i}, e_{i}) + E(m_{i} \delta e_{i}).
+
+We could consider a static environment first, so the first term is zero because the environment does not vary. 
+
+--->
+
+
+<!---
+
 - Perhaps first term could be how growth rate (reproductive value) covaries with environment (non-density dependent stuff)
 - Second term would hold density-dependent interactions -- the *expected* change in trait (species abundance) caused by the number of other individuals and their interactions, non-additivies and competition coefficients.
 - Then again, the environment shouldn't be a term because we want other species to be a term? But actually, we want to subdivide into groups of species, so really we want group and individual fitness with environment?
@@ -45,7 +62,7 @@ How to get from the Price equation to Chesson's version of the Lotka-Volterra eq
 - Note, however, that r_i is static in a single environment. So are competition coefficients; they don't change. Hence we need to changing things, and trying to get the logistic growth equation out of the Price equation wouldn't work because we don't have two covarying things. We might get to two species' abundances, but this wouldn't unify things well because we're really just looking at one strategy versus another in the same way as Page and Nowak (2002). If we want to make species groups of individuals, then it really might be useful to combine fitness with environment (since we're not predicting traits, unless we want to go multi-variate -- can we do that? Have multi-dimensional trait space and fitness?).
 - Another way to look at it is that r_i = \delta RV and assume cov(RV, Z) = 0, and that all of the logistic growth equation is found in E(RV \delta Z). 
 - How about: \delta N_i = Cov(r_i, N_i) + E(r_i \delta N_i) where E(r_i \delta N_i) = r_i(1 - N_i \alpha_{i,i}). The first term Cov(r_i, N_i) = 0 because intrinsic growth rate is always the same, while the second term can get to logistic growth. By using different subscripts, we could get to different species.
-
+- Note that we've still got (1 / r_i) to deal with though -- not sure where this would go.
 
 --->
 
