@@ -266,7 +266,7 @@ allocation functions `malloc` and `free`).
 We can represent the above in a table again below that includes address
 and values stored in each address, using the pointers to represent the
 addresses of variables but keeping in mind that each increment of
-`pointer_1` corresonds to some integer number that maps to a block of
+`pointer_1` corresponds to some integer number that maps to a block of
 the computer's memory.
 
 <table style="width:100%;">
