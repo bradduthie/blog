@@ -64,6 +64,13 @@ We could consider a static environment first, so the first term is zero because 
 - How about: \delta N_i = Cov(r_i, N_i) + E(r_i \delta N_i) where E(r_i \delta N_i) = r_i(1 - N_i \alpha_{i,i}). The first term Cov(r_i, N_i) = 0 because intrinsic growth rate is always the same, while the second term can get to logistic growth. By using different subscripts, we could get to different species.
 - Note that we've still got (1 / r_i) to deal with though -- not sure where this would go.
 
+25 JUN 2017
+
+The \Delta A can be decomposed into selection at the group (species) level, in the covariance term. The transmission error is where selection at the species level occurs, and this is how logistic growth equations can be replicated. There is no selection at the species level (only one species), so the first term is zero. In the second term, selection is broken down into individuals within the species, where there is a negative covariance between the \Delta A_j and A_j such that higher A_j values cause lower growth rate. 
+
+In this case K (or \alpha) can be the environment, with fluctuations in it causing changes in selection at the within-species level in the second term of the Price equation. Surely we can get to \Delta N = r(1 - \alpha * N).
+
+
 --->
 
 Communicating the fundamental theorem of evolution
