@@ -14,11 +14,11 @@ bibliography: duthie.bib
 library(GMSE);
 ```
 
-As part of the [ConFooBio](https://sti-cs.org/confoobio/) at the [University of Stirling](http://www.stir.ac.uk/), my colleagues and I have released the new R package [GMSE](https://bradduthie.github.io/gmse/), with `v0.2.2.7` currently available on [CRAN](https://cran.r-project.org/web/packages/GMSE/index.html) and [GitHub](https://github.com/bradduthie/gmse). The GMSE package generalises the method of [management strategy evaluation](http://www.sciencedirect.com/science/article/pii/S0169534711001339) (MSE), an adaptive management framework that incorporates social-ecological system dynamics, the process of observing and monitoring the system, and the assessment and decision-making processes of managers [@Bunnefeld2011]. Our generalisation includes a game-theoretic component in which both managers and stakeholders dynamically update their decision-making to maximise their own utilities. The GMSE package simulates all aspects of MSE and uses genetic algorithms to find adaptive solutions for manager and stakeholder decision-making.
+As part of the [ConFooBio](https://sti-cs.org/confoobio/) at the [University of Stirling](http://www.stir.ac.uk/), my colleagues and I have released the new R package [GMSE](https://bradduthie.github.io/gmse/), with `v0.2.2.7` currently available on [CRAN](https://cran.r-project.org/web/packages/GMSE/index.html) and [GitHub](https://github.com/bradduthie/gmse). The GMSE package generalises the method of [management strategy evaluation](http://www.sciencedirect.com/science/article/pii/S0169534711001339) (MSE), an adaptive management framework that incorporates social-ecological system dynamics, the process of observing and monitoring the system, and the assessment and decision-making processes of managers [@Bunnefeld2011]. Our generalisation includes a game-theoretic component in which both managers and stakeholders dynamically update their decision-making to maximise their own utilities. The GMSE package simulates all aspects of MSE and uses genetic algorithms [@Hamblin2013] to find adaptive solutions for manager and stakeholder decision-making.
 
 --------------------------------------------------------------------------------
 
-![](https://raw.githubusercontent.com/bradduthie/gmse/1727ea37f32f0f40df8ee6e8277d0d1723c88639/notebook/images/GMSE_logo_name.png)
+![](https://raw.githubusercontent.com/bradduthie/blog/10a5b6b1f6969050084e6806156272c24bc3340f/figures/GMSE_logo_name.png)
 
 [![](http://www.r-pkg.org/badges/version/GMSE?color=yellowgreen)](https://cran.r-project.org/package=GMSE) [![](http://cranlogs.r-pkg.org/badges/grand-total/GMSE?color=yellowgreen)](http://cranlogs.r-pkg.org/badges/grand-total/GMSE)
 [![](http://cranlogs.r-pkg.org/badges/last-month/GMSE?color=yellowgreen)](http://cranlogs.r-pkg.org/badges/last-month/GMSE)
@@ -87,6 +87,7 @@ Development of GMSE
 
 The code underlying GMSE has been flexibly developed for future expansion and new features. If there is something that would be useful to add that does not appear to be available by setting parameter values in `gmse()`, then chances are it can already be done by a few tweaks to the source code, or would require a bit of additional coding. As an example, the code allows for future expansions for any number of resource types, allowing for multiple populations and structured populations -- this is also true for agents. A [wiki](https://github.com/bradduthie/gmse/wiki/GMSE-feedback) can be found in the GMSE GitHub repository, and there is a [place to post issues](https://github.com/bradduthie/gmse/issues), including suggestions for new features.
 
+![](https://raw.githubusercontent.com/bradduthie/blog/10a5b6b1f6969050084e6806156272c24bc3340f/figures/GMSE_Logo_Goose_600.png)
 
 References
 ----------------------------------------------------------------

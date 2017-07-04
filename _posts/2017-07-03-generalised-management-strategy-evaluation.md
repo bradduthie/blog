@@ -14,12 +14,12 @@ of managers (Bunnefeld, Hoshino, and Milner-Gulland 2011). Our
 generalisation includes a game-theoretic component in which both
 managers and stakeholders dynamically update their decision-making to
 maximise their own utilities. The GMSE package simulates all aspects of
-MSE and uses genetic algorithms to find adaptive solutions for manager
-and stakeholder decision-making.
+MSE and uses genetic algorithms (Hamblin 2013) to find adaptive
+solutions for manager and stakeholder decision-making.
 
 ------------------------------------------------------------------------
 
-![](https://raw.githubusercontent.com/bradduthie/gmse/1727ea37f32f0f40df8ee6e8277d0d1723c88639/notebook/images/GMSE_logo_name.png)
+![](https://raw.githubusercontent.com/bradduthie/blog/10a5b6b1f6969050084e6806156272c24bc3340f/figures/GMSE_logo_name.png)
 
 [![](http://www.r-pkg.org/badges/version/GMSE?color=yellowgreen)](https://cran.r-project.org/package=GMSE)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/GMSE?color=yellowgreen)](http://cranlogs.r-pkg.org/badges/grand-total/GMSE)
@@ -96,9 +96,9 @@ manual](https://cran.r-project.org/web/packages/GMSE/GMSE.pdf)). We can
 run this scenario using the code below.
 
     ## [1] "Initialising simulations ... "
-    ## [1] "Generation  28 of  100"
-    ## [1] "Generation  60 of  100"
-    ## [1] "Generation  91 of  100"
+    ## [1] "Generation  35 of  100"
+    ## [1] "Generation  65 of  100"
+    ## [1] "Generation  99 of  100"
 
 To avoid automatic plotting, I have set `plotting = FALSE`. The output
 to `sim` is a very large data structure that includes output from each
@@ -106,7 +106,7 @@ sub-model (natural resource, observation, manager, and user) in each of
 100 (default) time steps. The results can be plotted using the
 `plot_gmse_results function`.
 
-![](2017-03-07-generalised-management-strategy-evaluation_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![](2017-07-03-generalised-management-strategy-evaluation_files/figure-markdown_strict/unnamed-chunk-3-1.png)
 
 ![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_eg_1.png)
 
@@ -183,6 +183,8 @@ found in the GMSE GitHub repository, and there is a [place to post
 issues](https://github.com/bradduthie/gmse/issues), including
 suggestions for new features.
 
+![](https://raw.githubusercontent.com/bradduthie/blog/10a5b6b1f6969050084e6806156272c24bc3340f/figures/GMSE_Logo_Goose_600.png)
+
 References
 ----------
 
@@ -190,3 +192,8 @@ Bunnefeld, Nils, Eriko Hoshino, and Eleanor J Milner-Gulland. 2011.
 “Management strategy evaluation: A powerful tool for conservation?”
 *Trends in Ecology and Evolution* 26 (9): 441–47.
 doi:[10.1016/j.tree.2011.05.003](https://doi.org/10.1016/j.tree.2011.05.003).
+
+Hamblin, Steven. 2013. “On the practical usage of genetic algorithms in
+ecology and evolution.” *Methods in Ecology and Evolution* 4 (2):
+184–94.
+doi:[10.1111/2041-210X.12000](https://doi.org/10.1111/2041-210X.12000).
