@@ -106,9 +106,9 @@ run this scenario using the code below.
     sim <- gmse(observe_type = 1, manage_target = 400, res_death_K = 600, plotting = FALSE);
 
     ## [1] "Initialising simulations ... "
-    ## [1] "Generation  34 of  100"
-    ## [1] "Generation  61 of  100"
-    ## [1] "Generation  96 of  100"
+    ## [1] "Generation  27 of  100"
+    ## [1] "Generation  53 of  100"
+    ## [1] "Generation  87 of  100"
 
 To avoid automatic plotting, I have set `plotting = FALSE`. The output
 to `sim` is a very large data structure that includes output from each
@@ -117,7 +117,8 @@ sub-model (natural resource, observation, manager, and user) in each of
 `plot_gmse_results` function.
 
     plot_gmse_results(res = sim$resource, obs = sim$observation, land = sim$land, 
-    agents = sim$agents, paras = sim$paras, ACTION = sim$action, COST = sim$cost);
+                      agents = sim$agents, paras = sim$paras, ACTION = sim$action, 
+                      COST = sim$cost);
 
 ![](2017-07-03-generalised-management-strategy-evaluation_files/figure-markdown_strict/unnamed-chunk-3-1.png)
 
@@ -125,7 +126,8 @@ sub-model (natural resource, observation, manager, and user) in each of
 
 ![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_eg_1.png)
 
-<a name="fig2">Figure 2:</a> Example of plotted GMSE simulation results.
+<a name="fig2">Figure 2:</a> *Example of plotted GMSE simulation
+results.*
 
 ------------------------------------------------------------------------
 
