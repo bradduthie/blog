@@ -29,9 +29,9 @@ In keeping with the MSE approach [@Bunnefeld2011], GMSE does not attempt to find
 
 ********************************************************************************
 
-![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_overview_simple.png)
-
 <a name="fig1">Figure 1:</a> *General overview of GMSE*
+
+![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_overview_simple.png)
 
 ********************************************************************************
 
@@ -80,9 +80,9 @@ plot_gmse_results(res = sim$resource, obs = sim$observation, land = sim$land,
 
 ********************************************************************************
 
-![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_eg_1.png)
-
 <a name="fig2">Figure 2:</a> *Example of plotted GMSE simulation results.*
+
+![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_eg_1.png)
 
 ********************************************************************************
 

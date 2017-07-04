@@ -51,9 +51,9 @@ genetic algorithm to find adaptive solutions in each time step.
 
 ------------------------------------------------------------------------
 
-![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_overview_simple.png)
-
 <a name="fig1">Figure 1:</a> *General overview of GMSE*
+
+![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_overview_simple.png)
 
 ------------------------------------------------------------------------
 
@@ -106,9 +106,9 @@ run this scenario using the code below.
     sim <- gmse(observe_type = 1, manage_target = 400, res_death_K = 600, plotting = FALSE);
 
     ## [1] "Initialising simulations ... "
-    ## [1] "Generation  27 of  100"
-    ## [1] "Generation  53 of  100"
-    ## [1] "Generation  87 of  100"
+    ## [1] "Generation  33 of  100"
+    ## [1] "Generation  62 of  100"
+    ## [1] "Generation  95 of  100"
 
 To avoid automatic plotting, I have set `plotting = FALSE`. The output
 to `sim` is a very large data structure that includes output from each
@@ -124,10 +124,10 @@ sub-model (natural resource, observation, manager, and user) in each of
 
 ------------------------------------------------------------------------
 
-![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_eg_1.png)
-
 <a name="fig2">Figure 2:</a> *Example of plotted GMSE simulation
 results.*
+
+![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_eg_1.png)
 
 ------------------------------------------------------------------------
 
