@@ -1,8 +1,9 @@
 As part of the [ConFooBio](https://sti-cs.org/confoobio/) project at the
-[University of Stirling](http://www.stir.ac.uk/), [my colleagues and
-I](https://sti-cs.org/contributors-2/) have released the new R package
-[GMSE](https://bradduthie.github.io/gmse/), with `v0.2.2.7` currently
-available on [CRAN](https://CRAN.R-project.org/package=GMSE) and
+[University of Stirling](http://www.stir.ac.uk/), [my
+colleagues](https://sti-cs.org/contributors-2/) and I have released the
+new R package [GMSE](https://bradduthie.github.io/gmse/), with
+`v0.2.2.7` currently available on
+[CRAN](https://CRAN.R-project.org/package=GMSE) and
 [GitHub](https://github.com/bradduthie/gmse). The GMSE package
 generalises [management strategy
 evaluation](http://www.sciencedirect.com/science/article/pii/S0169534711001339)
@@ -105,9 +106,9 @@ run this scenario using the code below.
     sim <- gmse(observe_type = 1, manage_target = 400, res_death_K = 600, plotting = FALSE);
 
     ## [1] "Initialising simulations ... "
-    ## [1] "Generation  36 of  100"
-    ## [1] "Generation  69 of  100"
-    ## [1] "Generation  97 of  100"
+    ## [1] "Generation  34 of  100"
+    ## [1] "Generation  61 of  100"
+    ## [1] "Generation  96 of  100"
 
 To avoid automatic plotting, I have set `plotting = FALSE`. The output
 to `sim` is a very large data structure that includes output from each
@@ -115,7 +116,8 @@ sub-model (natural resource, observation, manager, and user) in each of
 100 (default) time steps. The results can be plotted using the
 `plot_gmse_results` function.
 
-    plot_gmse_results(res = sim$resource, obs = sim$observation, land = sim$land, agents = sim$agents, paras = sim$paras, ACTION = sim$action, COST = sim$cost);
+    plot_gmse_results(res = sim$resource, obs = sim$observation, land = sim$land, 
+    agents = sim$agents, paras = sim$paras, ACTION = sim$action, COST = sim$cost);
 
 ![](2017-07-03-generalised-management-strategy-evaluation_files/figure-markdown_strict/unnamed-chunk-3-1.png)
 
@@ -123,7 +125,7 @@ sub-model (natural resource, observation, manager, and user) in each of
 
 ![](https://raw.githubusercontent.com/bradduthie/blog/8ad0dc531a4ae38c7c81f60634789099058c5161/figures/gmse_eg_1.png)
 
-<a name="fig2">Figure 2:</a>
+<a name="fig2">Figure 2:</a> Example of plotted GMSE simulation results.
 
 ------------------------------------------------------------------------
 
