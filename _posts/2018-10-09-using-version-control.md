@@ -1,6 +1,3 @@
-Contents
-========
-
 This document is intended to be a practical and informal guide to start
 using version control as a research scientist. It was originally written
 for an event in [Stirling Coding
@@ -14,6 +11,8 @@ some additional resources available for get started with version
 control. These notes assume no prior familiarity with version control;
 by the end of this post, readers should be able to start incorporating
 version control in their own workflow.
+
+------------------------------------------------------------------------
 
 -   [Introduction: What is version control?](#what_is_vc)
 -   [Things to do before getting started](#todo)
@@ -250,13 +249,13 @@ cheetsheet](https://www.gitkraken.com/downloads/gitKraken-cheat-sheet-28sept2017
 In the command line, this is done by first going to the folder where you
 want to initialise the repository.
 
-    brad@duthie-pc:~$ cd Dropbox/projects/StirlingCodingClub/version_control
+    brad@duthie-pc:~$ cd version_control
 
 Next, [initialise](https://www.youtube.com/watch?v=9p2d-CuVlgc) the git
 repository with `git init`.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git init
-    Initialised empty Git repository in /home/brad/Dropbox/projects/StirlingCodingClub/version_control/.git/
+    brad@duthie-pc:~/version_control$ git init
+    Initialised empty Git repository in /home/brad/version_control/.git/
 
 You now have a local repository initialised and are ready to start using
 git. Note that the repository is not yet linked with GitHub, but you can
@@ -276,7 +275,7 @@ made during the last commit. You can also see the status of the git
 repository using the command line `git status`, which returns something
 like the below.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git status
+    brad@duthie-pc:~/version_control$ git status
     On branch master
 
     Initial commit
@@ -357,12 +356,12 @@ If you want to link your local repository with GitHub using the command
 line instead of GitKraken, then after creating a new repository on
 GitHub, use the command below.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git remote add origin https://github.com/bradduthie/version_control.git
+    brad@duthie-pc:~/version_control$ git remote add origin https://github.com/bradduthie/version_control.git
 
 You can then push all of your files to the GitHub repository with the
 command below.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git push -u origin master
+    brad@duthie-pc:~/version_control$ git push -u origin master
 
 You should now have a git repository up and running on your local
 machine, and a linked version on GitHub. Next I will explain how to add
@@ -403,7 +402,7 @@ have been saved recently, which is why they are listed as 'Unstaged
 files' (shown with yellow icons). In the command line, we can see the
 equivalent of these saved but unstaged files by typing `git status`.
 
-    brad@brad-ThinkPad-X201:~/Dropbox/projects/StirlingCodingClub/version_control$ git status
+    brad@brad-ThinkPad-X201:~/version_control$ git status
     On branch master
     Your branch is up-to-date with 'version_control/master'.
     Changes not staged for commit:
@@ -446,18 +445,18 @@ command line, use the `git add` command. I have staged (or
 '[added](https://www.youtube.com/watch?v=9p2d-CuVlgc)') the file
 `vc_notes.Rmd` below.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add vc_notes.Rmd
+    brad@duthie-pc:~/version_control$ git add vc_notes.Rmd
 
 If you want to add all unstaged files in the directory, you can do so
 using an asterisk, as below.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add *
+    brad@duthie-pc:~/version_control$ git add *
 
 This is also handy if you want to only add files in a single
 subdirectory; if, for example, you only wanted to add the images in the
 image folder.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add images*
+    brad@duthie-pc:~/version_control$ git add images*
 
 The asterisk just means 'anything after' whatever you've typed (in this
 case, anything after 'images'). You can also use it in front of text.
@@ -477,7 +476,7 @@ button. You will then see another addition to your commit history in the
 GitKraken interface (another cyan circle added to the chain). In the
 command line, you can commit as follows.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git commit -m "Making a commit in the command line"
+    brad@duthie-pc:~/version_control$ git commit -m "Making a commit in the command line"
 
 To see the history of commits at any time in the command line, type
 `git log`.
@@ -511,11 +510,11 @@ the files in git, but you won't be able to see changes).
 To see changes of *unstaged* files in the command line, use the command
 `git diff`.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git diff vc_notes.Rmd
+    brad@duthie-pc:~/version_control$ git diff vc_notes.Rmd
 
 For already staged files, use the command below.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git diff --cached vc_notes.Rmd
+    brad@duthie-pc:~/version_control$ git diff --cached vc_notes.Rmd
 
 You are now able to stage and commit files in GitKraken and the command
 line. This is most of what you'll do with version control, and all that
@@ -558,7 +557,7 @@ in your GitHub repository.
 In the command line, you can push with the following command. Note that
 you'll be asked to type your GitHub name and password.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git push
+    brad@duthie-pc:~/version_control$ git push
 
 The above will work, and push correctly to your GitHub repository, but
 git might also complain with something like the below.
@@ -589,7 +588,7 @@ the URL where the code is stored) and the branch whenever you push. In
 the case of the below, the remote is 'origin' and the branch is 'master'
 (more on branches later).
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git push origin master
+    brad@duthie-pc:~/version_control$ git push origin master
 
 You now know how to push changes to GitHub using both GitKraken and the
 command line. Pulling changes from GitHub works in roughly the same way.
@@ -625,7 +624,7 @@ there is no conflict in merging (more on that later).
 
 You can pull in the command line using the command below.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git pull
+    brad@duthie-pc:~/version_control$ git pull
 
 That's all there is to it. You now have all of the tools that you need
 to save changes to a project repository, commit them to git, and push to
@@ -704,13 +703,13 @@ Back in GitKraken, you can shift between branches 'master' and
 can start a new branch with the command `git branch branch_name`, so
 making the branch 'restructure' would be done as below.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git branch restructure
+    brad@duthie-pc:~/version_control$ git branch restructure
 
 But this only tells git to create a new branch; it doesn't tell git that
 we want to move to that branch and start making changes to it instead of
 'master'. To move among branches, use the `checkout` command.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout restructure
+    brad@duthie-pc:~/version_control$ git checkout restructure
 
 For now, I will only make changes to 'restructure', using it as a place
 to experiment with new changes to the repository. I'll leave 'master' as
@@ -759,12 +758,12 @@ In the command line, merges work using the `merge` command. After
 committing changes in a branch such as `restructure`, the first step in
 merging to master is to checkout back into the master branch.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout master
+    brad@duthie-pc:~/version_control$ git checkout master
 
 Next, use the `merge` command and specify the branch you want to merge
 into master.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git merge restructure
+    brad@duthie-pc:~/version_control$ git merge restructure
 
 Now, if you want to delete the 'restructure' branch in the command line,
 ues the following command.
@@ -925,28 +924,28 @@ merge conflict will inevitably arise.
 here I'll show what a merge conflict looks like in the command line
 interface. I'll create the new branches 'list\_C' and 'list\_D'.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git branch list_C
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git branch list_D
+    brad@duthie-pc:~/version_control$ git branch list_C
+    brad@duthie-pc:~/version_control$ git branch list_D
 
 I'll then checkout 'list\_C' and change the word 'Apples' on line 4 of
 'list.md' to 'Pears', then add the new file and commit.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout list_C
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add list.md
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git commit -m "Change Apples to Pears"
+    brad@duthie-pc:~/version_control$ git checkout list_C
+    brad@duthie-pc:~/version_control$ git add list.md
+    brad@duthie-pc:~/version_control$ git commit -m "Change Apples to Pears"
 
 Next, I'll checkout 'list\_D' and change the word 'Apples' on line 4 of
 'list.md' to 'Bananas', then add the new file and commit.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout list_D
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add list.md
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git commit -m "Change Apples to Bananas"
+    brad@duthie-pc:~/version_control$ git checkout list_D
+    brad@duthie-pc:~/version_control$ git add list.md
+    brad@duthie-pc:~/version_control$ git commit -m "Change Apples to Bananas"
 
 Now, I'll checkout the 'master' branch and merge list\_C into it; as
 with the list\_A branch above, this will not create a merge conflict.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout master
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git merge list_C
+    brad@duthie-pc:~/version_control$ git checkout master
+    brad@duthie-pc:~/version_control$ git merge list_C
 
 You might be asked to write a commit message explaining the merge.
 
@@ -968,7 +967,7 @@ list.md, and that I need to go fix it and commit the new result. If I
 decide that I actually want to abort the merge, I can do so using the
 command below.
 
-    brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git reset --merge
+    brad@duthie-pc:~/version_control$ git reset --merge
 
 But if I want to actually resolve the conflict, I need to go into the
 file with the conflict. The way that git handles merge conflicts behind

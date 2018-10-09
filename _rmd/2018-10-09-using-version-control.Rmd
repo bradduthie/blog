@@ -10,11 +10,9 @@ output: md_document
 bibliography: duthie.bib
 ---
 
-
-Contents
-================================================================================
-
 This document is intended to be a practical and informal guide to start using version control as a research scientist. It was originally written for an event in [Stirling Coding Club](https://stirlingcodingclub.github.io/studyGroup/). Here I will first explain what version control is, and why it is useful for doing science. Next, I will present a step by step guide to getting started using version control with [GitHub](http://github.com) and [GitKraken](http://gitkraken.com), and also introduce the command line interface as an (optional) alternative to GitKraken. Finally, I wil list some additional resources available for get started with version control. These notes assume no prior familiarity with version control; by the end of this post, readers should be able to start incorporating version control in their own workflow.
+
+********************************************************************************
 
 - [Introduction: What is version control?](#what_is_vc)
 - [Things to do before getting started](#todo)
@@ -116,14 +114,14 @@ Initialise a git repository using [GitKraken](http://gitkraken.com) by specifyin
 In the command line, this is done by first going to the folder where you want to initialise the repository.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~$ cd Dropbox/projects/StirlingCodingClub/version_control
+brad@duthie-pc:~$ cd version_control
 ```
 
 Next, [initialise](https://www.youtube.com/watch?v=9p2d-CuVlgc) the git repository with `git init`.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git init
-Initialised empty Git repository in /home/brad/Dropbox/projects/StirlingCodingClub/version_control/.git/
+brad@duthie-pc:~/version_control$ git init
+Initialised empty Git repository in /home/brad/version_control/.git/
 ```
 
 You now have a local repository initialised and are ready to start using git. Note that the repository is not yet linked with GitHub, but you can still view the repository within [GitKraken](http://gitkraken.com). The image below shows the version_control repository during an early stage of development (but several commits after initialisation). Each of the four cyan circles shows an individual commit with a message about what the commit is doing. I can go back to see what the directory looked like in a previous commit by clicking one of these circles.
@@ -135,7 +133,7 @@ You now have a local repository initialised and are ready to start using git. No
 Note that the bottom area of the GitKraken interface shows the changes made during the last commit. You can also see the status of the git repository using the command line `git status`, which returns something like the below.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git status
+brad@duthie-pc:~/version_control$ git status
 On branch master
 
 Initial commit
@@ -197,13 +195,13 @@ Now if you go back to GitHub, you should see any files you had in your repositor
 If you want to link your local repository with GitHub using the command line instead of GitKraken, then after creating a new repository on GitHub, use the command below.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git remote add origin https://github.com/bradduthie/version_control.git
+brad@duthie-pc:~/version_control$ git remote add origin https://github.com/bradduthie/version_control.git
 ```
 
 You can then push all of your files to the GitHub repository with the command below.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git push -u origin master
+brad@duthie-pc:~/version_control$ git push -u origin master
 ```
 
 You should now have a git repository up and running on your local machine, and a linked version on GitHub. Next I will explain how to add and commit changes to files.
@@ -222,7 +220,7 @@ In the above image, the history of commits is shown with in the cyan circles, al
 As you work on your files, continue to save things as you normally would; you need to save before files can be added or committed. In the above, you can see the files 'vc_notes.Rmd' and 'vc_notes.html'. These have been saved recently, which is why they are listed as 'Unstaged files' (shown with yellow icons). In the command line, we can see the equivalent of these saved but unstaged files by typing `git status`.
 
 ```{bash, eval = FALSE}
-brad@brad-ThinkPad-X201:~/Dropbox/projects/StirlingCodingClub/version_control$ git status
+brad@brad-ThinkPad-X201:~/version_control$ git status
 On branch master
 Your branch is up-to-date with 'version_control/master'.
 Changes not staged for commit:
@@ -247,19 +245,19 @@ Now assume that we want to commit the changes we have saved, establishing a snap
 In the above screenshot, the 'vc_notes.Rmd' file has been staged, while the the changed file 'vc_notes.html' and image files in the subdirectory 'images' have not been staged. To stage a file in the command line, use the `git add` command. I have staged (or '[added](https://www.youtube.com/watch?v=9p2d-CuVlgc)') the file `vc_notes.Rmd` below. 
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add vc_notes.Rmd
+brad@duthie-pc:~/version_control$ git add vc_notes.Rmd
 ```
 
 If you want to add all unstaged files in the directory, you can do so using an asterisk, as below.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add *
+brad@duthie-pc:~/version_control$ git add *
 ```
 
 This is also handy if you want to only add files in a single subdirectory; if, for example, you only wanted to add the images in the image folder.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add images*
+brad@duthie-pc:~/version_control$ git add images*
 ```
 
 The asterisk just means 'anything after' whatever you've typed (in this case, anything after 'images'). You can also use it in front of text. If, e.g., you want to only add `Rmd` files, then you could use ``git add *.Rmd`.
@@ -267,7 +265,7 @@ The asterisk just means 'anything after' whatever you've typed (in this case, an
 Committing the staged file is easy in GitKraken. Simply add a commit message. In the above example, this message is 'Making a commit in Gitkraken', with further (optional) description in the message below. In general, it is a good idea to make commit messages meaningful, so that you can understand the history of changes in a repository and easily refer back to key points in development (e.g., "Add new linear model analysis" or "Make edits to first paragraph of manuscript"). In practice, [it's easy to get lazy](https://xkcd.com/1296/) with this. To finalise the commit in GitKraken, just click the big green 'Commit' button. You will then see another addition to your commit history in the GitKraken interface (another cyan circle added to the chain). In the command line, you can commit as follows.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git commit -m "Making a commit in the command line"
+brad@duthie-pc:~/version_control$ git commit -m "Making a commit in the command line"
 ```
 
 To see the history of commits at any time in the command line, type `git log`.
@@ -283,13 +281,13 @@ In the above, the red refers to lines that have been removed, while the green sh
 To see changes of *unstaged* files in the command line, use the command `git diff`.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git diff vc_notes.Rmd
+brad@duthie-pc:~/version_control$ git diff vc_notes.Rmd
 ```
 
 For already staged files, use the command below.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git diff --cached vc_notes.Rmd
+brad@duthie-pc:~/version_control$ git diff --cached vc_notes.Rmd
 ```
 
 You are now able to stage and commit files in GitKraken and the command line. This is most of what you'll do with version control, and all that you need to get started. Next, I'll show you how to push your commits to GitHub, and pull changes from GitHub to your local branch. Once you're able to do this, you will have all of the necessary skills for using git and GitHub effectively in your own projects; after that, I'll explain some of the features that make git such an effective tool for collaboration.
@@ -315,7 +313,7 @@ Make sure that the choice from the pull down (in this case, 'version_control') m
 In the command line, you can push with the following command. Note that you'll be asked to type your GitHub name and password.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git push
+brad@duthie-pc:~/version_control$ git push
 ```
 
 The above will work, and push correctly to your GitHub repository, but git might also complain with something like the below.
@@ -346,7 +344,7 @@ See 'git help config' and search for 'push.default' for further information.
 You can ignore this, but better practice is to specify the remote (i.e., the URL where the code is stored) and the branch whenever you push. In the case of the below, the remote is 'origin' and the branch is 'master' (more on branches later).
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git push origin master
+brad@duthie-pc:~/version_control$ git push origin master
 ```
 
 You now know how to push changes to GitHub using both GitKraken and the command line. Pulling changes from GitHub works in roughly the same way. Say that I am away from my office computer, but have logged into my account on a public computer to [make changes to this Rmd file](https://github.com/bradduthie/version_control/edit/master/vc_notes.Rmd) directly from the browser. I commit these changes in the browswer using the GitHub interface, but now need to bring these changes into my home computer and GitKraken from GitHub. As a reminder, if you ever want to edit a text file within GitHub, select the file in your GitHub repository, then click on the pencil icon to the left of the rubbish bin icon.
@@ -372,7 +370,7 @@ To pull your change in GitKraken, just click on the 'Pull' icon. Your commits fr
 You can pull in the command line using the command below.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git pull
+brad@duthie-pc:~/version_control$ git pull
 ```
 
 That's all there is to it. You now have all of the tools that you need to save changes to a project repository, commit them to git, and push to and pull from GitHub. This is all that you need for working independently to safely back up and record all of the changes in a project that you are working on. A good work flow is to save the files that you work on frequently, and keep GitKraken (or a terminal) open in the background. Then, whenever you feel like you have made some important changes to your files (e.g., a new paragraph, some new code that works), commit the change and push it to GitHub. In addition to backing up the history if all of your project development, it is also nice to have a record of your progress over time. If you have any difficulty with these instructions, you can submit a question to the 'version_control' [issues](https://github.com/bradduthie/version_control/issues). Next, I will explain how to use branching in git.
@@ -412,13 +410,13 @@ Within this hidden folder, all of the history and branches are stored (**don't d
 Back in GitKraken, you can shift between branches 'master' and 'restructure' as you wish by clicking on them. In the command line, you can start a new branch with the command `git branch branch_name`, so making the branch 'restructure' would be done as below.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git branch restructure
+brad@duthie-pc:~/version_control$ git branch restructure
 ```
 
 But this only tells git to create a new branch; it doesn't tell git that we want to move to that branch and start making changes to it instead of 'master'. To move among branches, use the `checkout` command.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout restructure
+brad@duthie-pc:~/version_control$ git checkout restructure
 ```
 
 
@@ -435,13 +433,13 @@ The top toolbar above shows that I am on the branch 'restructure', so I want to 
 In the command line, merges work using the `merge` command. After committing changes in a branch such as `restructure`, the first step in merging to master is to checkout back into the master branch.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout master
+brad@duthie-pc:~/version_control$ git checkout master
 ```
 
 Next, use the `merge` command and specify the branch you want to merge into master.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git merge restructure
+brad@duthie-pc:~/version_control$ git merge restructure
 ```
 
 Now, if you want to delete the 'restructure' branch in the command line, ues the following command.
@@ -513,31 +511,31 @@ That's it! Note that merge conflicts might also occur when collaborating with ot
 **If you don't intend to use the command line, you can skip ahead.** But here I'll show what a merge conflict looks like in the command line interface. I'll create the new branches 'list_C' and 'list_D'.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git branch list_C
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git branch list_D
+brad@duthie-pc:~/version_control$ git branch list_C
+brad@duthie-pc:~/version_control$ git branch list_D
 ```
 
 I'll then checkout 'list_C' and change the word 'Apples' on line 4 of 'list.md' to 'Pears', then add the new file and commit.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout list_C
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add list.md
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git commit -m "Change Apples to Pears"
+brad@duthie-pc:~/version_control$ git checkout list_C
+brad@duthie-pc:~/version_control$ git add list.md
+brad@duthie-pc:~/version_control$ git commit -m "Change Apples to Pears"
 ```
 
 Next, I'll checkout 'list_D' and change the word 'Apples' on line 4 of 'list.md' to 'Bananas', then add the new file and commit.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout list_D
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git add list.md
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git commit -m "Change Apples to Bananas"
+brad@duthie-pc:~/version_control$ git checkout list_D
+brad@duthie-pc:~/version_control$ git add list.md
+brad@duthie-pc:~/version_control$ git commit -m "Change Apples to Bananas"
 ```
 
 Now, I'll checkout the 'master' branch and merge list_C into it; as with the list_A branch above, this will not create a merge conflict.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git checkout master
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git merge list_C
+brad@duthie-pc:~/version_control$ git checkout master
+brad@duthie-pc:~/version_control$ git merge list_C
 ```
 
 You might be asked to write a commit message explaining the merge.
@@ -555,7 +553,7 @@ Just write down a message (or leave the "Merge branch 'list_C'" as it is at the 
 What the command line is telling me here is there is a merge conflict in list.md, and that I need to go fix it and commit the new result. If I decide that I actually want to abort the merge, I can do so using the command below.
 
 ```{bash, eval = FALSE}
-brad@duthie-pc:~/Dropbox/projects/StirlingCodingClub/version_control$ git reset --merge
+brad@duthie-pc:~/version_control$ git reset --merge
 ```
 
 But if I want to actually resolve the conflict, I need to go into the file with the conflict. The way that git handles merge conflicts behind the scenes is to bracket off what each branch things a line should be in the file itself (GitKraken just interprets this in a more helpful way in the GUI). So the list.md file with a merge conflict now looks like the below.
