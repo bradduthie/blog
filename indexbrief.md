@@ -1,5 +1,5 @@
 ---
 layout: blog_index
-title: Index
+title: Index of posts
 permalink: /blog/indexbrief/
 ---
