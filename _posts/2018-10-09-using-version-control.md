@@ -255,7 +255,7 @@ Next, [initialise](https://www.youtube.com/watch?v=9p2d-CuVlgc) the git
 repository with `git init`.
 
     brad@duthie-pc:~/version_control$ git init
-    Initialised empty Git repository in /home/brad/version_control/.git/
+    Initialised empty Git repository in /version_control/.git/
 
 You now have a local repository initialised and are ready to start using
 git. Note that the repository is not yet linked with GitHub, but you can
@@ -356,12 +356,12 @@ If you want to link your local repository with GitHub using the command
 line instead of GitKraken, then after creating a new repository on
 GitHub, use the command below.
 
-    brad@duthie-pc:~/version_control$ git remote add origin https://github.com/bradduthie/version_control.git
+    $ git remote add origin https://github.com/bradduthie/version_control.git
 
 You can then push all of your files to the GitHub repository with the
 command below.
 
-    brad@duthie-pc:~/version_control$ git push -u origin master
+    $ git push -u origin master
 
 You should now have a git repository up and running on your local
 machine, and a linked version on GitHub. Next I will explain how to add
