@@ -22,11 +22,9 @@ Rmarkdown is a type of file (extension '.Rmd') that is used to make documents th
 
 Getting started with writing simple documents in Rmarkdown takes very little time in Rstudio. In fact, when initialising a new Rmarkdown document within Rstudio (in Rstudio, select `File > New File > R Markdown`), some example text and R code is initialised to help demonstrated how it works; this sample text can be immediately turned into an HTML, PDF, or DOCX using the 'Knit' icon in the Rmarkdown toolbar.
 
-<br>
-<center>
-![The 'Knit' pull-down option is shown in blue](../images/Rstudio_toolbar.png)
-</center>
-<br>
+
+![](../images/Rstudio_toolbar.png)
+
 
 It is not immediately obvious what the advantage is for doing any of this, particularly for people who are already comfortable writing in Word (or LaTeX). My hope is that the advantages will become clear as I demonstrate how to write a manuscript in Rmarkdown. Some of these advantages will be obvious features of Rmarkdown, including the ability to do the following: integrate R code directly (avoiding the need to awkwardly copy-paste analyses, tables, or figures), use BibTeX (to easily add citations, properly formatted for a specific journal), integrate LaTeX equations, add links, and add HTML code and comments. Other advantages will be more subtle, and include the ability to integrate more easily with version control software such as git, and to focus more clearly on the process of writing rather than formatting the document. I will explain this latter advantage in more detail in the next section, comparing how writing in Rmarkdown differs from writing in Word, in practice.
 
@@ -46,35 +44,23 @@ In the next section, I will ease the reader into this work flow by introducing t
 
 After opening Rstudio, the option to create a new Rmarkdown file can be accessed by navigating to 'File', scrolling down to 'New File', then selecting 'R Markdown...'. Alternatively, it can be accessed by selecting the icon directly below 'File' (see below) and choosing 'R Markdown...'.
 
-<br>
-<center>
 ![](../images/top_bar.png)
-</center>
-<br>
 
 In either case, a box will pop up that looks like the one below, which asks for a title and author. It will also ask for a default output format, but this really is not important to specify; all will be possible and easy to choose regardless of the default selected.
 
-<br>
-<center>
+
 ![](../images/new_Rmarkdown.png)
-</center>
-<br>
 
 In addition to writing an Rmarkdown document, the options on the left also allow for writing a presentation or [shiny](https://shiny.rstudio.com/) document in Rmarkdown. I will not discuss how to do this in the current document, but a general understanding of Rmarkdown will make creating slides and shiny presentations much easier. After clicking 'OK', Rstudio will create a new Rmarkdown document, complete with some sample text that looks something like the below (the colour scheme might differ, of course).
 
-<br>
-<center>
+
 ![](../images/default_rmd.png)
-</center>
-<br>
+
 
 This code is demonstrating some of the features of Rmarkdown, including the integration of R code directly into the document. Seeing the output of this is possible by simply clicking the 'Knit' button in the tool bar, as shown below.
 
-<br>
-<center>
+
 ![The 'Knit' pull-down option is shown in blue](../images/Rstudio_toolbar.png)
-</center>
-<br>
 
 Clicking the 'Knit' button will produce an HTML (or PDF or DOCX) with the R analysis run as written in the code; the output should appear when finished in whatever format has been requested. If there are package missing that are needed to knit everything properly, Rstudio will ask to install these first. This simple starting example provides a flavour of what Rmarkdown is capable of doing, but I want to instead start from scratch and focus on process of writing an abstract. I will therefore remove everything after line 5 above until the Rmd file looks like the below.
 
@@ -112,19 +98,15 @@ Two things are worth pointing out in the code above. First, the extended `===` u
 
 We can take a quick break here and see what the output of the document looks like as an HTML file. I have saved the file above as 'ms.Rmd', and we can see the output by clicking the 'Knit' button in the Rstudio toolbar.
 
-<br>
-<center>
+
 ![The 'Knit' pull-down option is shown in blue](../images/Rstudio_toolbar.png)
-</center>
-<br>
+
 
 [Here](https://stirlingcodingclub.github.io/Manuscripts_in_Rmarkdown/ms_history/ms_abstract.html) is what the output looks like in HTML. The title, subtitle, and author have been included, the abstract is recognised as a title, and the link is included appropriately. Of course, in most cases, the output of a manuscrpit would be much better as a PDF or DOCX than an HTML file. To instead get a PDF, it is easy to simply select the pull down from the 'Knit' button and choose 'PDF' instead of 'HTML'.
 
-<br>
-<center>
+
 ![The 'Knit' pull-down option is shown in blue](../images/knit_pulldown.png)
-</center>
-<br>
+
 
 Rstudio immediately starts to produce a file 'ms.pdf' instead of 'ms.html', and adjust the YAML header of 'ms.Rmd' to include a PDF output, as shown below.
 
