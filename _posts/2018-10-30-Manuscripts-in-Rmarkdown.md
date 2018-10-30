@@ -441,7 +441,8 @@ The option `echo = FALSE` in this case tells Rmarkdown not to print the code its
 
 ------------------------------------------------------------------------
 
-![Box plot of the total lengths of live and dead sparrows following a snowstorm in Providence, RI, as originally collected by Hermon Bumpus. The central horizontal line shows median values. Boxes and whiskers show inter-quartile ranges and extreme values, respectively.](../images/Manuscripts_in_Rmarkdown_fig1.png)
+![](../images/Manuscripts_in_Rmarkdown_fig1.png)
+Box plot of the total lengths of live and dead sparrows following a snowstorm in Providence, RI, as originally collected by Hermon Bumpus. The central horizontal line shows median values. Boxes and whiskers show inter-quartile ranges and extreme values, respectively.
 
 ------------------------------------------------------------------------
 
@@ -530,7 +531,8 @@ Lastly, at the end of the [ms.Rmd](https://github.com/StirlingCodingClub/Manuscr
 
     '''{r, echo = FALSE}
     library(knitr);
-    kable(x = dat[1:10,], caption = "First ten rows of the original data set collected by Hermon Bumpus");
+    kable(x = dat[1:10,], caption = "First ten rows of the original data set collected 
+    by Hermon Bumpus");
     '''
 
 This appendix produced by the above code creates a table of the first 10 rows of Bumpus' data set. This is done using the `kable` funciton in the `knitr` R package, which must be called within Rmarkdown to work properly (the `knitr` package can be downloaded using the command `install.packages("knitr")`).
