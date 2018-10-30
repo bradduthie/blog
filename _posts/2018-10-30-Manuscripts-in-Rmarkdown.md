@@ -442,6 +442,7 @@ The option `echo = FALSE` in this case tells Rmarkdown not to print the code its
 ------------------------------------------------------------------------
 
 ![](../images/Manuscripts_in_Rmarkdown_fig1.png)
+
 Box plot of the total lengths of live and dead sparrows following a snowstorm in Providence, RI, as originally collected by Hermon Bumpus. The central horizontal line shows median values. Boxes and whiskers show inter-quartile ranges and extreme values, respectively.
 
 ------------------------------------------------------------------------
