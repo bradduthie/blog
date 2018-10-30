@@ -11,13 +11,7 @@ linkcolor: blue
 biblio-style: apalike
 ---
 
-
-Contents
-================================================================================
-
-********************************************************************************
-
-**Note: Please think of this document as a living document, which anyone is free to improve (like a [wiki](https://en.wikipedia.org/wiki/Wiki)) with minor edits, new sections that others might find useful, or [additional resources](#whatelse) that might be helpful. After reading through this, readers should be able to start writing manuscripts in Rmarkdown, integrating references using [BibTeX](https://en.wikipedia.org/wiki/BibTeX), analyses with R, and equations through [LaTeX](https://en.wikipedia.org/wiki/LaTeX) code if need be. The objective is not to make the reader an expert at Rmarkdown, but to give the reader the confidence to start writing in Rmarkdown and motivation to do so when starting any new document**
+This document is a practical guide to getting started using [Rmarkdown ](https://rmarkdown.rstudio.com/) to write scientific documents, and particularly scientific manuscripts. My objective is to focus on the key features needed for scientific writing and thereby help the reader get started using these features as quickly as possible in their own work flow. I do this through the use of an example manuscript, written entirely in Rmarkdown and produced in [Rstudio](https://www.rstudio.com/) as an [HTML](https://stirlingcodingclub.github.io/Manuscripts_in_Rmarkdown/ms_history/ms_final.html), [PDF](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/blob/8bc9bf700d49dded038cc1114e8d066ffd47bf22/ms.pdf), and [DOCX](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/raw/8bc9bf700d49dded038cc1114e8d066ffd47bf22/ms.docx) file. This guide was original written for an event in [Stirling Coding Club](https://stirlingcodingclub.github.io/studyGroup/).
 
 ********************************************************************************
 
@@ -97,7 +91,7 @@ This code is demonstrating some of the features of Rmarkdown, including the inte
 
 Clicking the 'Knit' button will produce an HTML (or PDF or DOCX) with the R analysis run as written in the code; the output should appear when finished in whatever format has been requested. If there are package missing that are needed to knit everything properly, Rstudio will ask to install these first. This simple starting example provides a flavour of what Rmarkdown is capable of doing, but I want to instead start from scratch and focus on process of writing an abstract. I will therefore remove everything after line 5 above until the Rmd file looks like the below.
 
-```{YAML}
+```
 ---
 title: "Untitled"
 output: html_document
@@ -107,7 +101,7 @@ output: html_document
 
 The text between the top and bottom `---` dashes is a [YAML header](https://en.wikipedia.org/wiki/YAML) header (YAML stands for 'Yet Another Markup Language'). It is not important to understand YAML or know how this header works; it is actually entirely optional. But keeping it in place is helpful, and as I continue to write my example manuscript, I will add to it to show some useful tricks. The first such trick will be to add a title, subtitle and author, which is shown below.
 
-```{YAML}
+```
 ---
 title: "High sparrow body length decreases survival"
 subtitle: "A demonstration of Rmarkdown using Herman Bumpus' data"
@@ -153,7 +147,7 @@ We can take a quick break here and see what the output of the document looks lik
 
 Rstudio immediately starts to produce a file 'ms.pdf' instead of 'ms.html', and adjust the YAML header of 'ms.Rmd' to include a PDF output, as shown below.
 
-```{YAML}
+```
 ---
 title: "High sparrow body length decreases survival"
 author: "Brad Duthie"
@@ -168,7 +162,7 @@ Now there are two options available (`pdf_document` and `html_document`), and Rs
 
 Note that [the DOCX version](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/raw/98457a6bbf0e51d4300fe8213159f775d2d75966/ms.docx) is formatted a bit strangely (clicking the link should start a download of the DOCX from GitHub), with titles coloured in light blue, which is not really desirable for scientific manuscripts. Other formatting issues leave a lot to be desired; the text is not double-spaced and there are no line or page numbers. To fix this, we could just edit these formatting options directly in Word, but this would be tedious because it would be necessary to repeat this every time a new DOCX was created using the knit function in Rstudio. Instead, **we can ensure that the created DOCX is formatted as desired every time by using a template DOCX**.  This template document is formatted in Word (or Libre Office) as desired, and Rstudio recognises these formats and uses them to create a new 'ms.docx'. [Here is an example of a template document](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/raw/d15ea764d2f6c07c85ea82fc8207109f41844000/docx_template.docx) ('docx_template.docx') that I have created that is formatted in a way that is more useful for scientific manuscripts. To use it, the template document needs to be placed in the same folder as the manuscript file 'ms.Rmd', and we need to adjust the YAML header of 'ms.Rmd' as below.
 
-```{YAML}
+```
 ---
 title: "High sparrow body length decreases survival"
 author: "Brad Duthie"
@@ -249,7 +243,7 @@ As a side note, unfortunately, BIB files use LaTeX code rather than Rmarkdown to
 
 Now that I have created the [refs.bib](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/blob/master/refs.bib) BibTeX file, I need to tell the ms.Rmd file to use it to build references, then replace manually added parenthetical citations with citation keys. To do this requires an addition to the YAML header of ms.Rmd, which now looks like the below.
 
-```{YAML}
+```
 ---
 title: "High sparrow body length decreases survival"
 author: "Brad Duthie"
@@ -313,7 +307,7 @@ Second, I have removed the references that were originally manually included in 
 **A few more fancy tricks.** It might be useful to include linked citations and specific formatting for the literature cited. To do the former, the lines `link-citations: yes` and
 `linkcolor: blue` (or whatever colour is preferred) should be added to the YAML header; parenthetical citation will then be linked to the associated entry in the bibliography. To do the latter requires a [Citation Style Language (CSL)](https://en.wikipedia.org/wiki/Citation_Style_Language) text file to be included in the same directory as ms.Rmd. Often it is easy to search online for CSL files for a particular scientific journal (a lot of them are [available on GitHub](https://github.com/citation-style-language/styles)). For example, I have downloaded and included the appropriate CSL files for *Nature* and *American Naturalist*, both of which are available for download [here](https://github.com/citation-style-language/styles). **It is not important to know how CSL files work** -- they are essentially text files that tell the Rmarkdown file how to use the information in the BibTeX file to build the citations. But this is done automatically by adding a line to the YAML index such as `csl: nature.csl`. The modified YAML header shows an Rmardown file that will produce linked citations in the style of *Nature*, including within-text citations as superscripts and bibliography of citations in the order in which tye appear within the text. [Here](https://stirlingcodingclub.github.io/Manuscripts_in_Rmarkdown/ms_history/ms_nature.html) is the resulting HTML. 
 
-```{YAML}
+```
 ---
 title: "High sparrow body length decreases survival"
 author: "Brad Duthie"
@@ -530,7 +524,7 @@ There are a few small notes to include in finishing up these notes. First, I wan
 
 Most readers will have collaborators who will prefer to work in Microsoft Word, and this should be relatively easy given the ability of Rmarkdown to create DOCX files as output. Less commonly, some collaborators, journals, or pre-print servers (e.g. [arXiv](https://arxiv.org/)) will require LaTeX files. [Here](https://gist.github.com/JJ/ef9d3d8f1142df064bd5) is a miniature how-to on how to create TEX files from Rmarkdown. Essentially, this requires an additional argument to the PDF output in the YAML header.
 
-```{YAML}
+```
 output:
   pdf_document:
     keep_tex: true
