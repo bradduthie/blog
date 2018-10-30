@@ -92,7 +92,18 @@ Essentially, the YAML header allows authors to specify key information to be use
     Abstract
     ===============================================================================
       
-    Writing documents in Rmarkdown using Rstudio can make scientific workflow more efficient, and here I demonstrate how a scientific manuscript can be written using a classical data set first published by Herman Bumpus. I integrate Bumpus' data with Rmarkdown to produce a sample manuscript, testing whether or not sparrow body length decreases survival following a storm in southern New England. Using a t-test, I show that surviving birds have lower body length than birds that do not survive. All analyses of data are incorporated into the underlying Rmarkdown document, including figures and a table. References are incorporated using BibTeX. The underlying code for this manuscript is publicly available [on GitHub](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown) as part of the Stirling Coding Club organisation.
+    Writing documents in Rmarkdown using Rstudio can make scientific workflow 
+    more efficient, and here I demonstrate how a scientific manuscript can be 
+    written using a classical data set first published by Herman Bumpus. I 
+    integrate Bumpus' data with Rmarkdown to produce a sample manuscript, testing 
+    whether or not sparrow body length decreases survival following a storm in 
+    southern New England. Using a t-test, I show that surviving birds have lower 
+    body length than birds that do not survive. All analyses of data are 
+    incorporated into the underlying Rmarkdown document, including figures and a 
+    table. References are incorporated using BibTeX. The underlying code for this 
+    manuscript is publicly available 
+    [on GitHub](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown) 
+    as part of the Stirling Coding Club organisation.
 
 Two things are worth pointing out in the code above. First, the extended `===` underneath the word 'Abstract'; this tells Rmarkdown to create a title in the output. Second, the words 'on GitHub' make a link to the Stirling Coding Club website; the square brackets indicate the words to appear linked `[on GitHub]`, while the parentheses that immediately follow specify the URL. Both of these tools are available in basic markdown too (i.e., .md files).
 
@@ -146,20 +157,40 @@ In writing the introduction, I will focus specifically on incorporating citation
     Introduction
     ================================================================================
 
-    In the late 1800s, there was a particulalry severe snowstorm in Providence, Rhode Island. At the time, Herman Bumpus was a professor of comparative zoology at Brown University. Bumpus noticed that the storm had a particularly negative effect on the local sparrow population (*Passer domesticus*) and decided to use the event to test Charle's Darwin's theory of natural selection (Darwin 1959). Bumpus collected 136 sparrows; some of these sparrows survived the storm, while others perished. Bumpus published a paper and all of the data that he had collected (Bumpus 1989). These data are now a classic data set in biology, and have been analysed multiple times (e.g., Johnston et al. 1972). Here I will use Bumpus' data to demonstrate how to write a scientific manuscript in Rmarkdown.
+    In the late 1800s, there was a particulalry severe snowstorm in Providence, 
+    Rhode Island. At the time, Herman Bumpus was a professor of comparative zoology 
+    at Brown University. Bumpus noticed that the storm had a particularly negative 
+    effect on the local sparrow population (*Passer domesticus*) and decided to use 
+    the event to test Charle's Darwin's theory of natural selection (Darwin 1959). 
+    Bumpus collected 136 sparrows; some of these sparrows survived the storm, while 
+    others perished. Bumpus published a paper and all of the data that he had 
+    collected (Bumpus 1989). These data are now a classic data set in biology, and 
+    have been analysed multiple times (e.g., Johnston et al. 1972). Here I will use 
+    Bumpus' data to demonstrate how to write a scientific manuscript in Rmarkdown.
 
-    The focus of this manuscript is therefore not on Bumpus' data or survival of sparrows *per se*, but the process of scientific writing using Rmarkdown. I have chosen the Bumpus data set because it provides a useful tool for working through most key features of Rmarkdown that scientists might want to use when writing a manuscript. The example question that I will address through this data set and R analysis in Rmarkdown is whether or not increasing sparrow body length is associated with decreased survival following a storm.
+    The focus of this manuscript is therefore not on Bumpus' data or survival of 
+    sparrows *per se*, but the process of scientific writing using Rmarkdown. I have 
+    chosen the Bumpus data set because it provides a useful tool for working through 
+    most key features of Rmarkdown that scientists might want to use when writing a 
+    manuscript. The example question that I will address through this data set and R 
+    analysis in Rmarkdown is whether or not increasing sparrow body length is 
+    associated with decreased survival following a storm.
 
 As a side note, the asterisks around 'per se' in the first sentence of the second paragraph above causes the words to appear in italics in the output (bold can be created with either two italics, `**per se**` or underlines, `_per se_`). Given the above citations, I could then attach a bibliography on the end with all three included manually, as below.
 
     References
     ===============================================================================
 
-    Bumpus, H. C. (1898). Eleventh lecture. The elimination of the unfit as illustrated by the introduced sparrow, *Passer domesticus*. (A fourth contribution to the study of variation.). Biological Lectures: Woods Hole Marine Biological Laboratory, 209–225.
+    Bumpus, H. C. (1898). Eleventh lecture. The elimination of the unfit as 
+    illustrated by the introduced sparrow, *Passer domesticus*. (A fourth 
+    contribution to the study of variation.). Biological Lectures: Woods Hole 
+    Marine Biological Laboratory, 209–225.
 
     Darwin, C. (1859). The Origin of Species. New York: Penguin.
 
-    Johnston, R. F., Niles, D. M., & Rohwer, S. A. (1972). Hermon Bumpus and natural selection in the House Sparrow *Passer domesticus*. Evolution, 26, 20–31.
+    Johnston, R. F., Niles, D. M., & Rohwer, S. A. (1972). Hermon Bumpus and 
+    natural selection in the House Sparrow *Passer domesticus*. Evolution, 26, 
+    20–31.
 
 Adding the above sections to the document 'ms.Rmd' and using knit to make document such as [this HTML](https://stirlingcodingclub.github.io/Manuscripts_in_Rmarkdown/ms_history/ms_intro.html) works fine (see the [PDF](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/blob/551d51f3cccadc2b17bb9cea74c9f72569d2e68d/ms.pdf) or [DOCX](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/raw/551d51f3cccadc2b17bb9cea74c9f72569d2e68d/ms.docx) here). Manually adding references becomes time consuming, however, and it would be more efficient to get Rstudio to do all of the referencing for us instead. **Below, I will demonstrate how do to everything above using BibTeX**.
 
@@ -169,7 +200,9 @@ The idea of using BibTeX is to avoid having to manually format references, and i
     author = {Bumpus, Hermon C},
     journal = {Biological Lectures: Woods Hole Marine Biological Laboratory},
     pages = {209--225},
-    title = {Eleventh lecture. The elimination of the unfit as illustrated by the introduced sparrow, {\it Passer domesticus}. (A fourth contribution to the study of variation.)},
+    title = {Eleventh lecture. The elimination of the unfit as illustrated by the 
+    introduced sparrow, {\it Passer domesticus}. (A fourth contribution to the 
+    study of variation.)},
     year = {1898}
     }
     @book{Darwin1859,
@@ -184,7 +217,8 @@ The idea of using BibTeX is to avoid having to manually format references, and i
     author = {Johnston, R F and Niles, D M and Rohwer, S A},
     journal = {Evolution},
     pages = {20--31},
-    title = {Hermon Bumpus and natural selection in the House Sparrow {\it Passer domesticus}},
+    title = {Hermon Bumpus and natural selection in the House Sparrow {\it Passer 
+    domesticus}},
     volume = {26},
     year = {1972}
     }
@@ -224,14 +258,40 @@ All that has been added is the line `bibliography: refs.bib`. This tells ms.Rmd 
     Abstract
     ===============================================================================
       
-    Writing documents in Rmarkdown using Rstudio can make scientific workflow more efficient, and here I demonstrate how a scientific manuscript can be written using a classical data set first published by Herman Bumpus. I integrate Bumpus' data with Rmarkdown to produce a sample manuscript, testing whether or not sparrow body length decreases survival following a storm in southern New England. Using a t-test, I show that surviving birds have lower body length than birds that do not survive. All analyses of data are incorporated into the underlying Rmarkdown document, including figures and a table. References are incorporated using BibTeX. The underlying code for this manuscript is publicly available [on GitHub](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown) as part of the Stirling Coding Club organisation.
+    Writing documents in Rmarkdown using Rstudio can make scientific workflow more 
+    efficient, and here I demonstrate how a scientific manuscript can be written 
+    using a classical data set first published by Herman Bumpus. I integrate 
+    Bumpus' data with Rmarkdown to produce a sample manuscript, testing whether or 
+    not sparrow body length decreases survival following a storm in southern New 
+    England. Using a t-test, I show that surviving birds have lower body length 
+    than birds that do not survive. All analyses of data are incorporated into the 
+    underlying Rmarkdown document, including figures and a table. References are 
+    incorporated using BibTeX. The underlying code for this manuscript is publicly 
+    available 
+    [on GitHub](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown) 
+    as part of the Stirling Coding Club organisation.
 
     Introduction
     ================================================================================
 
-    In the late 1800s, there was a particulalry severe snowstorm in Providence, Rhode Island. At the time, Herman Bumpus was a professor of comparative zoology at Brown University. Bumpus noticed that the storm had a particularly negative effect on the local sparrow population (*Passer domesticus*) and decided to use the event to test Charle's Darwin's theory of natural selection [@Darwin1859]. Bumpus collected 136 sparrows; some of these sparrows survived the storm, while others perished. Bumpus published a paper and all of the data that he had collected [@Bumpus1898]. These data are now a classic data set in biology, and have been analysed multiple times [e.g., @Johnston1972]. Here I will use Bumpus' data to demonstrate how to write a scientific manuscript in Rmarkdown.
+    In the late 1800s, there was a particulalry severe snowstorm in Providence, 
+    Rhode Island. At the time, Herman Bumpus was a professor of comparative zoology 
+    at Brown University. Bumpus noticed that the storm had a particularly negative 
+    effect on the local sparrow population (*Passer domesticus*) and decided to use 
+    the event to test Charle's Darwin's theory of natural selection [@Darwin1859]. 
+    Bumpus collected 136 sparrows; some of these sparrows survived the storm, while 
+    others perished. Bumpus published a paper and all of the data that he had 
+    collected [@Bumpus1898]. These data are now a classic data set in biology, and 
+    have been analysed multiple times [e.g., @Johnston1972]. Here I will use Bumpus'
+    data to demonstrate how to write a scientific manuscript in Rmarkdown.
 
-    The focus of this manuscript is therefore not on Bumpus' data or survival of sparrows *per se*, but the process of scientific writing using Rmarkdown. I have chosen the Bumpus data set because it provides a useful tool for working through most key features of Rmarkdown that scientists might want to use when writing a manuscript. The example question that I will address through this data set and R analysis in Rmarkdown is whether or not increasing sparrow body length is associated with decreased survival following a storm.
+    The focus of this manuscript is therefore not on Bumpus' data or survival of 
+    sparrows *per se*, but the process of scientific writing using Rmarkdown. I 
+    have chosen the Bumpus data set because it provides a useful tool for working 
+    through most key features of Rmarkdown that scientists might want to use when 
+    writing a manuscript. The example question that I will address through this data 
+    set and R analysis in Rmarkdown is whether or not increasing sparrow body length 
+    is associated with decreased survival following a storm.
 
     References
     ===============================================================================
@@ -284,7 +344,15 @@ In writing the methods section, I want to focus specifically on the inclusion of
     Methods
     ================================================================================
 
-    Bumpus focused his study on the House Sparrow (*Passer domesticus*; see Figure 1), which has a very wide global distribution. It is native to Europe and Asia, but not the Americas where Bumpus collected his original study [@Bumpus1898]. In addition to measuring total length and survival for 136 sparrows, Bumpus measured sparrow sex, wingspan, and mass, and also the length of each sparrow's head, humerus, tibiotarsus, skull, and sternum. While modern ornithologists believe that the total body length measurement that I will use today is subject to high observational error [@Johnston1972], it will be more than sufficient for demonstrating Rmarkdown.
+    Bumpus focused his study on the House Sparrow (*Passer domesticus*; see Figure 
+    1), which has a very wide global distribution. It is native to Europe and Asia, 
+    but not the Americas where Bumpus collected his original study [@Bumpus1898]. In
+    addition to measuring total length and survival for 136 sparrows, Bumpus 
+    measured sparrow sex, wingspan, and mass, and also the length of each sparrow's 
+    head, humerus, tibiotarsus, skull, and sternum. While modern ornithologists 
+    believe that the total body length measurement that I will use today is subject 
+    to high observational error [@Johnston1972], it will be more than sufficient for 
+    demonstrating Rmarkdown.
 
     <!--- Note that the image below is in the public domain --->
     <!--- https://commons.wikimedia.org/wiki/File:Lto-tpbo-passer-domesticus-05.JPG --->
@@ -298,23 +366,33 @@ In addition to the image inserted above, there are a couple additional things to
 
 Next, equations can be added to the text in the style of LaTeX. This feature is very useful because LaTeX produces highly professional looking equations, and these carry over to Rmarkdown. Learning the code to write these equations takes some time though, and at first requires a lot of [looking up code online](https://en.wikibooks.org/wiki/LaTeX/Mathematics). Below I include an example of what Rmarkdown can do with two key equations used in the Student's t-test.
 
-    I performed an independent two-sample student's t-test on sparrow total body length to test whether or not sparrows that died in the 1898 storm were larger than sparrows that survived. I assume that both groups of sparrows (dead and living) have equal variances, so the test statistic $t$ is calculated as follows,
+    I performed an independent two-sample student's t-test on sparrow total body 
+    length to test whether or not sparrows that died in the 1898 storm were larger 
+    than sparrows that survived. I assume that both groups of sparrows (dead and 
+    living) have equal variances, so the test statistic $t$ is calculated as 
+    follows,
 
-    $$t = \frac{\bar{X}_{1} - \bar{X}_{2}} {s_{p} \times \sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}.$$
+    $$t = \frac{\bar{X}_{1} - \bar{X}_{2}} {s_{p} \times \sqrt{\frac{1}{n_{1}} + 
+    \frac{1}{n_{2}}}}.$$
 
-    In the above, $\bar{X}_{1}$ and $\bar{X}_{2}$ are the mean of the samples of sparrows that died and lived, respectively. Similarly, $n_{1}$ and $n_{2}$ are the sample sizes of sparrows that died and lived, and $s_{p}$ is the pooled sample mean, which is calculated as follows,
+    In the above, $\bar{X}_{1}$ and $\bar{X}_{2}$ are the mean of the samples of 
+    sparrows that died and lived, respectively. Similarly, $n_{1}$ and $n_{2}$ are 
+    the sample sizes of sparrows that died and lived, and $s_{p}$ is the pooled 
+    sample mean, which is calculated as follows,
 
     $$s_{p} = \sqrt{\frac{s^{2}_{X_{1}} + s^{2}_{X_{2}}}{2}}.$$
 
-    In the above, the $s^{2}_{X_{1}}$ and $s^{2}_{X_{2}}$ are the sample standard deviations for sparrows that died and lived, respectively. I conduceted the two sample t-test using the `t.test` function in R [@R2018].
+    In the above, the $s^{2}_{X_{1}}$ and $s^{2}_{X_{2}}$ are the sample standard 
+    deviations for sparrows that died and lived, respectively. I conduceted the two 
+    sample t-test using the `t.test` function in R [@R2018].
 
 The equations are within the `$$` signs on a line of their own. Whenever an equation takes a line of its own, two `$$` encompass the equation. If an equation occurs within line, then only a single `$` is used (e.g., `$e^{i \pi} + 1 = 0$` becomes *e*<sup>*i**π*</sup> + 1 = 0). The two equations shown above become,
 
-$$t = \\frac{\\bar{X}\_{1} - \\bar{X}\_{2}} {s\_{p} \\times \\sqrt{\\frac{1}{n\_{1}} + \\frac{1}{n\_{2}}}},$$
+![](../images/Manuscripts_in_Rmarkdown_eq1.png)
 
 and,
 
-$$s\_{p} = \\sqrt{\\frac{s^{2}\_{X\_{1}} + s^{2}\_{X\_{2}}}{2}},$$
+![](../images/Manuscripts_in_Rmarkdown_eq2.png)
 
 respectively. The whole methods are shown in context in the [HTML](https://stirlingcodingclub.github.io/Manuscripts_in_Rmarkdown/ms_history/ms_evolution.html), [PDF](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/blob/74c62583e36934b6400214a18bc9793932438fc3/ms.pdf), and [DOCX](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/raw/74c62583e36934b6400214a18bc9793932438fc3/ms.docx) outputs. In the next section, I will finally get to explaining the integration of R within Rmarkdown.
 
@@ -336,7 +414,12 @@ In this section, we finally get to the integration of R into the Rmarkdown docum
     dead <- as.numeric(res$estimate[2]); # Get mean length of dying sparrows
     '''
 
-    Bumpus' data included 'r sum(dat$surv == "alive")' sparrows that lived and 'r sum(dat$surv == "dead")' sparrows that died. The mean total length of living sparrows was 'r round(live, digits = 2)' mm, and the mean total length of dead sparrows was 'r round(dead, digits = 2)' mm. The two sample t-test revealed a t-statistic of 'r round(tval, digits = 2)', which corresponds to a p-value of $P =$ 'r round(pval, digits = 5)'. 
+    Bumpus' data included 'r sum(dat$surv == "alive")' sparrows that lived and 
+    'r sum(dat$surv == "dead")' sparrows that died. The mean total length of living 
+    sparrows was 'r round(live, digits = 2)' mm, and the mean total length of dead 
+    sparrows was 'r round(dead, digits = 2)' mm. The two sample t-test revealed a 
+    t-statistic of 'r round(tval, digits = 2)', which corresponds to a p-value of 
+    $P =$ 'r round(pval, digits = 5)'. 
 
 In the above the `echo = FALSE` option in `{r, echo = FALSE}` tells R not to print any of the code that follows. It will, however *evaluate* the code in R (to have it not evaluate, set `eval = FALSE`). Hence, the results of the data analysis in `res` and the variables pulled from `res` (`tval`, `pval`, `live`, and `dead` in the above) can be used and printed out as desired. This is what is being done in the paragraph that follows. Hence when I write 'r sum(dat$surv == "alive")' (but with grave accents rather than the apostraphes I just used), R calculates the total sum of surviving sparrows just as it would in the normal R console. The leading 'r' tells Rmarkdown to evaluate everything between the grave accents, then print it as plain text; in this case the value 72. All of the code in the short paragraph above ultimately produces text that looks like the below.
 
@@ -344,7 +427,11 @@ In the above the `echo = FALSE` option in `{r, echo = FALSE}` tells R not to pri
 
 This can be seen more clearly in the Results section of [ms.Rmd](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/blob/master/ms.Rmd). Note that this is only a greatly simplified example; it is entirely possible to do much more complex analyses, including reading in multiple packages, from within Rmarkdown. It is also easy to **embed figures directly into Rmarkdown documents** in the same way that they would be produced by the R console. In other words, there is no need to create an image file and then embed it as I did with the picture of the sparrow; Rmarkdown takes care of the image making directly from the R code.
 
-    '''{r, echo = FALSE, eval = TRUE, fig.width = 5, fig.height = 5, fig.cap = "Box plot of the total lengths of live and dead sparrows following a snowstorm in Providence, RI, as originally collected by Hermon Bumpus. The central horizontal line shows median values. Boxes and whiskers show inter-quartile ranges and extreme values, respectively."}
+    '''{r, echo = FALSE, eval = TRUE, fig.width = 5, fig.height = 5, fig.cap = 
+        "Box plot of the total lengths of live and dead sparrows following a 
+        snowstorm in Providence, RI, as originally collected by Hermon Bumpus. The 
+        central horizontal line shows median values. Boxes and whiskers show 
+        inter-quartile ranges and extreme values, respectively."}
     par(mar = c(5, 5, 1, 1));
     plot(x = dat$surv, y = dat$totlen, cex.axis = 1.5, lwd = 2,
          ylab = "Total Sparrow Length (mm)", cex.lab = 1.5);
@@ -354,7 +441,7 @@ The option `echo = FALSE` in this case tells Rmarkdown not to print the code its
 
 ------------------------------------------------------------------------
 
-![Box plot of the total lengths of live and dead sparrows following a snowstorm in Providence, RI, as originally collected by Hermon Bumpus. The central horizontal line shows median values. Boxes and whiskers show inter-quartile ranges and extreme values, respectively.](2018-10-30-Manuscripts-in-Rmarkdown_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![Box plot of the total lengths of live and dead sparrows following a snowstorm in Providence, RI, as originally collected by Hermon Bumpus. The central horizontal line shows median values. Boxes and whiskers show inter-quartile ranges and extreme values, respectively.](../images/Manuscripts_in_Rmarkdown-fig1.png)
 
 ------------------------------------------------------------------------
 
@@ -393,15 +480,38 @@ I have chosen to keep the Discussion text itself quite brief. The code below inc
     Discussion
     ================================================================================
 
-    I have analysed data collected by Herman Bumpus [@Bumpus1898] on the relationship between sparrow (*Passer domesticus*) total length and surival following an unusually severe storm. I found that sparrows that died in the storm were longer than sparrows that survived, which suggests that higher sparrow body length decreased survival. Of course, it is not possible to definitively conclude a causal relationship between any aspect of body size and sparrow survival<!--- BD Note: maybe explain this better --->, and even the available data collected by Bumpus would permit a more thoughtful analysis than that conducted in this study (see [Appendix Table 1](#appendix)). 
+    I have analysed data collected by Herman Bumpus [@Bumpus1898] on the relationship
+    between sparrow (*Passer domesticus*) total length and surival following an 
+    unusually severe storm. I found that sparrows that died in the storm were longer 
+    than sparrows that survived, which suggests that higher sparrow body length 
+    decreased survival. Of course, it is not possible to definitively conclude a causal 
+    relationship between any aspect of body size and sparrow survival<!--- BD Note: 
+    maybe explain this better --->, and even the available data collected by Bumpus 
+    would permit a more thoughtful analysis than that conducted in this study (see 
+    [Appendix Table 1](#appendix)). 
 
     <!---
 
-    Here is one way to add some more detailed comments into the manuscript itself, though this can also be done within the text (see above). 
+    Here is one way to add some more detailed comments into the manuscript itself, 
+    though this can also be done within the text (see above). 
 
     --->
 
-    Overall, this document demonstrates how high quality, professional looking documents can be written using Rmarkdown. The [underlying code](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/blob/master/ms.Rmd) for this manuscript is publicly available, along with [accompanying notes](https://stirlingcodingclub.github.io/Manuscripts_in_Rmarkdown/Rmarkdown_notes.html) to understand how it was written. By using Rmarkdown to write manuscripts, authors can more easily use version control (e.g., git) throughout the writing process. The ability to easily integrate citations though BibTeX, LaTeX tools, and dynamic R code can also make writing much more efficient and more enjoyable. Further, obtaining the benefits of using Rmarkdown does not need to come with the cost of isolating colleagues who prefer to work with Word or LaTeX because Rmarkdown can easily be converted to these formats (in the case of Word, with the push of a button). By learning all of the tools used in this manuscript, readers should have all of the necessary knowledge to get started writing and collaborating in Rmarkdown.
+    Overall, this document demonstrates how high quality, professional looking 
+    documents can be written using Rmarkdown. The 
+    [underlying code](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/
+    blob/master/ms.Rmd) for this manuscript is publicly available, along with 
+    [accompanying notes](https://stirlingcodingclub.github.io/Manuscripts_in_Rmarkdown/
+    Rmarkdown_notes.html) to understand how it was written. By using Rmarkdown to 
+    write manuscripts, authors can more easily use version control (e.g., git) 
+    throughout the writing process. The ability to easily integrate citations though 
+    BibTeX, LaTeX tools, and dynamic R code can also make writing much more efficient 
+    and more enjoyable. Further, obtaining the benefits of using Rmarkdown does not 
+    need to come with the cost of isolating colleagues who prefer to work with Word 
+    or LaTeX because Rmarkdown can easily be converted to these formats (in the case 
+    of Word, with the push of a button). By learning all of the tools used in this 
+    manuscript, readers should have all of the necessary knowledge to get started 
+    writing and collaborating in Rmarkdown.
 
 For the purpose of demonstration, I have included two notes within the Dicussion text as an example of the kinds of comments that might be made during the writing process (e.g., the equivalent of adding comments in a DOCX file). The code is the same as used in the [Methods](#methods) section, so my use here is really only for emphasis on the ability to use comments for multiple different purposes. I have also included a within-document link to an appendix `[Appendix Table 1](#appendix)`. This creates a link that redirects to the manuscript's Appendix Table 1, which I will discuss next.
 
@@ -413,7 +523,10 @@ Lastly, at the end of the [ms.Rmd](https://github.com/StirlingCodingClub/Manuscr
     <a name="appendix">Appendix Table 1</a>
     ================================================================================
 
-    An example table is shown below, which includes all of the variables collected by @Bumpus1898 for the first 10 measured sparrows. The full data set can be found online in [GitHub](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/blob/master/data/Bumpus_data.csv).
+    An example table is shown below, which includes all of the variables collected by 
+    @Bumpus1898 for the first 10 measured sparrows. The full data set can be found 
+    online in [GitHub](https://github.com/StirlingCodingClub/Manuscripts_in_Rmarkdown/
+    blob/master/data/Bumpus_data.csv).
 
     '''{r, echo = FALSE}
     library(knitr);
