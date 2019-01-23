@@ -190,16 +190,16 @@ for(i in random_vec){
 }
 ```
 
-    ## [1] 4
-    ## [1] 9
     ## [1] 2
-    ## [1] 3
-    ## [1] 7
     ## [1] 1
-    ## [1] 6
-    ## [1] 5
-    ## [1] 10
     ## [1] 8
+    ## [1] 5
+    ## [1] 6
+    ## [1] 9
+    ## [1] 3
+    ## [1] 4
+    ## [1] 7
+    ## [1] 10
 
 It is unlikely that there would ever be a need to reverse the order of a set, and for most for loops, the simple `1:N` format will usually be all that that is needed. The point is that there is no reason to feel *constrained* to using this format when writing loops.
 
@@ -442,16 +442,16 @@ print(M_mat);
 ```
 
     ##        [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10]
-    ##  [1,] -1.00 -0.37 -1.68 -0.40  0.87  1.42  0.01  1.39  0.42 -0.25
-    ##  [2,] -0.13 -1.00 -1.75  0.01  0.34 -1.47  0.26  0.96  0.26  0.64
-    ##  [3,] -0.58  0.09 -1.00  0.35  0.26  1.43  1.37  0.66  0.56 -0.91
-    ##  [4,] -0.79  0.39  0.35 -1.00  0.11  0.38 -0.63 -0.38 -0.26 -0.86
-    ##  [5,]  1.34  0.05 -0.20 -0.27 -1.00  1.87 -0.67  1.76  0.41 -1.81
-    ##  [6,]  0.60 -2.88  1.25 -0.35 -0.83 -1.00  0.51 -0.70  1.15 -0.31
-    ##  [7,]  0.52 -0.74  0.11  0.26  2.73  0.42 -1.00 -0.16 -0.09  0.44
-    ##  [8,] -0.88  0.36 -0.22  0.38 -1.29  0.14 -1.88 -1.00 -0.50  0.46
-    ##  [9,] -0.65  0.40  0.35  1.09 -1.47  0.45 -0.15 -0.54 -1.00  0.61
-    ## [10,] -0.54  0.67  2.20 -1.61  0.42  1.71  0.59  1.15 -0.38 -1.00
+    ##  [1,] -1.00 -0.42 -0.48 -1.22 -0.99 -0.01  2.48  0.15  2.21 -2.18
+    ##  [2,] -0.20 -1.00  1.93  0.26 -0.75  1.79 -2.22 -0.10  1.07  0.63
+    ##  [3,]  1.44  0.65 -1.00 -0.16  0.02 -0.75  1.51  0.15  1.44 -0.20
+    ##  [4,] -0.33  0.13 -1.03 -1.00  0.92  1.52 -0.28  1.36  0.20 -0.49
+    ##  [5,] -0.44  1.43  0.52 -1.98 -1.00  0.89  0.47 -1.82  0.82 -1.04
+    ##  [6,]  0.13  1.09 -1.09  0.98 -1.82 -1.00  1.09  0.22 -0.42 -0.22
+    ##  [7,] -1.30 -0.61 -1.05 -2.59 -0.94 -0.87 -1.00 -0.38 -1.54  0.29
+    ##  [8,] -0.37  0.54 -0.46  2.32  1.98 -0.73  0.44 -1.00 -0.56  0.18
+    ##  [9,] -1.52  0.01  1.21  1.00 -1.06 -2.04  1.19  0.63 -1.00 -0.04
+    ## [10,] -0.56 -0.91 -0.87  0.82 -0.22 -0.72 -2.39 -0.95 -0.55 -1.00
 
 The above random matrix has diagonal elements all equal to −1, and off-diagonal elements independently drawn from a standard normal distribution 𝒩(0, 1). **The task is now to to make sure that pairs of off-diagonal elements *M*<sub>*i*, *j*</sub> and *M*<sub>*j*, *i*</sub> have opposite signs**. In other words, if `M_mat[1, 3]` is positive, then `M_mat[3, 1]` should be negative (recall that R indices in brackets refer first to the row, then the column of a matrix: `M_mat[row, column]`). Unlike the previous problems in these notes, it is difficult to see how to create such a matrix without using loops (or editing the values by hand). We need to iterate over `M_mat` `for` each row and `for` each column, reversing the signs of off-diagonal elements whenever necessary. To do this, we can use a `for` loop within another `for` loop -- the outer loop iterates over rows, and the inner loop iterates over columns. Whenever a pair of elements `M_mat[i, j]` and `M_mat[j, i]` are found to have the same sign, `M_mat[i, j]` is multiplied by -1.
 
@@ -471,16 +471,16 @@ print(M_mat);
 ```
 
     ##        [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10]
-    ##  [1,] -1.00  0.37  1.68  0.40 -0.87 -1.42 -0.01  1.39  0.42  0.25
-    ##  [2,] -0.13 -1.00 -1.75 -0.01 -0.34  1.47  0.26 -0.96 -0.26 -0.64
-    ##  [3,] -0.58  0.09 -1.00 -0.35  0.26 -1.43 -1.37  0.66 -0.56 -0.91
-    ##  [4,] -0.79  0.39  0.35 -1.00  0.11  0.38 -0.63 -0.38 -0.26  0.86
-    ##  [5,]  1.34  0.05 -0.20 -0.27 -1.00  1.87 -0.67  1.76  0.41 -1.81
-    ##  [6,]  0.60 -2.88  1.25 -0.35 -0.83 -1.00 -0.51 -0.70 -1.15 -0.31
-    ##  [7,]  0.52 -0.74  0.11  0.26  2.73  0.42 -1.00  0.16  0.09 -0.44
-    ##  [8,] -0.88  0.36 -0.22  0.38 -1.29  0.14 -1.88 -1.00  0.50 -0.46
-    ##  [9,] -0.65  0.40  0.35  1.09 -1.47  0.45 -0.15 -0.54 -1.00  0.61
-    ## [10,] -0.54  0.67  2.20 -1.61  0.42  1.71  0.59  1.15 -0.38 -1.00
+    ##  [1,] -1.00  0.42 -0.48  1.22  0.99 -0.01  2.48  0.15  2.21  2.18
+    ##  [2,] -0.20 -1.00 -1.93 -0.26 -0.75 -1.79  2.22 -0.10 -1.07  0.63
+    ##  [3,]  1.44  0.65 -1.00  0.16 -0.02  0.75  1.51  0.15 -1.44  0.20
+    ##  [4,] -0.33  0.13 -1.03 -1.00  0.92 -1.52  0.28 -1.36 -0.20 -0.49
+    ##  [5,] -0.44  1.43  0.52 -1.98 -1.00  0.89  0.47 -1.82  0.82  1.04
+    ##  [6,]  0.13  1.09 -1.09  0.98 -1.82 -1.00  1.09  0.22  0.42  0.22
+    ##  [7,] -1.30 -0.61 -1.05 -2.59 -0.94 -0.87 -1.00 -0.38 -1.54  0.29
+    ##  [8,] -0.37  0.54 -0.46  2.32  1.98 -0.73  0.44 -1.00 -0.56  0.18
+    ##  [9,] -1.52  0.01  1.21  1.00 -1.06 -2.04  1.19  0.63 -1.00  0.04
+    ## [10,] -0.56 -0.91 -0.87  0.82 -0.22 -0.72 -2.39 -0.95 -0.55 -1.00
 
 Note that in the matrix `M_mat` modified above, all pairs of off-diagonal elements `M_mat[i, j]` and `M_mat[j, i]` have opposite signs. Why did that work? We can start with the loops, the outer of which (`for(i in 1:N_species)`) started going through rows starting with row `i = 1`. While `i = 1`, the inner loop (`for(j in 1:N_species)`) went through all columns from 1 to 10 in row 1. Each unique combination of row `i` and column `j` identified a unique matrix element `M_mat[i, j]`, and the code then checked to see if any action needed to be taken in two ways. First, the code checked to see `if(i < j)` -- if not, then the whole bracketed `if` statement is skipped and we move on to the next column `j`. This `if` statement prevents the code from unnecessarily checking the same `i` and `j` pair twice, and prevents it from changing the diagonal where `i == j`. Second, the code assigning `elem_sign` checks to see if `M_mat[i, j]` and `M_mat[j, i]` have opposing signs by multiplying the two values together (two positives or two negatives multiplied together will equal a positive value for `elem_sign`; one positive and one negative will equal a negative value). If `elem_sign > 0`, then we know that `M_mat[i, j]` and `M_mat[j, i]` are either both positive or both negative, so we fix this by changing the sign of `M_mat[i, j]` (multiplying by -1). The figure below gives a visual representation of what is happening.
 
@@ -531,12 +531,12 @@ subset <- sample(x = 1:1000, size = 100, replace = FALSE);
 print(subset);
 ```
 
-    ##   [1] 550 301 812 400 530 446 908 956  35 641 398  36 217 898 232 161 498
-    ##  [18] 628 760 910 423 519  52  50 826 849 185 630 149 113 806  78 764 820
-    ##  [35] 793 208 609 782  30 252 358 594 604 406 379 475 939 188 790 253 654
-    ##  [52]  45 827 912  74 460  96 574 881 809 757 395 228 556 511 575 308 463
-    ##  [69] 617 727 966 429 264 496 536 624 858 748 735 523 837 230 129 684  99
-    ##  [86] 796 283 634 711  57 157 731 561 421 467  93 154 170 411 328
+    ##   [1] 710 680 968 888  10 488 234 187 296 593 226 538 603 774 380   7 176
+    ##  [18] 120  46 753 371 635 617 298 841 658 558 729 385 748 578 688 496 859
+    ##  [35] 819 414 767 557 745 671 686 614 282 122 552 286 885 251 480 253 611
+    ##  [52] 262 276 215 836 953 740 181 986 852 128 370  58 576 249  17 357  43
+    ##  [69] 776 965 320  63  50 877 728 529 567 266 452 752 461 568 513 889  13
+    ##  [86] 541 861 335 838 708 288 308 341 660 713 347 976 551 421 337
 
 This is easy enough, but what if, having already chosen these 100 entities, we decide that we need *another* 100, for a total of 200 unique samples (without replacement). We could find a creative way of using `sample` again in R (give this a try), but there is a logical way to do this with a `while` loop. The idea is to sample a single value from `1:1000`, then check to see if that value is already in the `subset`. If it is in the `subset`, then throw it out and keep going. If it is not in the `subset`, add it. Continue until the size of `subset` is 200.
 
@@ -550,18 +550,18 @@ while(length(subset) <= 200){
 print(subset);
 ```
 
-    ##   [1] 550 301 812 400 530 446 908 956  35 641 398  36 217 898 232 161 498
-    ##  [18] 628 760 910 423 519  52  50 826 849 185 630 149 113 806  78 764 820
-    ##  [35] 793 208 609 782  30 252 358 594 604 406 379 475 939 188 790 253 654
-    ##  [52]  45 827 912  74 460  96 574 881 809 757 395 228 556 511 575 308 463
-    ##  [69] 617 727 966 429 264 496 536 624 858 748 735 523 837 230 129 684  99
-    ##  [86] 796 283 634 711  57 157 731 561 421 467  93 154 170 411 328 941  47
-    ## [103] 211 393 835 138 870 459 220 347 958 450 891 714 403 674 916  34 469
-    ## [120] 840  95 857 323 839 677 978 887 640 177 704 510 929 843  53 917 878
-    ## [137] 689 380 819 366 276 145 196 375 951 845 577 126 342 851 199 890 355
-    ## [154] 804 642 387 452 162  28 288   3  12  29 783 489 513 189 370 975 180
-    ## [171] 279 418 925 191 243  14 484 725 268 657 576 413 436 383 915 560 424
-    ## [188] 200 474 905 417  39 681 364 438  49 799 202 139 569 962
+    ##   [1] 710 680 968 888  10 488 234 187 296 593 226 538 603 774 380   7 176
+    ##  [18] 120  46 753 371 635 617 298 841 658 558 729 385 748 578 688 496 859
+    ##  [35] 819 414 767 557 745 671 686 614 282 122 552 286 885 251 480 253 611
+    ##  [52] 262 276 215 836 953 740 181 986 852 128 370  58 576 249  17 357  43
+    ##  [69] 776 965 320  63  50 877 728 529 567 266 452 752 461 568 513 889  13
+    ##  [86] 541 861 335 838 708 288 308 341 660 713 347 976 551 421 337 864 871
+    ## [103] 519 702 270 310 565 299 759 481 492 432  70  30 993 114 853 205 397
+    ## [120]  60 706   8 579 882 411 582 679 829 332 537 291 147 305 180 151 919
+    ## [137] 957 898 897 327 486 134 932 389 566 239 199 616 668 904 294 939 268
+    ## [154]  12 818  72 204 687 590 876 458 780 482 345 401 400 950 833 923 560
+    ## [171] 497 963  33 744 961 826 980 108 544 737 982 123 554 502 113 219 311
+    ## [188] 228 639 284 556 281 491 336 121 125 469 835 746 428 583
 
 The `while` loop above will continue as long as `subset` contains less than 200 numbers. If a randomly selected number from 1 to 1000 is **not** in the `subset`, then it is immediately added to make a bigger `subset` with the new number appended to it. The end result is that the above code has added 100 new unique values to the previous sample of 100.
 
@@ -630,9 +630,6 @@ while(i &lt;= 1){
     i &lt;- rnorm(n = 1);
     print(i);
 }</code></pre>
-<pre>
-<code>
-
 </details>
 
 1.  Create an 8 × 8 matrix `mat` with diagonal values of 1 and off-diagonal values randomly selected from a standard normal distribution 𝒩(0, 1) (using `rnorm`). Using nested `for` loops as in the [above notes](#for_more), swap elements `mat[i, j]` with `mat[j, i]` **only** if `mat[i, j] < mat[j, i]` (so that the higher number is in the lower triangle).
