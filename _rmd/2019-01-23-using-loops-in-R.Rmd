@@ -8,11 +8,6 @@ output:
 bibliography: loop_notes.bib
 ---
 
-Contents
-================================================================================
-
-********************************************************************************
-
 This document is a practical guide for getting started using for and while loops in R. My goal is to help readers who are familiar with R, but *unfamiliar* with using loops in R, get started coding with loops. This guide was original written for an event in Stirling Coding Club, and a version of this document (formatted slightly differently) is available [here](https://stirlingcodingclub.github.io/using_loops/loop_notes.html).**
 
 ********************************************************************************
@@ -24,6 +19,7 @@ This document is a practical guide for getting started using for and while loops
 - [The while loop in R](#while_loop)
 - [Practice problems](#practice)
 - [Additional resources](#whatelse)
+- [Answers to practice problems](#answers)
 
 ********************************************************************************
 
@@ -346,7 +342,7 @@ Below are some practice problems for working with loops. **To see the answers**,
 
 <details>
 
-```{r}
+```
 for(i in 1:1000){
     if(i %% 17 == 0){
         print(i);
@@ -361,7 +357,7 @@ for(i in 1:1000){
 
 <details>
 
-```{r}
+```
 Y <- 1912:1971; # Years
 N <- length(nhtemp); # Total temps
 A <- 0; # Added temp
@@ -384,7 +380,7 @@ print(avg_A);
 
 <details>
 
-```{r}
+```
 val  <- 0;
 deno <- 1;
 iter <- 1;
@@ -409,7 +405,7 @@ print(val);
 
 <details>
 
-```{r, code_folding = FALSE}
+```
 i <- 0;
 while(i <= 1){
     i <- rnorm(n = 1);
@@ -424,7 +420,7 @@ while(i <= 1){
 
 <details>
 
-```{r}
+```
 mat_v     <- rnorm(n = 64, mean = 0, sd = 1);
 mat_v     <- round(mat_v, digits = 2);
 mat       <- matrix(data = mat_v, nrow = 8);
@@ -448,6 +444,10 @@ print(mat);
 ================================================================================
 
 - The [Essence of Loops](https://www.i-programmer.info/programming/theory/8003-the-essence-of-loops.html)
+
+<a name = "answers">Answers to practice problems</a>
+================================================================================
+
 
 
 References
