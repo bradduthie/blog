@@ -6,7 +6,7 @@ first explain what version control is, and why it is useful for doing
 science. Next, I will present a step by step guide to getting started
 using version control with [GitHub](http://github.com) and
 [GitKraken](http://gitkraken.com), and also introduce the command line
-interface as an (optional) alternative to GitKraken. Finally, I wil list
+interface as an (optional) alternative to GitKraken. Finally, I will list
 some additional resources available for get started with version
 control. These notes assume no prior familiarity with version control;
 by the end of this post, readers should be able to start incorporating
