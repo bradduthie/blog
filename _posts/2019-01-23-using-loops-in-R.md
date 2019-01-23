@@ -577,7 +577,6 @@ Below are some practice problems for working with loops. **To see the answers**,
 
 <details>
 
-<p><details></p>
 <pre class="r"><code>for(i in 1:1000){
     if(i %% 17 == 0){
         print(i);
