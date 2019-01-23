@@ -1,4 +1,4 @@
-This document is a practical guide for getting started using for and while loops in R. My goal is to help readers who are familiar with R, but *unfamiliar* with using loops in R, get started coding with loops. This guide was original written for an event in Stirling Coding Club, and a version of this document (formatted slightly differently) is available [here](https://stirlingcodingclub.github.io/using_loops/loop_notes.html).\*\*
+This document is a practical guide for getting started using for and while loops in R. My goal is to help readers who are familiar with R, but *unfamiliar* with using loops in R, get started coding with loops. This guide was original written for an event in Stirling Coding Club, and a version of this document (formatted slightly differently) is available [here](https://stirlingcodingclub.github.io/using_loops/loop_notes.html).
 
 ------------------------------------------------------------------------
 
@@ -577,13 +577,12 @@ Below are some practice problems for working with loops. **To see the answers**,
 
 <details>
 
-``` r
-    for(i in 1:1000){
-        if(i %% 17 == 0){
-            print(i);
-        }
+<p><details></p>
+<pre class="r"><code>for(i in 1:1000){
+    if(i %% 17 == 0){
+        print(i);
     }
-```
+}</code></pre>
 
 </details>
 
@@ -591,20 +590,18 @@ Below are some practice problems for working with loops. **To see the answers**,
 
 <details>
 
-``` r
-    Y <- 1912:1971; # Years
-    N <- length(nhtemp); # Total temps
-    A <- 0; # Added temp
-    C <- 0; # Count
-    for(i in 1:N){
-        if(Y[i] %% 2 == 0){
-            A <- A + nhtemp[i];
-            C <- C + 1;
-        }
+<pre class="r"><code>Y &lt;- 1912:1971; # Years
+N &lt;- length(nhtemp); # Total temps
+A &lt;- 0; # Added temp
+C &lt;- 0; # Count
+for(i in 1:N){
+    if(Y[i] %% 2 == 0){
+        A &lt;- A + nhtemp[i];
+        C &lt;- C + 1;
     }
-    avg_A <- A/C;
-    print(avg_A);
-```
+}
+avg_A &lt;- A/C;
+print(avg_A);</code></pre>
 
 </details>
 
@@ -612,24 +609,22 @@ Below are some practice problems for working with loops. **To see the answers**,
 
 <details>
 
-``` r
-    val  <- 0;
-    deno <- 1;
-    iter <- 1;
-    sign <- 1;
-    while(iter < 1000000){
-        if(sign < 0){
-            val  <- val - (4/deno);
-        }
-        if(sign > 0){
-            val <- val + (4/deno);
-        }
-        sign <- -1 * sign;
-        deno <- deno + 2;
-        iter <- iter + 1;
+<pre class="r"><code>val  &lt;- 0;
+deno &lt;- 1;
+iter &lt;- 1;
+sign &lt;- 1;
+while(iter &lt; 1000000){
+    if(sign &lt; 0){
+        val  &lt;- val - (4/deno);
     }
-    print(val);
-```
+    if(sign &gt; 0){
+        val &lt;- val + (4/deno);
+    }
+    sign &lt;- -1 * sign;
+    deno &lt;- deno + 2;
+    iter &lt;- iter + 1;
+}
+print(val);</code></pre>
 
 </details>
 
@@ -637,13 +632,12 @@ Below are some practice problems for working with loops. **To see the answers**,
 
 <details>
 
-``` r
-    i <- 0;
-    while(i <= 1){
-        i <- rnorm(n = 1);
-        print(i);
-    }
-```
+<pre class="r"><code>i &lt;- 0;
+while(i &lt;= 1){
+    i &lt;- rnorm(n = 1);
+    print(i);
+}</code></pre>
+<pre><code>
 
 </details>
 
@@ -651,23 +645,21 @@ Below are some practice problems for working with loops. **To see the answers**,
 
 <details>
 
-``` r
-    mat_v     <- rnorm(n = 64, mean = 0, sd = 1);
-    mat_v     <- round(mat_v, digits = 2);
-    mat       <- matrix(data = mat_v, nrow = 8);
-    diag(mat) <- 1;
-    N <- dim(mat)[1]; 
-    for(i in 1:N){ 
-        for(j in 1:N){
-            if(mat[i, j] < mat[j, i]){
-                temp_val  <- mat[i, j];
-                mat[i, j] <- mat[j, i];
-                mat[j, i] <- temp_val;
-            }
-        } 
+<pre class="r"><code>mat_v     &lt;- rnorm(n = 64, mean = 0, sd = 1);
+mat_v     &lt;- round(mat_v, digits = 2);
+mat       &lt;- matrix(data = mat_v, nrow = 8);
+diag(mat) &lt;- 1;
+N &lt;- dim(mat)[1]; 
+for(i in 1:N){ 
+    for(j in 1:N){
+        if(mat[i, j] &lt; mat[j, i]){
+            temp_val  &lt;- mat[i, j];
+            mat[i, j] &lt;- mat[j, i];
+            mat[j, i] &lt;- temp_val;
+        }
     } 
-    print(mat);
-```
+} 
+print(mat);</code></pre>
 
 </details>
 
