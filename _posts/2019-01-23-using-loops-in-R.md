@@ -190,16 +190,16 @@ for(i in random_vec){
 }
 ```
 
-    ## [1] 5
-    ## [1] 4
+    ## [1] 1
     ## [1] 8
-    ## [1] 6
-    ## [1] 7
-    ## [1] 9
+    ## [1] 10
     ## [1] 2
     ## [1] 3
-    ## [1] 10
-    ## [1] 1
+    ## [1] 6
+    ## [1] 5
+    ## [1] 7
+    ## [1] 9
+    ## [1] 4
 
 It is unlikely that there would ever be a need to reverse the order of a set, and for most for loops, the simple `1:N` format will usually be all that that is needed. The point is that there is no reason to feel *constrained* to using this format when writing loops.
 
@@ -423,20 +423,20 @@ In the next section, I will move on to consider a more complicated example using
 Loops can be nested inside one another, such that the inner loop is run one time for each iteration of the outer loop. A common example of when nested loops are useful is in working with two dimensional arrays (e.g., tables or matrices). I will share a quick example from community ecology theory, in which species interactions within a community are often represented by square matrices like the one below,
 
 <script type="math/tex; mode=display">
-\[M = 
+M = 
 \begin{bmatrix}
     -1       & -0.2 \\
     -0.3     & -1 
-\end{bmatrix}.\]
+\end{bmatrix}.
 </script>
 Community ecology theory is not the focus here, so it is fine to [skip a couple paragraphs](#skip) to just move along to the coding problem. For more context though, each element in the above matrix defines how a slight increase in the density of one species affects the density of another species when species densities are at some equilibrium state. Each row and column in M represents a single species, so there are two species in the above matrix. Where rows and column numbers are identical, we have the diagonal of the matrix; this defines how a species affects its own density (i.e., self-regulation). The off-diagonals define how a slight increase in one species' density affects a different species; in the above example, both species decrease each others densities because each has a negative affect on the other (the species in row 1 is negatively affected by species 2 by a magnitude of
-<script type="math/tex; mode=display">M_{1,2} = -0.2</script>
+<script type="math/tex; mode=inline">M_{1,2} = -0.2</script>
 , and the species in row 2 is negatively affected by species 1 by a magnitude of
-<script type="math/tex; mode=display">M_{2,1} = -0.3</script>
+<script type="math/tex; mode=inline">M_{2,1} = -0.3</script>
 ). If one of these two off-diagonal elements were positive and the other were negative (e.g.,
-<script type="math/tex; mode=display">M_{1,2} = 0.2</script>
+<script type="math/tex; mode=inline">M_{1,2} = 0.2</script>
 ,
-<script type="math/tex; mode=display">M_{2,1} = -0.3</script>
+<script type="math/tex; mode=inline">M_{2,1} = -0.3</script>
 ), we could interpret this as a predator-prey interaction. If both off-diagonal elements were positive (e.g.,
 <script type="math/tex; mode=display">M_{1,2} = 0.2</script>
 ,
@@ -464,16 +464,16 @@ print(M_mat);
 ```
 
     ##        [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10]
-    ##  [1,] -1.00 -1.15  0.39 -0.80  0.60 -0.06  1.82 -0.86 -0.12 -0.99
-    ##  [2,]  0.30 -1.00 -0.24 -0.43 -1.79  1.18  0.04 -0.43  1.06 -1.24
-    ##  [3,] -0.34 -0.91 -1.00 -0.04 -0.54 -1.43 -2.12 -1.10  0.28 -0.42
-    ##  [4,]  1.76 -2.12 -0.77 -1.00 -0.30 -1.55 -0.11 -2.36  0.02 -0.10
-    ##  [5,] -1.25 -0.46  1.74  0.09 -1.00 -0.31 -0.68  0.20  0.61  0.85
-    ##  [6,]  0.81  0.70  0.41 -0.27 -1.06 -1.00  0.56  0.39 -1.29  0.36
-    ##  [7,]  1.36  0.34  2.04 -0.28 -0.52 -0.28 -1.00  0.18  0.39 -0.47
-    ##  [8,] -1.06 -0.13  0.34  0.24 -0.21 -0.71 -0.48 -1.00  0.68  0.97
-    ##  [9,] -0.26 -0.83  0.47  0.63 -0.73  1.86  2.05  0.90 -1.00 -1.20
-    ## [10,] -0.58  0.23  2.49  0.25 -0.37 -1.81 -0.40  0.00 -0.32 -1.00
+    ##  [1,] -1.00  1.82 -0.20  3.12  0.53 -1.43  0.59  0.45  1.03 -0.29
+    ##  [2,]  1.47 -1.00 -1.05 -0.55  1.36  0.83 -0.69  1.38  1.41 -0.51
+    ##  [3,]  0.35 -1.34 -1.00  0.92 -0.65  0.09 -0.02 -1.71  0.93 -0.13
+    ##  [4,]  1.09  0.94  1.35 -1.00 -0.69 -0.55 -1.73 -0.16 -1.82 -0.20
+    ##  [5,]  0.47  0.48 -1.51 -0.21 -1.00 -1.91  0.45  0.49  1.41 -0.25
+    ##  [6,]  0.52 -0.63  0.04 -0.75  0.77 -1.00  0.21 -0.67 -1.01  0.49
+    ##  [7,] -0.99 -2.15  0.73  0.65  0.06 -0.82 -1.00  0.98 -1.83  0.05
+    ##  [8,] -0.35 -0.44  1.06  1.13 -0.44  1.09  0.33 -1.00  0.16 -1.33
+    ##  [9,]  1.49 -0.69 -0.56 -0.74 -0.62 -1.22 -0.63 -0.92 -1.00  1.11
+    ## [10,] -0.52  0.62  0.53  0.32  1.43  0.04 -0.81 -0.62 -0.46 -1.00
 
 The above random matrix has diagonal elements all equal to -1, and off-diagonal elements independently drawn from a standard normal distribution
 <script type="math/tex; mode=display">\mathcal{N}(0, 1)</script>
@@ -499,16 +499,16 @@ print(M_mat);
 ```
 
     ##        [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10]
-    ##  [1,] -1.00 -1.15  0.39 -0.80  0.60 -0.06 -1.82  0.86  0.12  0.99
-    ##  [2,]  0.30 -1.00  0.24  0.43  1.79 -1.18 -0.04  0.43  1.06 -1.24
-    ##  [3,] -0.34 -0.91 -1.00  0.04 -0.54 -1.43 -2.12 -1.10 -0.28 -0.42
-    ##  [4,]  1.76 -2.12 -0.77 -1.00 -0.30  1.55  0.11 -2.36 -0.02 -0.10
-    ##  [5,] -1.25 -0.46  1.74  0.09 -1.00  0.31  0.68  0.20  0.61  0.85
-    ##  [6,]  0.81  0.70  0.41 -0.27 -1.06 -1.00  0.56  0.39 -1.29  0.36
-    ##  [7,]  1.36  0.34  2.04 -0.28 -0.52 -0.28 -1.00  0.18 -0.39  0.47
-    ##  [8,] -1.06 -0.13  0.34  0.24 -0.21 -0.71 -0.48 -1.00 -0.68  0.97
-    ##  [9,] -0.26 -0.83  0.47  0.63 -0.73  1.86  2.05  0.90 -1.00  1.20
-    ## [10,] -0.58  0.23  2.49  0.25 -0.37 -1.81 -0.40  0.00 -0.32 -1.00
+    ##  [1,] -1.00 -1.82 -0.20 -3.12 -0.53 -1.43  0.59  0.45 -1.03  0.29
+    ##  [2,]  1.47 -1.00  1.05 -0.55 -1.36  0.83  0.69  1.38  1.41 -0.51
+    ##  [3,]  0.35 -1.34 -1.00 -0.92  0.65 -0.09 -0.02 -1.71  0.93 -0.13
+    ##  [4,]  1.09  0.94  1.35 -1.00  0.69  0.55 -1.73 -0.16  1.82 -0.20
+    ##  [5,]  0.47  0.48 -1.51 -0.21 -1.00 -1.91 -0.45  0.49  1.41 -0.25
+    ##  [6,]  0.52 -0.63  0.04 -0.75  0.77 -1.00  0.21 -0.67  1.01 -0.49
+    ##  [7,] -0.99 -2.15  0.73  0.65  0.06 -0.82 -1.00 -0.98  1.83  0.05
+    ##  [8,] -0.35 -0.44  1.06  1.13 -0.44  1.09  0.33 -1.00  0.16  1.33
+    ##  [9,]  1.49 -0.69 -0.56 -0.74 -0.62 -1.22 -0.63 -0.92 -1.00  1.11
+    ## [10,] -0.52  0.62  0.53  0.32  1.43  0.04 -0.81 -0.62 -0.46 -1.00
 
 Note that in the matrix `M_mat` modified above, all pairs of off-diagonal elements `M_mat[i, j]` and `M_mat[j, i]` have opposite signs. Why did that work? We can start with the loops, the outer of which (`for(i in 1:N_species)`) started going through rows starting with row `i = 1`. While `i = 1`, the inner loop (`for(j in 1:N_species)`) went through all columns from 1 to 10 in row 1. Each unique combination of row `i` and column `j` identified a unique matrix element `M_mat[i, j]`, and the code then checked to see if any action needed to be taken in two ways. First, the code checked to see `if(i < j)` -- if not, then the whole bracketed `if` statement is skipped and we move on to the next column `j`. This `if` statement prevents the code from unnecessarily checking the same `i` and `j` pair twice, and prevents it from changing the diagonal where `i == j`. Second, the code assigning `elem_sign` checks to see if `M_mat[i, j]` and `M_mat[j, i]` have opposing signs by multiplying the two values together (two positives or two negatives multiplied together will equal a positive value for `elem_sign`; one positive and one negative will equal a negative value). If `elem_sign > 0`, then we know that `M_mat[i, j]` and `M_mat[j, i]` are either both positive or both negative, so we fix this by changing the sign of `M_mat[i, j]` (multiplying by -1). The figure below gives a visual representation of what is happening.
 
@@ -559,12 +559,12 @@ subset <- sample(x = 1:1000, size = 100, replace = FALSE);
 print(subset);
 ```
 
-    ##   [1] 394  44 389 738 662 769 424   9 933 765 345 659 159 416 939 472 291
-    ##  [18] 251 681 211 792 863 574 109 341 529 651 171 787 773 474 836 177 150
-    ##  [35] 459  72 383 969 257 745 825 611 893 679 445 516 973 934 311  53 746
-    ##  [52] 910 722 275 184 303 742 837 647 944 455   5  15 551 213 705 940 974
-    ##  [69] 149 885 766 539 231 252 356 151  22 387 401 842 590 696 163 486 803
-    ##  [86] 931 876 665 186 168 856 971 858 835 838 556 187 193 125 652
+    ##   [1] 412 442 312 879 615 423 784 822 708 864 633  89 286 424 937 507 162
+    ##  [18] 586  64  58  36 897 385 305 683 108 198 239 122  31 336 158  65 847
+    ##  [35] 311 306 991 496 205  59 345 925 832 225 308 513 460 296 184 589 581
+    ##  [52] 977 765 739 741 932 573 469 214 398  67 647   3 263 476  63 837 281
+    ##  [69] 323 220 226 485 191 968 965 873  95 697 746 954 114 706 935 791 161
+    ##  [86] 869 723 638 459 591 892 725 676 755 900 104 411 605 788 981
 
 This is easy enough, but what if, having already chosen these 100 entities, we decide that we need *another* 100, for a total of 200 unique samples (without replacement). We could find a creative way of using `sample` again in R (give this a try), but there is a logical way to do this with a `while` loop. The idea is to sample a single value from `1:1000`, then check to see if that value is already in the `subset`. If it is in the `subset`, then throw it out and keep going. If it is not in the `subset`, add it. Continue until the size of `subset` is 200.
 
@@ -578,18 +578,18 @@ while(length(subset) <= 200){
 print(subset);
 ```
 
-    ##   [1] 394  44 389 738 662 769 424   9 933 765 345 659 159 416 939 472 291
-    ##  [18] 251 681 211 792 863 574 109 341 529 651 171 787 773 474 836 177 150
-    ##  [35] 459  72 383 969 257 745 825 611 893 679 445 516 973 934 311  53 746
-    ##  [52] 910 722 275 184 303 742 837 647 944 455   5  15 551 213 705 940 974
-    ##  [69] 149 885 766 539 231 252 356 151  22 387 401 842 590 696 163 486 803
-    ##  [86] 931 876 665 186 168 856 971 858 835 838 556 187 193 125 652  93 609
-    ## [103] 514 266 287 156 757 798 143 690 433 643 790 468 840 162 573 911 519
-    ## [120] 294 507  68 293 701 670  10 166 254 520 131 589 360 528 483 823 781
-    ## [137] 975 523 227 913 361  99 180 409 471 174 587 899 638 744  33 488 475
-    ## [154] 724 427 847 352 777 750 301 492 612 450 414 656 850 758 306 735 139
-    ## [171] 761  86 654 354 442 332 585 465 487 230 436 114 886 621 914 535 178
-    ## [188] 497 533 831  98 954 768 399 684 374 613 916  65 364 478
+    ##   [1] 412 442 312 879 615 423 784 822 708 864 633  89 286 424 937 507 162
+    ##  [18] 586  64  58  36 897 385 305 683 108 198 239 122  31 336 158  65 847
+    ##  [35] 311 306 991 496 205  59 345 925 832 225 308 513 460 296 184 589 581
+    ##  [52] 977 765 739 741 932 573 469 214 398  67 647   3 263 476  63 837 281
+    ##  [69] 323 220 226 485 191 968 965 873  95 697 746 954 114 706 935 791 161
+    ##  [86] 869 723 638 459 591 892 725 676 755 900 104 411 605 788 981 419 829
+    ## [103] 743 477 580 472 578 115 250 228 649 617 315 621  10 420  92 463 284
+    ## [120] 583 111 180  27 370 262 663 567 911 809 639 219 577 175 910 842 340
+    ## [137] 597 818 570 963 979 719 694 593 946 298 434 413 939 994 816 654 700
+    ## [154] 331 254 705 601 119  25 248 401 382   9 564 777 325 814 787 238 249
+    ## [171] 439 950 188 629 742 377 163  83 510 853 559 537 415 481 429 614 453
+    ## [188] 913 490 812 427  62 338 868 956 983 766 136 831 295  47
 
 The `while` loop above will continue as long as `subset` contains less than 200 numbers. If a randomly selected number from 1 to 1000 is **not** in the `subset`, then it is immediately added to make a bigger `subset` with the new number appended to it. The end result is that the above code has added 100 new unique values to the previous sample of 100.
 
