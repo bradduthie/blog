@@ -166,7 +166,9 @@ print(nhtemp[60]);
 
 We might want to use these data to analyse how the temperature in New Haven has changed over the years from 1912-1972. The first task would likely be to convert the temperatures from Fahrenheit to Celsius. The formula for conversion is as follows,
 
+<center>
 ![](../images/Celsius_to_Fahrenheit.png)
+</center>
 
 To get T<sub>Celsius</sub>, it is not actually necessary to use a for loop in R; this can be done in one line of code:
 
@@ -241,7 +243,9 @@ In the next section, I will move on to consider a more complicated example using
 
 Loops can be nested inside one another, such that the inner loop is run one time for each iteration of the outer loop. A common example of when nested loops are useful is in working with two dimensional arrays (e.g., tables or matrices). I will share a quick example from community ecology theory, in which species interactions within a community are often represented by square matrices like the one below,
 
+<center>
 ![](../images/M_matrix.png)
+</center>
 
 Community ecology theory is not the focus here, so it is fine to [skip a couple paragraphs](#skip) to just move along to the coding problem. For more context though, each element in the above matrix defines how a slight increase in the density of one species affects the density of another species when species densities are at some equilibrium state. Each row and column in M represents a single species, so there are two species in the above matrix. Where rows and column numbers are identical, we have the diagonal of the matrix; this defines how a species affects its own density (i.e., self-regulation). The off-diagonals define how a slight increase in one species' density affects a different species; in the above example, both species decrease each others densities because each has a negative affect on the other (the species in row 1 is negatively affected by species 2 by a magnitude of M<sub>1,2</sub> = -0.2, and the species in row 2 is negatively affected by species 1 by a magnitude of M<sub>2,1</sub> =-0.3). If one of these two off-diagonal elements were positive and the other were negative (e.g., M<sub>1,2</sub> = 0.2, M<sub>2,1</sub> = -0.3), we could interpret this as a predator-prey interaction. If both off-diagonal elements were positive (e.g., M<sub>1,2</sub> = 0.2, M<sub>2,1</sub> = 0.3), we could interpret this as a mutualistic interaction.
 
