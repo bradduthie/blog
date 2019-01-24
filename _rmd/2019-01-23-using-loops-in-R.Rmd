@@ -169,7 +169,7 @@ We might want to use these data to analyse how the temperature in New Haven has 
 <script type="math/tex; mode=display">T_{Celsius} = \frac{5}{9}(T_{Fahrenheit} - 32).</script>
 
 
-To get T<sub>Celsius</sub>, it is not actually necessary to use a for loop in R; this can be done in one line of code:
+To get <script type="math/tex; mode=display">T_{Celsius}</script>, it is not actually necessary to use a for loop in R; this can be done in one line of code:
 
 ```{r}
 T_Celsius <- (5/9) * (nhtemp - 32);
@@ -242,17 +242,19 @@ In the next section, I will move on to consider a more complicated example using
 
 Loops can be nested inside one another, such that the inner loop is run one time for each iteration of the outer loop. A common example of when nested loops are useful is in working with two dimensional arrays (e.g., tables or matrices). I will share a quick example from community ecology theory, in which species interactions within a community are often represented by square matrices like the one below,
 
+<script type="math/tex; mode=display">
 \[M = 
 \begin{bmatrix}
     -1       & -0.2 \\
     -0.3     & -1 
 \end{bmatrix}.\]
+</script>
 
-Community ecology theory is not the focus here, so it is fine to [skip a couple paragraphs](#skip) to just move along to the coding problem. For more context though, each element in the above matrix defines how a slight increase in the density of one species affects the density of another species when species densities are at some equilibrium state. Each row and column in M represents a single species, so there are two species in the above matrix. Where rows and column numbers are identical, we have the diagonal of the matrix; this defines how a species affects its own density (i.e., self-regulation). The off-diagonals define how a slight increase in one species' density affects a different species; in the above example, both species decrease each others densities because each has a negative affect on the other (the species in row 1 is negatively affected by species 2 by a magnitude of \(M_{1,2}\) = -0.2, and the species in row 2 is negatively affected by species 1 by a magnitude of M<sub>2,1</sub> =-0.3). If one of these two off-diagonal elements were positive and the other were negative (e.g., M<sub>1,2</sub> = 0.2, M<sub>2,1</sub> = -0.3), we could interpret this as a predator-prey interaction. If both off-diagonal elements were positive (e.g., M<sub>1,2</sub> = 0.2, M<sub>2,1</sub> = 0.3), we could interpret this as a mutualistic interaction.
+Community ecology theory is not the focus here, so it is fine to [skip a couple paragraphs](#skip) to just move along to the coding problem. For more context though, each element in the above matrix defines how a slight increase in the density of one species affects the density of another species when species densities are at some equilibrium state. Each row and column in M represents a single species, so there are two species in the above matrix. Where rows and column numbers are identical, we have the diagonal of the matrix; this defines how a species affects its own density (i.e., self-regulation). The off-diagonals define how a slight increase in one species' density affects a different species; in the above example, both species decrease each others densities because each has a negative affect on the other (the species in row 1 is negatively affected by species 2 by a magnitude of <script type="math/tex; mode=display">M_{1,2} = -0.2</script>, and the species in row 2 is negatively affected by species 1 by a magnitude of <script type="math/tex; mode=display">M_{2,1} = -0.3</script>). If one of these two off-diagonal elements were positive and the other were negative (e.g., <script type="math/tex; mode=display">M_{1,2} = 0.2</script>, <script type="math/tex; mode=display">M_{2,1} = -0.3</script>), we could interpret this as a predator-prey interaction. If both off-diagonal elements were positive (e.g., <script type="math/tex; mode=display">M_{1,2} = 0.2</script>, <script type="math/tex; mode=display">M_{2,1} = 0.3</script>), we could interpret this as a mutualistic interaction.
 
-To investigate community stability, theoreticians use random matrix theory to test how likely it is that communities with specific properties will return to equilibrium species densities when perturbed [e.g., @Allesina2015a; @Allesina2012]. Developing this theory sometimes requires generating many large M matrices with random interaction strengths (off-diagonal elements) but uniform interaction types (competitor, predator-prey, or mutualist) and self-regulation (diagonal elements). If we take the case of large M matrices in which all interactions are predator-prey (e.g., a big food web), all pairs of row-column elements need to have opposite signs. In other words, if M<sub>i,j</sub> is positive, then M<sub>j,i</sub> needs to be negative. To generate a random matrix with this property, we need go through the elements of M and change the signs of values where appropriate.
+To investigate community stability, theoreticians use random matrix theory to test how likely it is that communities with specific properties will return to equilibrium species densities when perturbed [e.g., @Allesina2015a; @Allesina2012]. Developing this theory sometimes requires generating many large M matrices with random interaction strengths (off-diagonal elements) but uniform interaction types (competitor, predator-prey, or mutualist) and self-regulation (diagonal elements). If we take the case of large M matrices in which all interactions are predator-prey (e.g., a big food web), all pairs of row-column elements need to have opposite signs. In other words, if <script type="math/tex; mode=display">M_{i,j}</script> is positive, then <script type="math/tex; mode=display">M_{j,i}</script> needs to be negative. To generate a random matrix with this property, we need go through the elements of M and change the signs of values where appropriate.
 
-<a name = "skip">The **coding** issue</a> is therefore to build a large matrix in which the sign of M<sub>i,j</sub> is the opposite of M<sub>j,i</sub>. We also want the absolute values of the off-diagonal elements to be random numbers, and the diagonal elements to be -1. These latter two properties can be made with the following lines of code, which will make a 10 &#10005; 10 matrix as printed off below:
+<a name = "skip">The **coding** issue</a> is therefore to build a large matrix in which the sign of <script type="math/tex; mode=display">M_{i,j}</script> is the opposite of <script type="math/tex; mode=display">M_{j,i}</script>. We also want the absolute values of the off-diagonal elements to be random numbers, and the diagonal elements to be -1. These latter two properties can be made with the following lines of code, which will make a 10 &#10005; 10 matrix as printed off below:
 
 ```{r}
 M_vals <- rnorm(n = 100, mean = 0, sd = 1);
@@ -262,7 +264,7 @@ diag(M_mat) <- -1; # Adds -1 values to diagonal
 print(M_mat);
 ```
 
-The above random matrix has diagonal elements all equal to -1, and off-diagonal elements independently drawn from a standard normal distribution $\mathcal{N}(0, 1)$. **The task is now to to make sure that pairs of off-diagonal elements M<sub}{i, j}</sub> and M<sub}{j, i}</sub> have opposite signs**. In other words, if `M_mat[1, 3]` is positive, then `M_mat[3, 1]` should be negative (recall that R indices in brackets refer first to the row, then the column of a matrix: `M_mat[row, column]`). Unlike the previous problems in these notes, it is difficult to see how to create such a matrix without using loops (or editing the values by hand). We need to iterate over `M_mat` `for` each row and `for` each column, reversing the signs of off-diagonal elements whenever necessary. To do this, we can use a `for` loop within another `for` loop -- the outer loop iterates over rows, and the inner loop iterates over columns. Whenever a pair of elements `M_mat[i, j]` and `M_mat[j, i]` are found to have the same sign, `M_mat[i, j]` is multiplied by -1.
+The above random matrix has diagonal elements all equal to -1, and off-diagonal elements independently drawn from a standard normal distribution <script type="math/tex; mode=display">\mathcal{N}(0, 1)</script>. **The task is now to to make sure that pairs of off-diagonal elements <script type="math/tex; mode=display">M_{i, j}</script> and <script type="math/tex; mode=display">M_{j, i}</script> have opposite signs**. In other words, if `M_mat[1, 3]` is positive, then `M_mat[3, 1]` should be negative (recall that R indices in brackets refer first to the row, then the column of a matrix: `M_mat[row, column]`). Unlike the previous problems in these notes, it is difficult to see how to create such a matrix without using loops (or editing the values by hand). We need to iterate over `M_mat` `for` each row and `for` each column, reversing the signs of off-diagonal elements whenever necessary. To do this, we can use a `for` loop within another `for` loop -- the outer loop iterates over rows, and the inner loop iterates over columns. Whenever a pair of elements `M_mat[i, j]` and `M_mat[j, i]` are found to have the same sign, `M_mat[i, j]` is multiplied by -1.
 
 ```{r}
 N_species <- dim(M_mat)[1]; # Get total row & col number
@@ -285,7 +287,7 @@ Note that in the matrix `M_mat` modified above, all pairs of off-diagonal elemen
 
 In the figure above, we start with the case in which `i = 1` (i.e., the first row), and move through each value of `j` from `j = 1` to `j = 10`. If `M_mat[i, j]` is in the upper right triangle of the matrix (i.e., `i < j`; shown in red), then the code checks to see if both `M_mat[i, j]` and `M_mat[j, i]` have the same sign. The loop ends when it has moved through all values of `i` from 1 to 10, hence looking at each element `M_mat[i, j]` in the matrix. 
 
-Once the logic of the nested loop makes sense, the rest comes down to remembering the syntax for for coding loops in R correctly. This comes with practice, so I have included some practice problems using loops below. Next, I will have a (briefer) look at the `while` loop in R. The general idea of iterating the same task many times will be the same, but the conditions under which the task is iterated will change slightly.
+Once the logic of the nested loop makes sense, the rest comes down to remembering the syntax for for coding loops in R correctly. This comes with practice, so I have included some practice problems using loops below. Next, I will have a (more brief) look at the `while` loop in R. The general idea of iterating the same task many times will be the same, but the conditions under which the task is iterated will change slightly.
 
 <a name="while_loop">The while loop in R</a>
 ================================================================================
@@ -371,7 +373,7 @@ print(avg_A);</code></pre>
 </details>
 
 
-3. Using a `while` loop, calculate the sum of the series, Y = (4/1) - (4/3) + (4/5) - (4/7) + (4/9) - (4/11) + [...] to at least 10000 terms. What does the value Y appear to approach as more terms are added? (*Hint: Use `if(){}`, or an `if(){}else{}` to switch from `+` to `-`*)
+3. Using a `while` loop, calculate the sum of the series, <script type="math/tex; mode=display">Y = \frac{4}{1} - \frac{4}{3} + \frac{4}{5} - \frac{4}{7} + \frac{4}{9} - \frac{4}{11} + \dots</script> to at least 10000 terms. What does the value <script type="math/tex; mode=display">Y</script> appear to approach as more terms are added? (*Hint: Use `if(){}`, or an `if(){}else{}` to switch from `+` to `-`*)
 
 
 <details>
@@ -395,7 +397,7 @@ print(val);</code></pre>
 
 </details>
 
-4. From [here](https://www.r-exercises.com/2018/03/30/loops-in-r-exercises/), write a while loop that prints out standard random normal numbers (use rnorm()) but stops (breaks) if you get a number bigger than 1.
+4. From [here](https://www.r-exercises.com/2018/03/30/loops-in-r-exercises/), write a while loop that prints out standard random normal numbers (use `rnorm()`) but stops (breaks) if you get a number bigger than 1.
 
 <details>
 
@@ -408,7 +410,7 @@ while(i &lt;= 1){
 </details>
 
 
-5. Create an 8 &#10005; 8 matrix `mat` with diagonal values of 1 and off-diagonal values randomly selected from a standard normal distribution $\mathcal{N}(0, 1)$ (using `rnorm`). Using nested `for` loops as in the [above notes](#for_more), swap elements `mat[i, j]` with `mat[j, i]` **only** if `mat[i, j] < mat[j, i]` (so that the higher number is in the lower triangle).
+5. Create an 8 &#10005; 8 matrix `mat` with diagonal values of 1 and off-diagonal values randomly selected from a standard normal distribution <script type="math/tex; mode=display">\mathcal{N}(0, 1)</script> (using `rnorm()`). Using nested `for` loops as in the [above notes](#for_more), swap elements `mat[i, j]` with `mat[j, i]` **only** if `mat[i, j] < mat[j, i]` (so that the higher number is in the lower triangle).
 
 <details>
 
