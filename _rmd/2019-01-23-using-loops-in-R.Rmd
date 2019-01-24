@@ -166,7 +166,7 @@ print(nhtemp[60]);
 
 We might want to use these data to analyse how the temperature in New Haven has changed over the years from 1912-1972. The first task would likely be to convert the temperatures from Fahrenheit to Celsius. The formula for conversion is as follows,
 
-![](../images/Celsius_to_Fehrenheit.png)
+![](../images/Celsius_to_Fahrenheit.png)
 
 To get T<sub>Celsius</sub>, it is not actually necessary to use a for loop in R; this can be done in one line of code:
 
