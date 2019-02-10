@@ -51,7 +51,7 @@ hist(rand_norms_10000, xlab = "Random value (X)", col = "grey",
      main = "", cex.lab = 1.5, cex.axis = 1.5);
 ``` 
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/unnamed-chunk-3-1.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 <a name="runif">**Sampling from a uniform distribution**</a>
 
@@ -74,7 +74,7 @@ hist(rand_unifs_10000, xlab = "Random value (X)", col = "grey",
      main = "", cex.lab = 1.5, cex.axis = 1.5);
 ``` 
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/unnamed-chunk-6-1.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 <a name="rbinom">**Sampling from a binomial distribution**</a>
 
@@ -109,7 +109,7 @@ hist(coin_flips_10000, xlab = "Random value (X)", col = "grey",
      main = "", cex.lab = 1.5, cex.axis = 1.5);
 ``` 
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/unnamed-chunk-10-1.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 As would be expected, most of the time 'heads' occurs around 500 times out of 1000, but usually the actual number will be a bit lower or higher due to chance. Note that if we want to simulate the results of individual flips in a single trial, we can do so as follows.
 
@@ -140,7 +140,7 @@ hist(rand_poissons_10000, xlab = "Random value (X)", col = "grey",
      main = "", cex.lab = 1.5, cex.axis = 1.5);
 ``` 
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/unnamed-chunk-14-1.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/unnamed-chunk-14-1.png)
 
 <a name="sample">**Sampling values from a vector**</a>
 
@@ -330,7 +330,7 @@ hist(diff, xlab = xlabel, col = "grey", main = "", cex.lab = 1.5,
      cex.axis = 1.5, breaks = 20);
 ``` 
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/unnamed-chunk-27-1.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/unnamed-chunk-27-1.png)
 
 Recall that the actual observed difference was -0.6345486. This is quite far to the left of the above distribution. We can add an arrow indicating the observed value on the histogram using the code below.
 
@@ -341,7 +341,7 @@ obs_diff  <- mean(birds[obs_alive,5]) - mean(birds[obs_dead,5]);
 arrows(x0 = obs_diff, x1 = obs_diff, y0 = 500, y1 = 10, lwd = 3, length = 0.1);
 ``` 
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/unnamed-chunk-29-1.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/unnamed-chunk-29-1.png)
 
 To get a p-value, we can simply count the number of values less than or equal to the observed `obs_diff` in our randomly generated distribution above, then divide by the total number of randomly generated (9999) and observed (1) differences.
 
@@ -375,7 +375,7 @@ sd_resampled_means <- sd(resampled_means);
 
 In the above loop, 10<sup>4</sup> new data sets of 136 sparrow lengths are generated with replacement to create `resampled_totlen`. The mean of these resampled sparrow total lengths is calculated and appended to `resampled_means`. Outside of the loop, the standard deviation of the `resampled_means` is calculated to be 0.315408. Again, this standard deviation estimates what the standard deviation of *estimated mean* values of sparrow length would be if we were to go out and re-collect the same number of sparrows that Bumpus did. The standard deviation of means is, by definition, a standard error, so we can use this standard deviation to calculate 95% confidence intervals just as we would with the standard error of the original data.
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/CI_sd.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/CI_sd.png)
 
 In the above, *μ*<sub>*l**e**n*</sub> is the true mean total sparrow length, *σ* is the standard deviation of the resampled means (`sd_resampled_means` in the code above), and *z*<sub>*α*/2</sub> is the corresponding *z* score from the standard normal distribution for which the probility exceeds *α*/2 (for a 95% confidence interval, this value is 1.96). Note again the hats above *μ* to differentiate the parameter estimate ($\\hat\\mu\_{len}$) from the true parameter (*μ*<sub>*l**e**n*</sub>). We can then simply substitute *z*<sub>*α*/2</sub> = 1.96, *σ*= `sd_resampled_means` = 0.315408, and $\\hat\\mu\_{len} =$ `mean(birds[,3])` = 159.5441176 to get the following 95% confidence intervals.
 
@@ -386,7 +386,7 @@ upper_95CI <- mean(birds[,3]) + 1.96 * sd_resampled_means;
 
 This results in an estimated mean total bird length of 159.5441176 with a lower 95% confidence interval of 158.925918 and an upper 95% confidence interval of 160.1623173. We can compare this with 95% confidence intervals calculated in the standard way using standard errors from the song sparrow data set as follows.
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/CI_se.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/CI_se.png)
 
 In the above, all that has changed is the $\\sigma / \\sqrt{n}$, which now is the standard deviation of the observed sparrow total lengths (i.e., *not* the standard deviation of the means of all lengths from resampling, as above), divided by the square root of the total number of sparrows observed (i.e., `N_birds` in the code above). This results in the confidence intervals calculated below.
 
@@ -441,7 +441,7 @@ polygon(x = c(lon1, lon1, lon2, lon2),  y = c(lat1, lat2, lat2, lat1),
 points(x = fpet[,4], y = fpet[,3], pch = 20);
 ``` 
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/unnamed-chunk-36-1.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/unnamed-chunk-36-1.png)
 
 The focal question is whether or not these trees are randomly distributed within the brown box. This is not a question that can be answered by randomising the latitude and longitude coordinates of trees. What we need to do instead is compare the distribution of the trees above with that of trees with randomly placed latitude and longitude coordinates within the box. This is a job for a Monte Carlo test, which compares an observed test statistic with that derived from a theoretical null model (Manly 2007). In this case, the test statistic we will use is distance to the nearest neighbour (i.e., for a focal *F. petiolaris* tree, how close the nearest conspecific). The null model that we will assume is a set of randomly sampled latitude and longitude coordinates within the fixed study area (note that we would normally want to translate the latitude and longitude coordinates to the [Universal Transverse Mercator (UTM)](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system) coordinate system for calculating distance between trees. I am skipping this step to avoid making things unnecessary complicated, and because it is not directly related to the logic of the Monte Carlo test).
 
@@ -492,11 +492,11 @@ while(iteration > 0){
 
 In the code above, a `while` loop is used to find the mean nearest neighbour of randomly placed trees 9999 times. Within the loop, trees are randomly placed with [`runif`](#runif), and the same number of trees are placed as were observed in the actual observed data set; `min` and `max` values in `rnorm` reflect the boundaries of the sampling area. We can see what these randomly placed trees look like by plotting some of the iterations below.
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/unnamed-chunk-40-1.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/unnamed-chunk-40-1.png)
 
 Below, the distribution of mean distance to the nearest neighbour is plotted for the 9999 randomly generated tree study areas. The arrow shows the actual observed mean distance between nearest neighbours, as calculated form the original data set.
 
-![](../images/2019-02-10-randomisation-methods-in-r_filesfigure-markdown_github/unnamed-chunk-41-1.png)
+![](../images/2019-02-10-randomisation-methods-in-r_files/figure-markdown_github/unnamed-chunk-41-1.png)
 
 It appears, from the position of the mean tree nearest neighbour distance in the observed data, that the *F. petiolaris* trees are no more or less spatially aggregated than would be expected by chance.
 
