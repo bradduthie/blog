@@ -297,7 +297,7 @@ total_generated   <- length(diff) + 1;
 new_p_value       <- less_or_equal_obs / total_generated;
 ```
 
-Using the randomisation method, we get a value of $P =$ `r new_p_value`. Note that this p-value would change slightly if we were to re-run the analysis, but not by much if a the number of times we resample is sufficiently high[^1]. Also note that the p-value we obtained after randomisation is quite close to the value obtained from the standard t-test, which was `r bird_t_test$p.value`. Conceptually, the two tests are doing the same thing -- assuming that the mean value of one group is not less than the mean value of another group, and asking what the probability is of getting such a low difference in means would be if this assumption were in fact true. This was a very basic example of a randomisation test in R, but I hope that it illustrates how useful randomisation for hypothesis testing can be. Randomisation is a highly flexible tool, which allows researchers to test hypotheses that might be otherwise difficult to address due to restrictive stastical assumptions of standard tests or peculariarites of specific data sets. It is, of course, important to carefully consider what needs to be randomised for a particular question of interest to ensure that the appropriate null distribution is generated.
+Using the randomisation method, we get a value of $P =$ `r new_p_value`. Note that this p-value would change slightly if we were to re-run the analysis, but not by much if a the number of times we resample is sufficiently high<sup>[1](#foot1)</sup>. Also note that the p-value we obtained after randomisation is quite close to the value obtained from the standard t-test, which was `r bird_t_test$p.value`. Conceptually, the two tests are doing the same thing -- assuming that the mean value of one group is not less than the mean value of another group, and asking what the probability is of getting such a low difference in means would be if this assumption were in fact true. This was a very basic example of a randomisation test in R, but I hope that it illustrates how useful randomisation for hypothesis testing can be. Randomisation is a highly flexible tool, which allows researchers to test hypotheses that might be otherwise difficult to address due to restrictive stastical assumptions of standard tests or peculariarites of specific data sets. It is, of course, important to carefully consider what needs to be randomised for a particular question of interest to ensure that the appropriate null distribution is generated.
 
 <a name="rand_b">Bootstrapping confidence intervals</a>
 ================================================================================
@@ -368,10 +368,11 @@ lat1 <-  28.289;
 lat2 <-  28.2918;
 lon1 <- -113.1145;
 lon2 <- -113.1095;
+par(bg = NA, mar = c(5, 5, 1,1));
 kable(head(fpet));
 ```
 
-We can plot the latitude and longitude of each of the `r dim(fpet)[1]` trees below. The brown box shows the study plot at the field site, randomly set[^2] from latitude `r lat1` to `r lat2` and longitude `r lon1` to `r lon2`. 
+We can plot the latitude and longitude of each of the `r dim(fpet)[1]` trees below. The brown box shows the study plot at the field site, randomly set<sup>[2](#foot2)</sup> from latitude `r lat1` to `r lat2` and longitude `r lon1` to `r lon2`. 
 
 ```{r, fig.height = 7, fig.width = 7}
 lat1 <-  28.289;
@@ -444,7 +445,7 @@ In the code above, a `while` loop is used to find the mean nearest neighbour of 
 iteration    <- 16;
 N_trees      <- dim(fpet)[1];
 simulated_NN <- NULL;
-par(mfrow = c(4, 4), mar = c(0, 0, 0, 0));
+par(mfrow = c(4, 4), mar = c(0, 0, 0, 0), bg = NA);
 while(iteration > 0){
     rand_lat  <- runif(n = N_trees, min = lat1, max = lat2);
     rand_lon  <- runif(n = N_trees, min = lon1, max = lon2);
@@ -497,6 +498,6 @@ I hope that the above introduction has been helpful for showing some different k
 References
 ================================================================================
 
-[^1]: It is *not* acceptable, of course, to re-run a randomisation analysis until acheiving some p-value that is below a desired threshold.
+<a name="foot1">1.</a>: It is *not* acceptable, of course, to re-run a randomisation analysis until acheiving some p-value that is below a desired threshold.
 
-[^2]: No, not really. The actual objective was not to randomly sample trees within a given area, but rather to map all of the trees that we could find for a variety of different purposes. But it is useful for illustration to pretend that we had instead sampled trees within a fixed area described by the brown box above.
+<a name="foot2"></a>: No, not really. The actual objective was not to randomly sample trees within a given area, but rather to map all of the trees that we could find for a variety of different purposes. But it is useful for illustration to pretend that we had instead sampled trees within a fixed area described by the brown box above.
