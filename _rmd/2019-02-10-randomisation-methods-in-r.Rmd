@@ -8,7 +8,7 @@ output:
 bibliography: randomisation_notes.bib
 ---
 
-Here I introduce the use of (pseudo)random number generation, randomisation, bootstrap, and Monte Caro methods in R. Knowledge of these tools can be especially useful in statistical hypothesis testing and biological modelling (e.g., individual-based models). This introduction was originall written for an event in [Stirling Coding Club](https://stirlingcodingclub.github.io/studyGroup/), and a version of tis document is available [here](https://stirlingcodingclub.github.io/randomisation/randomisation_notes.html).
+Here I introduce the use of (pseudo)random number generation, randomisation, bootstrap, and Monte Caro methods in R. Knowledge of these tools can be especially useful in statistical hypothesis testing and biological modelling (e.g., individual-based models). This introduction was originally written for an event in [Stirling Coding Club](https://stirlingcodingclub.github.io/studyGroup/), and a version of tis document is available [here](https://stirlingcodingclub.github.io/randomisation/randomisation_notes.html).
 
 ********************************************************************************
 
