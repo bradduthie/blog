@@ -11,10 +11,11 @@ output: md_document
 
 ```{r, echo = FALSE}
 library(knitr);
+set.seed(108);
 ```
 
 
-Linear models in statistics are often taught as a series of separate tests to be run for data sets with different properties (e.g., categorical versus continuous independent variables). Here I generate a simulated data set, then use it to show how these separate tests can be better conceptualised as variants of a common underlying linear modelling framework. This post has a slightly different focus from a related [post by Lindel&#248;v](https://lindeloev.github.io/tests-as-linear/), which I strongly recommend to readers interested in the logic underlying linear models in statistics.
+Linear models in statistics are often taught as a series of separate tests to be run for data sets with different properties (e.g., categorical versus continuous independent variables). Here I generate a simulated data set, then use it to show how these separate tests can be better conceptualised as variants of a common underlying linear modelling framework. This post has a slightly different focus from a related [post by Lindel&#248;v](https://lindeloev.github.io/tests-as-linear/), which I strongly recommend to readers interested in the logic underlying linear models in statistics. This post is also available as a [PDF](https://stirlingcodingclub.github.io/linear_modelling/notes.pdf) and [DOCX](https://stirlingcodingclub.github.io/linear_modelling/notes.docx).
 
 ********************************************************************************
 
