@@ -130,7 +130,7 @@ These 45 plant heights are shown below.
 It might help to plot a histogram of the two plant species heights side
 by side.
 
-![](2020-06-24-equivalence-of-t-tests-anovas-and-linear-models_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+![](../images/2020-06-24-equivalence-of-t-tests-anovas-and-linear-models_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
 Visualising the histogram above, we already have a sense of whether or
 not knowing species ID is useful for predicting plant height.
@@ -287,7 +287,7 @@ If we now plot `is_species_2` on the x-axis, and `height` on the y-axis,
 we reproduce those same icons as in
 [Lindeløv](https://lindeloev.github.io/tests-as-linear/).
 
-![](2020-06-24-equivalence-of-t-tests-anovas-and-linear-models_files/figure-markdown_strict/unnamed-chunk-12-1.png)
+![](../images/2020-06-24-equivalence-of-t-tests-anovas-and-linear-models_files/figure-markdown_strict/unnamed-chunk-12-1.png)
 
 The blue triangle shows the mean height of species 1 (i.e., the
 intercept of the linear model, *β*<sub>0</sub>), and the orange diamond
@@ -444,7 +444,7 @@ mean of species 1 and the mean of species 2, given a random shuffling of
 species IDs. We can look at the distribution of `null_diff` in the
 histogram below.
 
-![](2020-06-24-equivalence-of-t-tests-anovas-and-linear-models_files/figure-markdown_strict/unnamed-chunk-17-1.png)
+![](../images/2020-06-24-equivalence-of-t-tests-anovas-and-linear-models_files/figure-markdown_strict/unnamed-chunk-17-1.png)
 
 As expected, most differences between randomly assigned species height
 means are somewhere around zero. Our actual value of -24.98, which we
