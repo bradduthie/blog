@@ -1,0 +1,747 @@
+---
+layout: post
+title: On the equivalence of t-tests, anovas, and linear models
+author: Brad Duthie
+published: false
+status: process
+draft: false
+tags: R
+output: md_document
+---
+
+```{r, echo = FALSE}
+library(knitr);
+```
+
+
+Linear models in statistics are often taught as a series of separate tests to be run for data sets with different properties (e.g., categorical versus continuous independent variables). Here I generate a simulated data set, then use it to show how these separate tests can be better conceptualised as variants of a common underlying linear modelling framework. This post has a slightly different focus from a related [post by Lindel&#248;v](https://lindeloev.github.io/tests-as-linear/), which I strongly recommend to readers interested in the logic underlying linear models in statistics.
+
+********************************************************************************
+
+
+- [Making up data for heights of two plant species](#makeup)
+- [Equivalence of `t.test` versus a linear model `lm` in R](#equiv1)
+- [Further equivalence of `t.test`, `lm`, and now `aov`](#equiv2)
+- [Testing for a difference between means using randomisation](#random)
+- [What about when there are more than two groups?](#moregroups)
+- [Okay, but what's really happening with three groups?](#whatreally)
+- [Can we make this even more elegant, somehow?](#matrices)
+- [Some final thoughts](#final)
+- [Key bits of code underlying the simulated data](#code)
+- [Excercises for furthering learning](#exercises)
+    - [Exercise 1](#E1)
+    - [Exercise 2](#E2)
+    - [Exercise 3](#E3)
+- [Answers to Exercises 1-3](#answers)
+
+********************************************************************************
+
+
+<a name = "makeup">Making up data for heights of two plant species</a>
+================================================================================
+
+Let's first make up some data and put them into a data frame. To make everything a bit more concrete, let's just imagine that we're sampling the heights of individual plants from two different species. Hence, we'll have one categorical independent variable (species), and one continuous dependent variable (plant height). The data frame below includes plant height (`height`; since this is a made up example, the units are not important, but let's make them mm) and species ID (`species_ID`). The first 10 plants are shown below (each plant is a unique row).
+
+
+```{r, echo = FALSE}
+species_n <- c("species_1", "species_2");
+sim_pval  <- 0;
+while(sim_pval > 0.05 | sim_pval < 0.001){
+    species_eg  <- sample(x = species_n, size = 100, replace = TRUE);
+    species1    <- as.numeric(species_eg == "species_1");
+    species2    <- as.numeric(species_eg == "species_2");
+    error       <- rnorm(n = 100, mean = 0, sd = 40);
+    height      <- round(150 + (species2 * 20) + error, digits = 2);
+    species_ID  <- as.factor(species_eg);
+    plant_data  <- data.frame(height, species_ID);
+    sim_mod     <- lm(plant_data$height ~ 1 + plant_data$species_ID);
+    sim_pval    <- summary(sim_mod)$coefficients[2,4];
+}
+write.csv(plant_data, file = "two_discrete_x_values.csv", row.names = FALSE);
+kable(plant_data[1:10,], align = "l");
+```
+
+
+Using the linear modelling approach [described by Lindel&#248;v](https://lindeloev.github.io/tests-as-linear/), the above data qualify as a simple regression with a discrete x (`species_ID`). Assuming that both species have equal variances in height, we can use a two-sample t-test in R to test the null hypothesis that the mean height of `species_1` is equal to the mean height of `species_2`. To use `t.test`, we can create two separate vectors of heights, the first one called `species_1`.
+
+```{r}
+species_1 <- plant_data$height[plant_data$species_ID == "species_1"];
+```
+
+Below shows `species_1`, which includes the heights of all `r length(species_1)` plants whose `species_ID == "species_1"`.
+
+```{r, echo = FALSE}
+print(species_1);
+```
+
+We can make a separate vector for the remaining heights for the plants of species 2 in the same way.
+
+```{r}
+species_2 <- plant_data$height[plant_data$species_ID == "species_2"];
+```
+
+These `r length(species_2)` plant heights are shown below.
+
+```{r, echo = FALSE}
+print(species_2);
+```
+
+It might help to plot a histogram of the two plant species heights side by side.
+
+```{r, echo = FALSE}
+hist(species_1, breaks = 10, col = "blue", xlim = c(0, 300), 
+     main = "", xlab = "Plant height", cex.lab = 1.25, ylim = c(0, 15));
+hist(species_2, breaks = 10, col = "red", add = TRUE)
+legend(x = 0, y = 15, fill = c("red", "blue"), 
+       legend = c("species_2", "species_1"));
+```
+
+Visualising the histogram above, we already have a sense of whether or not knowing species ID is useful for predicting plant height. 
+
+<a name="equiv1">Equivalence of `t.test` versus a linear model `lm` in R</a>
+================================================================================
+
+Using our two vectors `species_1` and `species_2`, we can run a t-test as noted [by Lindel&#248;v](https://lindeloev.github.io/tests-as-linear/). 
+
+```{r}
+t.test(species_1, species_2, var.equal = TRUE);
+```
+
+```{r, echo = FALSE}
+ttest1 <- t.test(species_1, species_2, var.equal = TRUE);
+```
+
+
+Reading the output above, we can get the t-statistic t = `r round(ttest1$statistic, digits = 4)`. Given the null hypothesis that the mean height of `species_1` equals the mean height of `species_2`, the probability of getting such an exterme difference between the two observed means is `r format(round(ttest1$p.value, digits = 5), scientific = FALSE)` (i.e., the p-value).
+
+But this is not the only way that we can run a t-test. As [Lindel&#248;v](https://lindeloev.github.io/tests-as-linear/) points out, the linear model structure works just fine as well. The variables used below in `lm` are from the `plant_data` table shown above, with one column named `height` and another named `species_ID`.
+
+```{r}
+lmod1 <- lm(height ~ 1 + species_ID, data = plant_data);
+summary(lmod1);
+```
+
+Note how the information in the above output matches that from the `t.test` function. In using `lm`, we get a t value in the coefficients table of `r round(summary(lmod1)$coefficients[2,3], digits = 3)`, and a p-value of  `r round(summary(lmod1)$coefficients[2,4], digits = 5)`. We can also see the mean values for `species_1` and `species_2`, though in slightly different forms. From the `t.test` function, we see an estimated mean of `r round(as.numeric(ttest1$estimate[1]), digits = 4)` for species 1 and `r round(as.numeric(ttest1$estimate[2]), digits = 4)` for species 2 (this is at the bottom of the output, under `mean of x mean of y`). In the `lm`, we get the same information in a slightly different form. The estimate in the coefficients table for the intercept is listed as `r round(summary(lmod1)$coefficients[1,1], digits = 3)`; this is the value of the mean height for species 1. 
+
+Where is the value for the mean height of species 2? We get the value for species 2 by adding the estimate of its effect on the line below, such that `r round(summary(lmod1)$coefficients[1,1], digits = 3)` + `r round(summary(lmod1)$coefficients[2,1], digits = 3)` = `r round(summary(lmod1)$coefficients[1,1] + summary(lmod1)$coefficients[2,1], digits = 3)`. To understand why, think back to that `lm` structure, `height ~ 1 + species_ID`. Recall from [Lindel&#248;v](https://lindeloev.github.io/tests-as-linear/) how this is a short-hand for the familiar equation $y = \beta_{0} + \beta_{1} x$. In this equation, $y$ is the dependent variable plant height, while the value $x$ is what we might call a dummy variable. It indicates whether or not the plant in question is a member of species 2. If yes, then $x = 1$. If no, then $x = 0$. 
+
+Now think about the coefficients $\beta_{0}$ and $\beta_{1}$. Because $x = 0$ whenever `species_ID = species_1`, the predicted plant height $y$ for species 1 is simply $y = \beta_{0} + (\beta_{1} \times 0)$, which simplifies to $y = \beta_{0}$. This is why our `Estimate` of the `(Intercept)` row in the `summary(lmod1)` output equals the mean plant height of species 1. Next, because $x = 1$ whenever `species_ID = species_2`, the predicted plant height $y$ for species 2 is $y = \beta_{0} + (\beta_{1} \times 1)$, which simplifies to $y = \beta_{0} + \beta_{1}$. This is why our `Estimate` of the `species_IDspecies_2` row in the `summary(lmod1)` equals `r round(summary(lmod1)$coefficients[2,1], digits = 3)`. It is the amount that needs to be added to the prediction for species 1 to get the prediction for species 2.
+
+To <a name="bintab">further clarify</a> the concept, we can re-write that original two column table from above, but instead of having `species_1` or `species_2` for the `species_ID` column, we can replace it with a column called  `is_species_2`. A value of `is_species_2 = 0` means the plant is species 1, and a value of `is_species_2 = 1` means the plant is species 2.
+
+```{r, echo = FALSE}
+is_species_2 <- as.numeric(species_ID == "species_2");
+lm_table_eg <- data.frame(height, is_species_2);
+kable(lm_table_eg[1:10,], align = "l");
+```
+
+If we now plot `is_species_2` on the x-axis, and `height` on the y-axis, we reproduce those same icons as in [Lindel&#248;v](https://lindeloev.github.io/tests-as-linear/). 
+
+
+```{r, echo = FALSE}
+plot(x = lm_table_eg$is_species_2, y = lm_table_eg$height, ylim = c(0, 275), 
+     pch = 20, cex.axis = 1.25, cex.lab = 1.25, ylab = "Plant height",
+     xlab = "Is species 2: Yes (1) or no (0)");
+lines(x = c(0, 1), y = c(summary(lmod1)$coefficients[1,1], 
+      summary(lmod1)$coefficients[1,1] + summary(lmod1)$coefficients[2,1]),
+      col = "red", lwd = 4);
+points(x = 0, y = summary(lmod1)$coefficients[1,1], pch = 17, col = "blue",
+       cex = 3);
+points(x = 1, y = summary(lmod1)$coefficients[1,1] + 
+       summary(lmod1)$coefficients[2,1], pch = 18, col = "orange", cex = 3);
+```
+
+
+The blue triangle shows the mean height of species 1 (i.e., the intercept of the linear model, $\beta_{0}$), and the orange diamond shows the mean height of species 2 (i.e., $\beta_{0} + \beta_{1}$). Since the distance between these two points is one, the slope of the line (rise over run) is identical to the difference between the mean species heights. Hence the reason for why $\beta_{1}$, which we often think about only as the 'slope' is also the difference between means.
+
+
+<a name="equiv2">Further equivalence of `t.test`, `lm`, and now `aov`</a>
+================================================================================
+
+Analysis of variance (ANOVA) tests the null hypothesis that the mean values of groups are all equal. We often think of this being used for group numbers of three or more, but it is worth showing that ANOVA is equivalent to a t-test when the number of groups is two. A one-way ANOVA can be run using the `aov` function in R. Below, I do this for the same `plant_data` table as used for `t.test` and `lm`. 
+
+```{r}
+aov_1 <- aov(height ~ species_ID, data = plant_data);
+summary(aov_1);
+```
+
+Note the `F value` and the `Pr(>F)` (i.e., the p-value) in the table above. The value `r round(summary(aov_1)[[1]][["F value"]][1], digits = 3)` matches the `F-statistic` produced from using `lm` in the previous section, and `r round(summary(aov_1)[[1]][["Pr(>F)"]][1], digits = 4)` is the same p-value that we calculated earlier. The methods are effectively the same.
+
+<a name="random">Testing for a difference between means using randomisation</a>
+================================================================================
+
+An alternative approach to the `t.test`, `lm`, and `aov` options above is to use randomisation. Randomisation approaches make fewer assumptions about the data, and I believe that they are often more intuitive. For a full discussion of randomisation techniques, see my [previous notes for Stirling Coding Club](https://stirlingcodingclub.github.io/randomisation/randomisation_notes.html), which go into much more detail on the underlying logic of randomisation, bootstrap, and Monte Carlo methods. For now, I just want to illustrate how a randomisation approach can get be used for the same null hypothesis testing as shown in the previous methods above. Let us look back at the first ten rows of the data set that I made up again.
+
+```{r, echo = FALSE}
+kable(plant_data[1:10,], align = "l");
+```
+
+When we use null hypothesis testing, what we are asking is this:
+
+> If the true difference between group means is the same (null hypothesis), then what is the probability of sampling a difference between groups as or more extreme than the difference that we observe in the data?
+
+We might phrase the null hypothesis slightly differently:
+
+> If the true difference between group means is random with respect to group identity (null hypothesis), then what is the probability of sampling a difference between groups as or more extreme than the difference that we observe in the data?
+
+In other words, what if we were to randomly re-shuffle species IDs, so that we *knew* any difference between mean species heights was attributable to chance? The logic behind randomisation here is to re-shuffle group identity (species), then see what the difference is between groups after shuffling (i.e., mean species 1 height minus mean species 2 height). After doing this many times, we can thereby build a distribution for differences between randomly generated groups. We can do this with a bit of code below. First let's get the actual difference between mean heights of species 1 and species 2, i.e., `species[1] - species[2]`. We can use the `tapply` function in R to do this easily.
+
+```{r}
+species <- tapply(X = plant_data$height, INDEX = plant_data$species_ID, 
+                  FUN = mean);
+height_diffs <- as.numeric( species[1] - species[2] );
+print(height_diffs);
+```
+
+Using a [for loop](https://stirlingcodingclub.github.io/using_loops/loop_notes.html) in R, we can shuffle `species_ID`, then build a distribution showing what the difference between species means would be just due to random chance.
+
+
+```{r}
+null_diff  <- NULL;  # Place where the random diffs will go
+iterations <- 99999; # Number of reshuffles
+iter       <- 1;     # Start with the first
+while(iter < iterations){
+  new_species_ID  <- sample(x    = plant_data$species_ID, 
+                            size = length(plant_data$species_ID));
+  new_species     <- tapply(X = plant_data$height, INDEX = new_species_ID,
+                            FUN = mean);
+  new_diffs       <- as.numeric( new_species[1] - new_species[2] );
+  null_diff[iter] <- new_diffs;
+  iter            <- iter + 1;
+}
+```
+
+Each element in the vector `null_diff` is now a difference between the mean of species 1 and the mean of species 2, given a random shuffling of species IDs. We can look at the distribution of `null_diff` in the histogram below.
+
+```{r, echo = FALSE}
+hist(null_diff, main = "", xlab = "Height difference between randomly assigned group means",
+     col = "blue");
+```
+
+As expected, most differences between randomly assigned species height means are somewhere around zero. Our actual value of `r round(height_diffs, digits = 3)`, which we have calculated several times now, is quite low, and on the extreme tail of the distribution above. What then is the probability of getting a value this extreme if species ID has nothing to do with plant height? The answer is just the total number of values equal or more extreme to the one we observed (`r round(height_diffs, digits = 3)`), divided by the total number of values that we tried (99999 + 1 = 100000; the plus one is for the actual value).
+
+```{r}
+p_value <- sum(abs(null_diff) > abs(height_diffs)) / 100000;
+```
+
+We get `p_value = ` `r p_value`. Notice how close this value is to the p-value that we obtained using `t.test`, `lm`, and `aov`. This is because the concept is the same; given that the null hypothesis is true, what is the probability of getting a value as or more extreme than the one actually observed?
+
+<a name="moregroups">What about when there are more than two groups?</a>
+================================================================================
+
+I want to briefly touch on what happens when there are more than two groups; for example, if we had three species instead of two. Of course, a t-test is now not applicable, but we can still use the linear model and ANOVA approaches. Let's make up another data set, but with three species this time.
+
+```{r, echo = FALSE}
+species_n <- c("species_1", "species_2", "species_3");
+sim_pval  <- 0;
+while(sim_pval > 0.05 | sim_pval < 0.001){
+    species_eg  <- sample(x = species_n, size = 100, replace = TRUE);
+    species1    <- as.numeric(species_eg == "species_1");
+    species2    <- as.numeric(species_eg == "species_2");
+    species3    <- as.numeric(species_eg == "species_3");
+    error       <- rnorm(n = 100, mean = 0, sd = 40);
+    height      <- round(150 + (species2 * 20) + error, digits = 2);
+    species_ID  <- as.factor(species_eg);
+    plant_data  <- data.frame(height, species_ID);
+    sim_mod     <- lm(plant_data$height ~ 1 + plant_data$species_ID);
+    sim_pval    <- summary(sim_mod)$coefficients[2,4];
+}
+write.csv(plant_data, file = "three_discrete_x_values.csv", row.names = FALSE);
+kable(plant_data[1:10,], align = "l");
+```
+
+As already mentioned, `t.test` will not work. But we can run both `lm` and `aov` with the exact same code as before with three groups. I will show `aov` first.
+
+```{r}
+aov_2 <- aov(height ~ species_ID, data = plant_data);
+summary(aov_2);
+```
+
+The F-statistic calculated above is `r round(summary(aov_2)[[1]][["F value"]][1], digits = 3)`, and the p-value is `r format(round(summary(aov_2)[[1]][["Pr(>F)"]][1], digits = 4), scientific = FALSE)`. The p-value in this case tests the null hypothesis that all groups (i.e., species) have the same mean values (i.e., heights). We can now use the `lm` function to run the same analysis with three groups.
+
+```{r}
+lmod2 <- lm(height ~ 1 + species_ID, data = plant_data);
+summary(lmod2);
+```
+
+We can find the F-statistic and p-value at the very bottom of the output, and note that they are the same as reported by `aov`. But look at what is going on with the `Estimate` values in the table (ignore the `Pr(>|t|)` values in the table). There are now three rows. Again, we can think back to the equation predicting plant height $y$, but now we need another coefficient. The equation can now be expressed as, $y = \beta_{0} + \beta_{1} x_{1} + \beta_{2} x_{2}$. Note that subscripts have been added to $x$. This is because we now have two dummy variables; is the plant species 1 (if so, $x_{1} = 0$ and $x_{2} = 0$), species 2 ($x_{1} = 1$ and $x_{2} = 0$), or species 3 ($x_{1} = 0$ and $x_{2} = 1$)? With these dummy variables, we can now predict the height of species 1,
+
+$$y = \beta_{0} + (\beta_{1} \times 0) + (\beta_{2} \times 0).$$
+
+The above reduces to $y = \beta_{0}$, as with our two species case. The height of species 2 can be predicted as below,
+
+$$y = \beta_{0} + (\beta_{1} \times 1) + (\beta_{2} \times 0).$$
+The above reduces to $y = \beta_{0} + \beta_{1}$, again, as with the two species case. Finally, we can use the linear model to predict the height of species 3 plants,
+
+$$y = \beta_{0} + (\beta_{1} \times 0) + (\beta_{2} \times 1).$$
+
+The above reduces to $y = \beta_{0} + \beta_{2}$. Let's use the `tapply` function to see what the mean values of each species are in the new data set.
+
+```{r}
+tapply(X = plant_data$height, INDEX = plant_data$species_ID, FUN = mean);
+```
+
+```{r, echo = FALSE}
+pd_mns <- tapply(X = plant_data$height, INDEX = plant_data$species_ID, FUN = mean);
+```
+
+
+Now look at that output `summary(lmod2)` again. Notice that the estimate of the intercept `(Intercept)` is the same as the mean height of species 1 (`r pd_mns[1]`). Similarly, add the intercept ($\beta_{0}$) to the coefficient in the second row, `species_IDspecies_2` (i.e., $\beta_{1}$); this value equals the mean estimate for species 2. Finally, add the intercept to the coefficient in the third row `species_IDspecies_3` (i.e., $\beta_{2}$); this value equals the mean estimate for species 3. Once again, we see how the linear model is equivalent to the ANOVA.
+
+
+<a href="whatreally">Okay, but what's really happening with three groups?</a>
+================================================================================
+
+How does this *really* work? We have given R a single column with three different categorical values (species) and somehow ended up with an intercept and two regression coefficients. How can we understand this more clearly? Think back to the table [from earlier](#bintab) where we had a column for `is_species_2` with a simple zero or one. We can do the same, but with a new column, to include the ID of species 3. 
+
+
+```{r, echo = FALSE}
+is_species_2 <- as.numeric(species_ID == "species_2");
+is_species_3 <- as.numeric(species_ID == "species_3");
+lm_table_eg <- data.frame(height, is_species_2, is_species_3);
+kable(lm_table_eg[1:10,], align = "l");
+```
+
+In fact, for even more clarity, we can add a column for the intercept too.
+
+```{r, echo = FALSE}
+the_intercept <- rep(x = 1, length = length(height));
+is_species_2  <- as.numeric(species_ID == "species_2");
+is_species_3  <- as.numeric(species_ID == "species_3");
+lm_table_eg   <- data.frame(height, the_intercept, is_species_2, is_species_3);
+kable(lm_table_eg[1:10,], align = "l");
+```
+
+Now we can see the equivalence with the linear model expressed in R from above, `lm(height ~ 1 + species_ID, data = plant_data)`. The formula in `lm` is predicting `height` for individual plants using a linear model that includes the intercept (always 1), plus species ID. This relates now more easily to the equation $y = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2}$. The four terms are reflected in the four columns above. Plant height ($y$) is predicted in the left-most column. The second column is all ones, by which we multipy the intercept ($\beta_{0}$). Columns two and three define the `species_ID` in R, and the $\beta_{1}x_{1} + \beta_{2}x_{2}$ terms of the equation. Note that either $x_{1} = 0$ and $x_{2} = 0$ (the row is species 1), $x_{1} = 1$ and $x_{2} = 0$ (species 2), or $x_{1} = 0$ and $x_{2} = 1$ (species 3). Hence, the coefficients $\beta_{1}$ and $\beta_{2}$ apply only for species 2 and 3, repsectively (and the absence of both occurs for species 1). You should now be able to connect this concept with the output of `summary(lmod2)` above.
+
+Now if we want to predict the height of any plant (rows), we can do so just by multiplying the values in columns 2-4 (always 1 or 0) by the corresponding regression coefficients. For example, where `is_species_2 = 0` and `is_species_3 = 0`, we have $y = (\beta_{0} \times 1) + (\beta_{1} \times 0) + (\beta_{2} \times 0)$. Substituting the regression coefficients from the `summary(lmod2)` above, we have,
+
+$$y = ( `r round(summary(lmod2)$coefficients[1,1], digits = 3)` \times 1) + ( `r round(summary(lmod2)$coefficients[2,1], digits = 3)` \times 0) + ( `r round(summary(lmod2)$coefficients[3,1], digits = 3)` \times 0).$$
+
+Note that the above simplifies to `r round(summary(lmod2)$coefficients[1,1], digits = 3)`, the predicted height of species 1. We can do the same for species 2.
+
+
+$$y = ( `r round(summary(lmod2)$coefficients[1,1], digits = 3)` \times 1) + ( `r round(summary(lmod2)$coefficients[2,1], digits = 3)` \times 1) + ( `r round(summary(lmod2)$coefficients[3,1], digits = 3)` \times 0).$$
+
+The above simplifies to $y = `r round(summary(lmod2)$coefficients[1,1], digits = 3)` + `r round(summary(lmod2)$coefficients[2,1], digits = 3)`$, which equals `r round(summary(lmod2)$coefficients[1,1] + summary(lmod2)$coefficients[2,1], digits = 3)`, the predicted height of species 2. I will leave the predicted height of species 3 to the reader.
+
+Note that we have been working with categorical variables, species. These are represented by ones and zeroes. But we can also imagine that some other continuous variable might be included in the model. For example, perhaps the altitude at which the plant was collected is also potentially important for predicting plant height. The common name for this model would be 'ANCOVA', but all that we would really be doing is adding one more column to the table above. The column would be 'altitude', and would perhaps include values expressing metres above sea level (e.g., `altitude = 23.42, 32.49, 10.02`, and so forth; one for each plant). This value would be multiplied by a new coefficient $\beta_{3}$ to predict plant height, and be represented as an `lm` in R with `lm(height ~ 1 + species_ID + altitude, data = plant_data)`. Its equation would be $y = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \beta_{3}x_{3}$, where altitude is $x_{3}$.
+
+
+<a name="matrices">Can we make this even more elegant, somehow?</a>
+================================================================================
+
+I hope that all of this has further illustrated some of the mathematics and code underlying linear models. Readers who are satisfied can skip this section, but I want to go just one step further and demonstrate how linear model prediction really boils down to **just one equation**. This equation is a generalisation of the by now familiar $y = \beta_{0} + \beta_{1}x$. We can represent independent and dependent variables in the table above using columns of two matrices, $Y$ and $X$. $Y$ is just a vector of 100 plant heights (matching column 1 from the table above),
+
+
+$$
+Y = \begin{pmatrix}
+  `r lm_table_eg[1, 1]` \\
+  `r lm_table_eg[2, 1]` \\
+  `r lm_table_eg[3, 1]` \\
+  `r lm_table_eg[4, 1]` \\
+  \vdots \\
+  `r lm_table_eg[100, 1]` \\
+\end{pmatrix}.
+$$
+
+Similarly, $X$ is just a matrix with 100 rows and 3 columns indicating the intercept and species identities, as in columns 2-4 above,
+
+
+$$
+X = \begin{pmatrix}
+  `r lm_table_eg[1, 2]`, & `r lm_table_eg[1, 3]`, & `r lm_table_eg[1, 4]` \\
+  `r lm_table_eg[2, 2]`, & `r lm_table_eg[2, 3]`, & `r lm_table_eg[2, 4]` \\
+  `r lm_table_eg[3, 2]`, &`r lm_table_eg[3, 3]`,  & `r lm_table_eg[3, 4]` \\
+  `r lm_table_eg[4, 2]`, &`r lm_table_eg[4, 3]`,  & `r lm_table_eg[4, 4]` \\
+  \vdots \\
+  `r lm_table_eg[100, 2]`, & `r lm_table_eg[100, 3]`, & `r lm_table_eg[100, 4]` \\
+\end{pmatrix}.
+$$
+
+What we want to figure out now are the coefficients for predicting values in $Y$ (i.e., its matrix elements) from values in each of the columns of $X$. In other words, what are the values of $\beta_{0}$, $\beta_{1}$, $\beta_{2}$, which were explained in the last section? We can also represent these values in a matrix $\beta$,
+
+
+$$
+\beta = \begin{pmatrix}
+  \beta_{0} \\
+  \beta_{1} \\
+  \beta_{2} \\
+\end{pmatrix}.
+$$
+
+We have already figured out what these values are using `lm` in R. They are just the `Estimate` values from the output of `summary(lmod2)` in [an earlier section](#moregroups). But we can also predict them using a bit of matrix algebra, solving for $\beta$ given the values in $Y$ and $X$. The generalisation of $y = \beta_{0} + \beta_{1}x$ is the compact equation below,
+
+$$Y = X \beta.$$
+
+For our data, we could therefore substute for $Y$ and $X$ matrices,
+
+$$
+\begin{pmatrix}
+  `r lm_table_eg[1, 1]` \\
+  `r lm_table_eg[2, 1]` \\
+  `r lm_table_eg[3, 1]` \\
+  `r lm_table_eg[4, 1]` \\
+  \vdots \\
+  `r lm_table_eg[100, 1]` \\
+\end{pmatrix} = \begin{pmatrix}
+  `r lm_table_eg[1, 2]`, & `r lm_table_eg[1, 3]`, & `r lm_table_eg[1, 4]` \\
+  `r lm_table_eg[2, 2]`, & `r lm_table_eg[2, 3]`, & `r lm_table_eg[2, 4]` \\
+  `r lm_table_eg[3, 2]`, &`r lm_table_eg[3, 3]`,  & `r lm_table_eg[3, 4]` \\
+  `r lm_table_eg[4, 2]`, &`r lm_table_eg[4, 3]`,  & `r lm_table_eg[4, 4]` \\
+  \vdots \\
+  `r lm_table_eg[100, 2]`, & `r lm_table_eg[100, 3]`, & `r lm_table_eg[100, 4]` \\
+\end{pmatrix} \begin{pmatrix}
+  \beta_{0} \\
+  \beta_{1} \\
+  \beta_{2} \\
+\end{pmatrix}.
+$$
+
+Given this equation, we now only need to solve for $\beta$ to get our coefficients predicting $Y$ from $X$. This requires some knowledge of [matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication) and [matrix inversion](https://en.wikipedia.org/wiki/Invertible_matrix). These topics are a lesson in themselves, so I will not go into any detail as to what these matrix operations do. The point is that we are trying to isolate $\beta$ in the equation $Y = X \beta$. My hope is that a rough idea of what is going on is possible even for those unfamiliar with matrix algebra, but feel free to [skip ahead](#betapred).
+
+**Isolating $\beta$ with matrix algebra**
+
+I should note that all of the matrix algebra that you have seen here is thanks to [Dean Adams](https://www.eeob.iastate.edu/people/dean-adams) at Iowa State University (but if you notice any errors, they are mine, not his). The first thing that we need to isolate $\beta$ is to multiply both sides of the equation $Y = \beta X$ by the [transpose](https://en.wikipedia.org/wiki/Transpose) of $X$, $X^{t}$,
+
+$$X^{t} Y = X^{t} X \beta.$$
+
+Next, we multiply both sides by the [inverse](https://en.wikipedia.org/wiki/Invertible_matrix) of $(X^{t}X)$, $(X^{t}X)^{-1}$,
+
+$$\left( X^{t} X \right)^{-1} X^{t} Y = \left( X^{t} X \right)^{-1} X^{t} X \beta.$$
+
+Notice now that on the right side of the equation, we have $\left( X^{t} X \right)^{-1} X^{t} X$. In other words, we multiply the inverse of $(X^{t}X)$ by itself, thereby cancelling itself out (getting the [identity matrix](https://en.wikipedia.org/wiki/Identity_matrix), the matrix algebra equivalent of 1). That leaves us only with $\beta$ on the right hand side of the equation, which is exactly what we want. We can flip this around and put $\beta$ on the left side of the equation,
+
+
+$$\beta = \left( X^{t} X \right)^{-1} X^{t}Y.$$
+
+Hence, we have isolated $\beta$, and can use the right side of the above equation (where the data are located) to get our predictors.
+
+<a name="betapred">**Using one equation to get predictions of coefficients**</a>.
+
+We now have our equation for getting our prediction coefficients $\beta$,
+
+$$\beta = \left( X^{t} X \right)^{-1} X^{t}Y.$$
+
+Now I will use this equations to rederive our regression coefficients. **Do not worry about the details here**. What I want to show is that the above equation really does get us the same regression coefficents that we got from the output of `summary(lmod2)` [earlier](#moregroups). Here is that output again.
+
+```{r, echo = FALSE}
+summary(lmod2);
+```
+
+Now let's use the data in `plant_data` to calculate $\beta$ manually instead. Here are the first ten rows of `plant_data` again.
+
+```{r, echo = FALSE}
+plant_data <- lm_table_eg;
+kable(plant_data[1:10,]);
+```
+
+We want to set the first column as a matrix $Y$, and the remaining columns as a matrix $X$.
+
+```{r}
+Y <- as.matrix(plant_data[,1]);
+X <- as.matrix(plant_data[,2:4]);
+```
+
+Here are the first five elements of `Y`.
+
+```{r, echo = FALSE}
+print(Y[1:5, ]);
+```
+
+Here are the first five rows of `X`.
+
+```{r, echo = FALSE}
+print(X[1:5,]);
+```
+
+Let's do the matrix algebra now below to get values of $\beta$. Note that in R, [matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication) is denoted by the operation `%*%`. [Matrix inversion](https://en.wikipedia.org/wiki/Invertible_matrix) of `X` is written as `solve(X)`, and matrix [transpose](https://en.wikipedia.org/wiki/Transpose) of `X` is written as `t(X)`. Our expression of $\beta = \left( X^{t} X \right)^{-1} X^{t}Y$ in R is therefore as follows.
+
+```{r}
+betas <- solve( t(X) %*% X ) %*% t(X) %*% Y;
+```
+
+We can now print `betas` to reveal our coefficients, just as they were reported by `lm`.
+
+
+```{r}
+print(betas);
+```
+
+We have just produced our regression coefficients manually, with matrix algebra. 
+
+<a name="final">Some final thoughts</a>
+================================================================================
+
+The reason that I have gone through this step by step is to build on our earlier exploration of common statistical tests as linear models. All linear models can be expressed using this common framework. In the above matrix example, note that we could have added as many columns as we wished to $X$. Perhaps we also collected data on the altitude at which we found the plants in our hypothetical example. We could add this information in as an additional column of numbers in $X$, then calculated a new $\beta_{4}$ in exactly the same way. In our new model, this would result in a discrete group predictor (species, in our case), and a continuous variable (altitude). The associated statistical test would commonly be called an ANCOVA, but all that would really have happened is that we would be adding a new column to the list of independent variables. **As an exercise**, think about how we would add interaction terms in $X$. Interaction terms are demonstrated in [Exercise 3](#E3) below.
+
+But wait, there's more. There is no reason why $Y$ needs to be represented by a single column. Maybe we want to predict not just plant height, but plant seed production too. In other words, perhaps we have more than one dependent variable and we need a [multivariate](https://en.wikipedia.org/wiki/Multivariate_statistics) approach (e.g., [MANOVA](https://en.wikipedia.org/wiki/Multivariate_analysis_of_variance)). The same equation for getting $\beta$ works here too. We can think of multivariate linear models in the exact same way as univariate models; we are just adding more columns to $Y$.
+
+I hope that this has been a useful supplement to the already very useful introduction by [Lindel&#248;v](https://lindeloev.github.io/tests-as-linear/). There are details that I have left out for the sake of time, but my goal has been to further simplify the logic and mathematics underying linear models in statistics. 
+
+This document is entirely reproducible. Because the data are simulated, if you Knit it in Rstudio, you will get different numbers each time. I encourage you to try this, and explore the code for yourself. I have cheated in a few places just to avoid making a simulated data set that is too extreme, by chance. All of the code for generating simulated data is posted below, with some notes.
+
+<a name="code">Key bits of code underlying the simulated data</a>
+================================================================================
+
+The code below can be used to generate a CSV file with simulated data as shown here. Note that you can change the significance of different regression coefficients, and their magnitudes and signs, by changing how `height` is defined within the `while` loops below.
+
+```{r, eval = FALSE}
+# The code below creates plant heights with an intercept of roughly 150
+# and a beta_1 coefficient of roughly 20, with some error added into it.
+# The while loop just does this to avoid any non-significant results or 
+# very highly significant results that arise due to chance.
+species_n <- c("species_1", "species_2");
+sim_pval  <- 0;
+while(sim_pval > 0.05 | sim_pval < 0.001){
+    species_eg  <- sample(x = species_n, size = 100, replace = TRUE);
+    species1    <- as.numeric(species_eg == "species_1");
+    species2    <- as.numeric(species_eg == "species_2");
+    error       <- rnorm(n = 100, mean = 0, sd = 40);
+    height      <- round(150 + (species2 * 20) + error, digits = 2);
+    species_ID  <- as.factor(species_eg);
+    plant_data  <- data.frame(height, species_ID);
+    sim_mod     <- lm(plant_data$height ~ 1 + plant_data$species_ID);
+    sim_pval    <- summary(sim_mod)$coefficients[2,4];
+}
+write.csv(plant_data, file = "two_discrete_x_values.csv", row.names = FALSE);
+
+# Below does the same job as above, just with three species instead of two
+species_n <- c("species_1", "species_2", "species_3");
+sim_pval  <- 0;
+while(sim_pval > 0.05 | sim_pval < 0.001){
+    species_eg  <- sample(x = species_n, size = 100, replace = TRUE);
+    species1    <- as.numeric(species_eg == "species_1");
+    species2    <- as.numeric(species_eg == "species_2");
+    species3    <- as.numeric(species_eg == "species_3");
+    error       <- rnorm(n = 100, mean = 0, sd = 40);
+    height      <- round(150 + (species2 * 20) + error, digits = 2);
+    species_ID  <- as.factor(species_eg);
+    plant_data  <- data.frame(height, species_ID);
+    sim_mod     <- lm(plant_data$height ~ 1 + plant_data$species_ID);
+    sim_pval    <- summary(sim_mod)$coefficients[2,4];
+}
+write.csv(plant_data, file = "three_discrete_x_values.csv", row.names = FALSE);
+```
+
+
+<a name="exercises">Excercises for furthering learning</a>
+================================================================================
+
+I have included some exercises below that involve simulating data and using it to build linear models. One benefit of using simulated data is that it allows us to know *a priori* what the relationships are between different variables, and to adjust these relationships to see how they affect model prediction and statistical hypothesis tests. As done above in the [code for simulating the examples](#code), the exercises below will make up some for use in a linear model.
+
+********************************************************************************
+
+<a name ="E1">**Exercise 1**</a>
+
+Create a single dependent variable $Y$ and independent variable $X$, with the relationship between these two variables predicted using a linear model as below,
+
+$$y_{i} = \beta_{0} + \beta_{1} x_{i} + \epsilon_{i}.$$
+
+In the above, $y_{i}$ and $x_{i}$ are data collected on the random variables $Y$ and $X$, respectively, for individual observed values $i$. Values of $\beta_{0}$ and $\beta_{1}$ define regression coefficients, and $\epsilon_{i}$ reflects an error attributable to unobserved noise. **As an exercise, simulate 100 observations from a population in which $X$ is a random normal variable with a mean of $\mu_X = 20$ and standard deviation of $\sigma_{X} = 5$, $\beta_{0} = 10$, and $\beta_{1} = -1/2$. Assume that $\epsilon_{i}$ is sampled from a normal distribution with a mean of 0 and standard deviation of 4**. [Here is some code if you get stuck](#aE1).
+
+- Plot a histogram of $x$ and $y$, then a scatter-plot of $y$ against $x$.
+- Use the R function `lm`, find estimates for $\beta_{0}$ and $\beta_{1}$; how do these estimate relate to the code you used to generate your simulated data?
+- Use the R function `summary` to test the significance of $\beta_{0}$ and $\beta_{1}$. Is this what you expected?
+- Re-run your code several times to simulate different numbers of observations, then see how this affects estimates of regression coefficients and signifiance tests of $\beta_{0}$ and $\beta_{1}$.
+- Re-run your code several times with different standard deviations for $\epsilon$, then see how this affects estimates of regression coefficients and signifiance tests of $\beta_{0}$ and $\beta_{1}$.
+- Make a table such as those shown in the notes above, which could be used to predict $y_{i}$ from $x_{i}$ (see [this table](#aE1) for an answer).
+
+********************************************************************************
+
+<a name ="E2">**Exercise 2**</a>
+
+Create a single dependent variable $Y$ as in [Exercise 1](#E1), but now make $X$ categorical rather than continuous. If $X$ is "Group_1", then make its effect on $Y$ half that predicted given $X$ is "Group 2". The code for doing this is a bit more challenging than simply randomly sampling from a normal distribution, so [here is the code](#aE2) if you get stuck.
+
+********************************************************************************
+
+<a name ="E3">**Exercise 3**</a>
+
+We have ignored statistical interactions until now. Finally, let's model some interactions with simulated data. To do this, create a new model with a dependent variable $Y$, as predicted by the continuous variable $X$ and the categorical variable $Z$. Include an interaction term, in the linear model `lm`. Finally, build a table such as the the ones in the notes and previous two exercises to predict a value $y_{i}$ from $x_{i}$, $z_{i}$ and the appropriate coefficients ($\beta_{0}$, $\beta_{1}$, and $\beta_{2}$). This is challenging, so first try to think conceptually about what you need to do, then try to write the code for it. If you get stuck, [here is the code](#aE3).
+
+********************************************************************************
+
+
+
+<a name="answers">Answers to exercises for learning</a>
+================================================================================
+
+Help for writing the code to simulate data and run linear models is shown below.
+
+********************************************************************************
+
+
+<a name = "aE1">**Code for completing Exercise 1**</a>
+
+```{r, eval = FALSE}
+x  <- rnorm(n = 1000, mean = 20, sd = 5);
+b0 <- 10;
+b1 <- -1/2;
+ep <- rnorm(n = 1000, mean = 0, sd = 4);
+y  <- b0 + (b1 * x) + ep;
+
+# Plot histograms of x and y below
+hist(x);
+hist(y);
+
+# Scatter-plot of x versus y
+plot(x = x , y = y);
+
+# Get estimate of the coefficients
+mod1 <- lm(y ~ x);
+print(mod1);
+summary(mod1);
+```
+
+```{r, echo = FALSE}
+x  <- rnorm(n = 1000, mean = 20, sd = 5);
+b0 <- 10;
+b1 <- -1/2;
+ep <- rnorm(n = 1000, mean = 0, sd = 4);
+y  <- b0 + (b1 * x) + ep;
+```
+
+To change the number of observations, set `n = 1000` to something else when generating data for `x` and `ep`. To get a different standard deviation for $\epsilon_{i}$ (i.e., the error), set `sd = 4` to something else. You can also change the values of `b0` and `b1` to see how this affects regression coefficients. Your predictions will be different than mine, but here is my output for `summary(mod1)`.
+
+
+```{r, echo = FALSE}
+x  <- rnorm(n = 1000, mean = 20, sd = 5);
+b0 <- 10;
+b1 <- -1/2;
+ep <- rnorm(n = 1000, mean = 0, sd = 4);
+y  <- b0 + (b1 * x) + ep;
+print(summary(lm(y~x)));
+```
+
+To get a table from which $y_{i}$ could be predicted from $x_{i}$, see the code below.
+
+```{r}
+ones      <- rep(x = 1, times = 1000); # For the intercept
+the_table <- cbind(y, ones, x, ep);
+print(the_table[1:5,]); # Just show the first five rows
+```
+
+To predict the `y` value in the left-most column, we multiply the second column `ones` by our estimated $\beta_{0}$, then add the third column `x` times our estimated $\beta_{1}$, then add the error `ep`. Try this for a few of the rows. You will find that the predicted `y` is still not exact. Why? And what could you multiply `ones` and `x` by to exactly predict `y` (hint: think about the numbers that you used to simulate the data).
+
+********************************************************************************
+
+
+<a name = "aE2">**Code for completing Exercise 2**</a>
+
+
+Help for writing the code to simulate data given $X$ as a categorical rather than a continuous variable is shown below.
+
+```{r, eval = FALSE}
+x_groups <- c("Group_1", "Group_2"); # All the possible groups
+x        <- sample(x = x_groups, size = 1000, replace = TRUE); # Sample groups
+b0       <- 10;
+b1       <- -1/2;
+ep       <- rnorm(n = 1000, mean = 0, sd = 4);
+
+# Now is a challenging part -- we need to set X to a binary, is_group_2
+is_group_2 <- as.numeric( x == "Group_2" );
+y          <- b0 + (b1 * is_group_2) + ep;
+
+# Try plotting the below
+plot(x = is_group_2, y = y);
+
+#Now we can use a linear model as before. 
+mod1 <- lm(y ~ x);
+print(mod1);
+summary(mod1);
+```
+
+
+As before, your predictions will be different than mine, but here is my output for `summary(mod2)`.
+
+
+```{r, eval = TRUE, echo = FALSE}
+x_groups <- c("Group_1", "Group_2"); # All the possible groups
+x        <- sample(x = x_groups, size = 1000, replace = TRUE); # Sample groups
+b0       <- 10;
+b1       <- -1/2;
+ep       <- rnorm(n = 1000, mean = 0, sd = 4);
+
+# Now is a challenging part -- we need to set X to a binary, is_group_2
+is_group_2 <- as.numeric( x == "Group_2" );
+y          <- b0 + (b1 * is_group_2) + ep;
+
+#Now we can use a linear model as before. 
+mod1 <- lm(y ~ x);
+summary(mod1);
+```
+
+As with [Excercise 1](#aE1), to get a table from which $y_{i}$ could be predicted from $x_{i}$, see the code below.
+
+```{r}
+ones        <- rep(x = 1, times = 1000); # For the intercept
+the_table_2 <- cbind(y, ones, is_group_2, ep);
+print(the_table_2[1:5,]); # Just show the first five rows
+```
+
+
+Think again about how the left-most column `y` relates to the columns `ones` and `x`, and what the error column `ep` (not something that we know given real data) represents. Try again to predict `y` for a few rows given these values. Think about how this example with a categorical $X$ relates to the example with a continuous $X$ in [Exercise 1](#E1).
+
+********************************************************************************
+
+
+<a name = "aE3">**Code for completing Exercise 3**</a>
+
+Here is the code for completing [Exercise 3](#E3). Because there is a lot happening, I have broken it down a bit more line by line to show how the continuous `x` and categorical `z` are created, then used to build a model with a statistical interaction.
+
+```{r}
+# Here is the continuous variable x
+x        <- rnorm(n = 1000, mean = 20, sd = 5);
+
+# Now to make the categorical variable z
+z_groups <- c("Group_1", "Group_2"); # All the possible groups
+z        <- sample(x = x_groups, size = 1000, replace = TRUE); # Sample groups
+
+# Let's have intercepts beta0 = 10, beta1 = -1/2, and beta2 = 3
+b0       <- 10;
+b1       <- -1/2;
+b2       <- 3;
+ep       <- rnorm(n = 1000, mean = 0, sd = 4); # Error, as with earlier exaples
+
+# As with example 2 -- we need to set X to a binary, is_group_2
+is_group_2 <- as.numeric( z == "Group_2" );
+
+# So where does the interaction come in? Find it below, set to 0.8
+y  <- b0 + (b1 * x) + (b2 * is_group_2) + (0.8 * x * is_group_2) + ep;
+```
+
+See how the interaction of 0.8 is now set in the term `(0.8 * x * is_group_2)`. Now let's run the linear model below, as we would if we had collected $y_{i}$, $x_{i}$, and $z_{i}$ data for $N = 1000$ samples.
+
+```{r}
+mod3 <- lm(y ~ x * z);
+summary(mod3);
+```
+
+
+Look at the output above from `summary(mod3)`, then go back and find the coefficient values in the simulated data. Think about how the two are related. Finally, let's create a table for predicting $y_{i}$ values from $x_{i}$ and $z_{i}$.
+
+```{r}
+ones                 <- rep(x = 1, times = 1000); # For the intercept
+x_group2_interaction <- x * is_group_2; 
+the_table_3          <- cbind(y, ones, x, is_group_2, x_group2_interaction, ep);
+print(the_table_3[1:5,]); # Just show the first five rows
+```
+
+Now go through again and predict `y` from each of these columns, as before. Let's do it once with the estimated coefficients from the linear model. As with previous examples in [Exercise 1](#E1) and [Exercise 2](#E2), predictions will not be perfect. Here is the first row of the table above.
+
+```{r, echo = FALSE}
+sum3 <- summary(mod3);
+```
+
+$$y_{1} = (`r sum3$coefficients[1, 1]` \times `r the_table_3[1, 2]`) + (`r sum3$coefficients[2, 1]` \times `r the_table_3[1, 3]`) + (`r sum3$coefficients[3, 1]` \times `r the_table_3[1, 4]`) + (`r sum3$coefficients[4, 1]` \times `r the_table_3[1, 5]`) + `r the_table_3[1, 6]`.$$
+
+
+If you calculate the above, you get a value of $y_{1} =$ `r (sum3$coefficients[1, 1] * the_table_3[1, 2]) + (sum3$coefficients[2, 1] * the_table_3[1, 3]) + (sum3$coefficients[3, 1] * the_table_3[1, 4]) + (sum3$coefficients[4, 1] * the_table_3[1, 5]) + the_table_3[1, 6]`. Again, this is a close estimate -- closer than we would typically be able to get because when we collect real data, we cannot see the actual value of `ep` ($\epsilon$, the error). But it isn't exact for the same reason as in [Exercise 1](#E1) and [Exercise 2](#E2). Our coefficients from the `lm` are *estimates*. We can predict `y` *exactly* if we instead use the values that we parameterised the model with above.
+
+$$y_{1} = (10 \times `r the_table_3[1, 2]`) + (-1/2 \times `r the_table_3[1, 3]`) + (4 \times `r the_table_3[1, 4]`) + (0.8 \times `r the_table_3[1, 5]`) + `r the_table_3[1, 6]`.$$
+
+With the above, we return the exact value (differences due to rounding) in the table, $y_{1} =$ `r round((10 * the_table_3[1, 2]) + (-0.5 * the_table_3[1, 3]) + (3 * the_table_3[1, 4]) + (0.8 * the_table_3[1, 5]) + the_table_3[1, 6], digits = 7)`. 
+
+I hope that this helps clarify the relationship among model coefficients for different types of variables and interactions. I encourage you to simulate your own data with different structures and explore linear model predictions.
+
+
