@@ -785,10 +785,10 @@ variable *X*<sub>*i*</sub> (i.e., the covariance between
 *X*<sub>*i*</sub> and itself, where *i* is both the row and column),
 
 $$
-V = \left(\begin{array}
-  Var(X_{1}), & Cov(X_{1}, X_{2}) \\
+V = \left[\begin{array}
+  VVar(X_{1}), & Cov(X_{1}, X_{2}) \\
   Cov(X_{2}, X_{1}), & Var(X_{2}) \\
-\end{array}\right).
+\end{array}\right].
 $$
 
 [Covariance](https://en.wikipedia.org/wiki/Covariance) and
@@ -863,18 +863,18 @@ example vector **x**. By multiplying row 1 by the column vector **x**,
 then row 2 by the column vector **x**, we get the following vector,
 
 $$
-\\begin{bmatrix}
-  13.89, & 14.75 \\\\
+\left[\begin{array}
+  X13.89, & 14.75 \\
   14.75, & 16.73
-\\end{bmatrix}
-\\begin{bmatrix}
-  2 \\\\
+\end{array}\right]
+\left[\begin{array}
+  X2 \\
   1
-\\end{bmatrix} = 
-\\begin{bmatrix}
-  42.53 \\\\
+\end{array}\right] = 
+\left[\begin{array}
+  X42.53 \\
   46.22
-\\end{bmatrix}
+\end{array}\right]
 $$
 
 We can confirm this the long way by getting the first element of the
@@ -885,18 +885,18 @@ calculated with `eigen` above (**Vu**), we get the same answer as if we
 mutliplied our single eigenvalue by the eigenvector,
 
 $$
-\\begin{bmatrix}
-  13.89, & 14.75 \\\\
+\left[\begin{array}
+  X13.89, & 14.75 \\
   14.75, & 16.73
-\\end{bmatrix} 
-\\begin{bmatrix}
-  0.67 \\\\
+\end{array} \right]
+\left[\begin{array}
+  X0.67 \\
   0.74
-\\end{bmatrix} = 30.12
-\\begin{bmatrix}
-  0.67 \\\\
+\end{array}\right] = 30.12
+\left[\begin{array}
+  X0.67 \\
   0.74
-\\end{bmatrix}
+\end{array}\right]
 $$
 
 Try confirming for yourself that the two sides of this equation are in
@@ -958,19 +958,19 @@ we can see the relationship between `U` and `U_inv` below.
 Mathematically, here is what that looks like.
 
 $$
-\\begin{bmatrix}
-  1, & 0 \\\\
+\left[\begin{array}
+  X1, & 0 \\
   0, & 1
-\\end{bmatrix}
+\end{array}\right]
  =  
-\\begin{bmatrix}
-  0.67, & -0.74 \\\\
+\left[\begin{array}
+  X0.67, & -0.74 \\
   0.74, & 0.67 
-\\end{bmatrix} 
-\\begin{bmatrix}
-  0.67, & 0.74 \\\\
+\end{array} \right]
+\left[\begin{array}
+  X0.67, & 0.74 \\
   -0.74, & 0.67
-\\end{bmatrix} 
+\end{array} \right]
 $$
 
 Hence, the inverse of a matrix is the scalar equivalent of
@@ -979,22 +979,22 @@ this all together, we can get back to our original covariance matrix by
 inserting our eigenvalues into the right side of the equation.
 
 $$
-\\begin{bmatrix}
-  13.89, & 14.75 \\\\
+\left[\begin{array}
+  X13.89, & 14.75 \\
   14.75, & 16.73  
-\\end{bmatrix}
-\\begin{bmatrix}
-  0.67, & -0.74 \\\\
+\end{array}\right]
+\left[\begin{array}
+  X0.67, & -0.74 \\
   0.74, & 0.67  
-\\end{bmatrix} 
-\\begin{bmatrix}
-  30.12, & 0 \\\\
+\end{array} \right]
+\left[\begin{array}
+  X30.12, & 0 \\
   0, & 0.49  
-\\end{bmatrix} 
-\\begin{bmatrix}
-  0.67, & 0.74 \\\\
+\end{array} \right]
+\left[\begin{array}
+  X0.67, & 0.74 \\
   -0.74, & 0.67  
-\\end{bmatrix}
+\end{array}\right]
 $$
 
 We can confirm all of this in R using our matrices `V`, `U`, and
