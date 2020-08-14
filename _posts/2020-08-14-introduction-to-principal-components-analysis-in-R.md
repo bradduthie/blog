@@ -141,7 +141,7 @@ a histogram for `Variable_1`, and with a scatterplot of `Variable_1`
 versus `Variable_2`. The numbers in the scatterplot points correspond to
 the sample number (i.e., rows 1-12).
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-2-1.png)
 
 Since we do not have four dimensions of space for plotting, we cannot
 put all four variables on a scatterplot that we can visualise with an
@@ -221,7 +221,7 @@ are most stretched out (i.e., have the highest variance); **this
 direction is our first Principal component, PC1**. I have drawn it below
 in red (left panel).
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-4-1.png)
 
 To build our PCA, all that we need to do is take this red line and drag
 it to the x-axis so that it overlaps with *y* = 0 (right panel). As we
@@ -275,7 +275,7 @@ the amount of variation shown on the x-axis. The PCA on the lower right
 is basically the same figure, just moved so that the centre is on the
 origin.
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
 Second, if two variables are completely correlated, the maths underlying
 PCA does not work because a [singluar
@@ -283,7 +283,7 @@ matrix](https://mathworld.wolfram.com/SingularMatrix.html) is created
 (this is the matrix algebra equivalent of dividing by zero). Here is
 what it looks like visually if two variables are completely correlated.
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
 The panel on the left shows two perfectly correlated variables. The
 panel on the right shows what the PCA would look like. Note that there
@@ -423,7 +423,7 @@ look at all of the possible scatterplots using `pairs`.
 
     pairs(x = dat, gap = 0, cex.labels = 0.5);
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-13-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-13-1.png)
 
 There is not much that we can infer from this, except that most of the
 variables appear to be highly correlated. A PCA is therefore likely to
@@ -503,7 +503,7 @@ axes.
     plot(x = pca_dat$x[,1], y = pca_dat$x[,2], asp = 1, cex.lab = 1.25, 
          cex.axis = 1.25, xlab = "PC1", ylab = "PC2");
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-17-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-17-1.png)
 
 Ignore the arguments that start with `cex`; these are just plotting
 preferences. But the argument `asp = 1` is important; it ensures that
@@ -521,7 +521,7 @@ look at any of the 11 PCs that we want. Below compares PC1 with PC3.
     plot(x = pca_dat$x[,1], y = pca_dat$x[,3], asp = 1, cex.lab = 1.25, 
          cex.axis = 1.25, xlab = "PC1", ylab = "PC3");
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-18-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-18-1.png)
 
 Note that the points are in the same locations on the x-axis (PC1) as
 before, but not the y-axis (now PC3). We have just rotated 90 degrees in
@@ -545,7 +545,7 @@ are separated in our data.
            legend = c( expression(paste(italic("Heterandrium "), 1)), 
                        expression(paste(italic("Heterandrium "), 2))));
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-19-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-19-1.png)
 
 From the groups overlaid onto the PCA, it is clear that these two
 species of *Heterandrium* differ in their morphological measurements.
@@ -579,7 +579,7 @@ function for this in base R, which takes the direct output of the
 
     screeplot(pca_dat, npcs = 11, main = "", type = "lines", cex.lab = 1.5);
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-21-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-21-1.png)
 
 The screeplot above provides a useful indication of how much variation
 explained decreases per PC (or how much variation is explained by the
@@ -602,7 +602,7 @@ proportion of the variation explained by each PC in a bar plot.
     barplot(height = pca_pr_explained * 100, names = pc_names, cex.names = 0.8,
             ylab = "Per cent of total variation explained", cex.lab = 1.25);
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-23-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-23-1.png)
 
 Notice that the general pattern of the barplot above is the same as the
 screeplot.
@@ -616,7 +616,7 @@ principal components.
 
     biplot(pca_dat, cex = 0.8, asp = 1);
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-24-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-24-1.png)
 
 The direction of the red arrows shows the relationships among the 11
 different variables. Intuitively, variables with arrows pointing in
@@ -666,7 +666,7 @@ red arrows from the `pca_dat` output.
            y = 4.5 * pca_dat$sdev[2] * pca_dat$rotation[,2],
            col = "blue", pch = 20, cex = 1.5);
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-26-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-26-1.png)
 
 I hope that this clarifies how to produce and interpret a PCA, a
 screeplot, and a biplot in R. I also hope that the output that I showed
@@ -719,7 +719,7 @@ this if the code is unfamiliar).
       text(x = pt_PC1, y = pt_PC2, col = "white", labels = i, cex = 0.8);
     }
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-29-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-29-1.png)
 
 Those who are satisfied with their conceptual understanding of PCA, and
 the ability to use PCA in R, can stop here. In the next section, I will
@@ -785,9 +785,9 @@ variable *X*<sub>*i*</sub> (i.e., the covariance between
 *X*<sub>*i*</sub> and itself, where *i* is both the row and column),
 
 $$
-V = \begin{array}
+V = \begin{array}\left(
   Var(X_{1}), & Cov(X_{1}, X_{2}) \\
-  Cov(X_{2}, X_{1}), & Var(X_{2}) \\
+  Cov(X_{2}, X_{1}), & Var(X_{2}) \right) \\
 \end{array}.
 $$
 
@@ -844,7 +844,7 @@ dimension. For a really simple example, we can take the vector
     abline(h = 0, lty = "dotted", lwd = 0.8);
     abline(v = 0, lty = "dotted", lwd = 0.8);
 
-![](../_rmd/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-35-1.png)
+![](../images/2020-08-14-introduction-to-principal-components-analysis-in-R_files/figure-markdown_strict/unnamed-chunk-35-1.png)
 
 An *eigenvector* (*u*) is a vector that can be multiplied by its
 corresponding *eigenvalue* (*λ*) to give the same vector as you would
