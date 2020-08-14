@@ -785,10 +785,10 @@ variable *X*<sub>*i*</sub> (i.e., the covariance between
 *X*<sub>*i*</sub> and itself, where *i* is both the row and column),
 
 $$
-V = \begin{array}\left(
+V = \left(\begin{array}
   Var(X_{1}), & Cov(X_{1}, X_{2}) \\
-  Cov(X_{2}, X_{1}), & Var(X_{2}) \right) \\
-\end{array}.
+  Cov(X_{2}, X_{1}), & Var(X_{2}) \\
+\end{array}\right).
 $$
 
 [Covariance](https://en.wikipedia.org/wiki/Covariance) and
