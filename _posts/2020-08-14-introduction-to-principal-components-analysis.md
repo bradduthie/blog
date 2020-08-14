@@ -433,8 +433,8 @@ variables measured in different units. If we do not scale the variables
 to have the same mean and standard deviation, then the PCA could
 potentially be affected by the units in which variables were measured,
 which does not make sense. If, for example, we had measured thorax
-length and width in *m**m*<sup>2</sup>, but abdomen length and width in
-*c**m*<sup>2</sup>, then we would get thorax measurements contributing
+length and width in mm<sup>2</sup>, but abdomen length and width in
+cm<sup>2</sup>, then we would get thorax measurements contributing
 more to PC1 just because the measured values would be larger (if you do
 not believe me, try multiplying all values in one column of the data by
 10 or 100, then re-run the PCA below). For data sets that include
