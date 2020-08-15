@@ -982,7 +982,7 @@ $$
 \left[\begin{array}
   X13.89, & 14.75 \\
   14.75, & 16.73  
-\end{array}\right]
+\end{array}\right] = 
 \left[\begin{array}
   X0.67, & -0.74 \\
   0.74, & 0.67  
