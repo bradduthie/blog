@@ -31,7 +31,7 @@ body {
 }
 
 table, th, td {
-   border: 1px solid black;
+   border: 1px solid #d3d3d3;
    padding: 10px;
 }
 
@@ -58,10 +58,12 @@ h1 {
 
 h2 {  
   font-size: 24px;
+  color: #ffffff;
 }
 
 h3 {  
   font-size: 20px;
+  color: #ffffff;
 }
 
 h4 {  
@@ -127,7 +129,7 @@ img {
   background: $lightGray;
 }
 ::selection {
-  color: $black;
+  color: #ffffff;
   background: $lightGray;
 }
 
@@ -194,7 +196,7 @@ img {
 
 .site-name {
   margin: 0;
-  color: $black;
+  color: #ffffff;
   cursor: pointer;
   font-family: $helveticaNeue; 
   font-weight: 300;
@@ -204,7 +206,7 @@ img {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: $black;
+  color:  #ffffff;
   font-size: 16px;
   
   @include mobile {
@@ -234,7 +236,7 @@ nav {
 
     @include mobile {
       margin: 0 10px;
-      color: #EED202;
+      color: #6488EA;
     }
   }
 }
