@@ -1,8 +1,16 @@
+## A freely available textbook for statistics in the life and environmental sciences
+
 I recently completed an introductory statistics
 [textbook](http://bradduthie.github.io/books.html) that uses
 [jamovi](https://www.jamovi.org/) software for all examples and
-practical exercises. The book is freely available online (and always
-will be) on [my website](https://bradduthie.github.io/stats/) and [on
+practical exercises.
+
+> [Fundamental statistical concepts and techniques in the biological and
+> environmental sciences: With
+> jamovi](https://bradduthie.github.io/stats/)
+
+The book is freely available online (and always will be) on [my
+website](https://bradduthie.github.io/stats/) and [on
 Bookdown](https://bookdown.org/brad_duthie/Statistical-concepts-and-techniques-with-jamovi-1720789903589/),
 and a hard copy can be purchased from
 [Routledge](https://www.routledge.com/Fundamental-Statistical-Concepts-and-Techniques-in-the-Biological-and-Environmental-Sciences-With-jamovi/Duthie/p/book/9781032687186)
@@ -37,18 +45,18 @@ think it is worth writing down.
 The whole writing process has taken over two years, and it wasn’t my
 intention to write a textbook when I was first getting started. My
 original objective was to update the learning content for the
-introductory statistics class that I started coordinating in spring
-2021. In late 2020, my role at the University of Stirling changed from
-being a research fellow (i.e., entirely research focused) to being a
-lecturer (which includes research, teaching, and administrative roles).
-Like most of the world, Scotland had been in a COVID-19 lockdown for
-quite some time. I had been working remotely since early 2020, and for
-public safety reasons, all teaching at the university had been abruptly
-moved online. I was just finding my footing as a lecturer the spring
-2021 semester, and most of my time was spent keeping the introductory
-statistics class running and producing learning content that was
-previously delivered face-to-face. The class included about 150 students
-and was taught using
+introductory statistics class that I started coordinating in the 2021
+spring semester. In late 2020, my role at the University of Stirling
+changed from being a research fellow (i.e., entirely research focused)
+to being a lecturer (which includes research, teaching, and
+administrative roles). Like most of the world, Scotland had been in a
+COVID-19 lockdown for quite some time. I had been working remotely since
+early 2020, and for public safety reasons, all teaching at the
+university had been abruptly moved online. I was just finding my footing
+as a lecturer the spring 2021 semester, and most of my time was spent
+keeping the introductory statistics class running and producing learning
+content that was previously delivered face-to-face. The class included
+about 150 students and was taught using
 [SPSS](https://www.ibm.com/products/spss-statistics) statistical
 software. Lab practicals were especially challenging for both staff and
 students. Students had to get SPSS running on their own machines and
